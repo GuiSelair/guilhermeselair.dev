@@ -1,5 +1,6 @@
 :root {
   --text-light: #fcf6f0;
+  --text-light-alternative: rgba(252, 246, 240, 0.6);
   --text-dark: #12120e;
   --text-orange: #ff784b;
   --text-gray: #2d2c2a;
@@ -8,21 +9,24 @@
   --background-light: #fcf6f0;
   --background-gray: #2d2c2a;
 
+  --label: #22221f;
+
   --padding-global-mobile: 4.4rem;
+  --padding-global-desktop: 0 4.4rem;
+  --max-width: 1120px;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  outline: 0;
 }
 
-@media (max-width: 1080px) {
-  html {
-    font-size: 93.73%;
-  }
-}
+// @media (max-width: 1080px) {
+//   html {
+//     font-size: 93.73%;
+//   }
+// }
 
 @media (max-width: 720px) {
   html {
@@ -39,7 +43,7 @@ input,
 textarea,
 button {
   font: 400 1rem "Roboto", sans-serif;
-  color: var(--text-dark);
+  color: var(--text-light);
 }
 
 a {
