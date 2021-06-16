@@ -6,11 +6,11 @@ import styles from '../styles/pages/Home.module.scss';
 
 export default function Home() {
   return (
-    <>
+    <div className={styles.backgroundWrapper}>
       <Head>
         <title>Início - Guilherme Selair</title>
       </Head>
-      <div className={styles.container}>
+      <main className={styles.container}>
         <h1>Guilherme Selair</h1>
         <h3>Desenvolvedor Front-end</h3>
 
@@ -19,12 +19,11 @@ export default function Home() {
             <a>
               <div>
                 <h4>
-                  Sobre mim
+                  Sobre mim 👋
                 </h4>
                 <FiExternalLink />
               </div>
               <span>
-                Olá, eu sou Guilherme Selair 👋
                 Tenho 23 anos, sou desenvolvedor Front-end estudando para me tornar Full Stack.
               </span>
             </a>
@@ -38,13 +37,13 @@ export default function Home() {
                 <FiExternalLink />
               </div>
               <span>
-                A fome pelo aprendizado me guia constantemente pelo mundo das tecnologias.
                 Em busca do novo, vou seguindo meu caminho sempre almejando o próximo nível.
               </span>
             </a>
           </Link>
         </section>
-      </div>
-    </>
+      </main>
+      <span>© Guilherme Selair. 2021</span>
+    </div>
   );
 }

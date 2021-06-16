@@ -1,3 +1,22 @@
+.backgroundWrapper {
+  width: 100vw;
+  height: 100vh;
+  background: url("/images/square_balls.svg") no-repeat 10% 10%,
+    url("/images/blob_bg_left.svg") no-repeat left/30%,
+    url("/images/square_balls_45d.svg") no-repeat 90% 40%;
+  position: relative;
+
+  > span {
+    position: absolute;
+    bottom: 3rem;
+    left: 7.25rem;
+
+    color: var(--text-light-alternative);
+    font-size: 1rem;
+    font-weight: 300;
+  }
+}
+
 .container {
   width: 100vw;
   height: 100vh;
