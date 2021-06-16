@@ -1,0 +1,51 @@
+.backgroundWrapper {
+  width: 100vw;
+  height: 100vh;
+  background: url("/images/square_balls.svg") no-repeat 10% 60%,
+    url("/images/blob_bg_right.svg") no-repeat right/50%;
+  background-size: 6%, 50%;
+  position: relative;
+
+  > span {
+    position: absolute;
+    bottom: 3rem;
+    left: 7.25rem;
+
+    color: var(--text-light-alternative);
+    font-size: 1rem;
+    font-weight: 300;
+  }
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  max-width: var(--max-width);
+  padding: var(--padding-global-desktop);
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 93px;
+    margin-top: 8.875rem;
+    color: var(--text-light);
+    line-height: 94px;
+    text-align: center;
+
+    b {
+      color: var(--text-orange);
+    }
+  }
+
+  > svg {
+    width: 3rem;
+    height: 3rem;
+    color: var(--text-orange);
+    margin-top: 8.875rem;
+  }
+}
