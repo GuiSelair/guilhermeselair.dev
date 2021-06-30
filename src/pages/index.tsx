@@ -1,8 +1,8 @@
-import Head from 'next/head';
-import Link from 'next/link';
-import { FiExternalLink } from 'react-icons/fi';
+import Head from "next/head";
+import Link from "next/link";
+import { FiExternalLink } from "react-icons/fi";
 
-import styles from '../styles/pages/Home.module.scss';
+import styles from "../styles/pages/Home.module.scss";
 
 export default function Home() {
   return (
@@ -18,26 +18,24 @@ export default function Home() {
           <Link href="/sobre">
             <a>
               <div>
-                <h4>
-                  Sobre mim 👋
-                </h4>
+                <h4>Sobre mim 👋</h4>
                 <FiExternalLink />
               </div>
               <span>
-                Tenho 23 anos, sou desenvolvedor Front-end estudando para me tornar Full Stack.
+                Tenho 23 anos, sou desenvolvedor Front-end estudando para me
+                tornar Full Stack.
               </span>
             </a>
           </Link>
           <Link href="/projetos">
             <a>
               <div>
-                <h4>
-                  Projetos realizados
-                </h4>
+                <h4>Projetos realizados</h4>
                 <FiExternalLink />
               </div>
               <span>
-                Em busca do novo, vou seguindo meu caminho sempre almejando o próximo nível.
+                Em busca do novo, vou seguindo meu caminho sempre almejando o
+                próximo nível.
               </span>
             </a>
           </Link>
