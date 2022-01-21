@@ -22,11 +22,11 @@
   box-sizing: border-box;
 }
 
-// @media (max-width: 1080px) {
-//   html {
-//     font-size: 93.73%;
-//   }
-// }
+@media (min-width: 721px) and (max-width: 1366px) {
+  html {
+    font-size: 93.73%;
+  }
+}
 
 @media (max-width: 720px) {
   html {

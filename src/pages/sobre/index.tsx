@@ -1,7 +1,10 @@
 import Head from "next/head";
 import { CgArrowLongDown } from "react-icons/cg";
+import Image from "next/image";
 
 import styles from "@styles/About.module.scss";
+import Header from "components/Header";
+import Label from "components/Label";
 
 export default function About() {
   return (
@@ -9,6 +12,7 @@ export default function About() {
       <Head>
         <title>Sobre mim - Guilherme Selair</title>
       </Head>
+      <Header />
       <main className={styles.container}>
         <h2>
           Construindo a melhor
@@ -34,6 +38,11 @@ export default function About() {
             <h4>Cursos e Certificações</h4>
             <ul>
               <li>
+                <strong>Ignite - Trilha React</strong>
+                <span>Rocketseat</span>
+                <span>Conclusão: 2021</span>
+              </li>
+              <li>
                 <strong>Bootcamp GoStack</strong>
                 <span>Rocketseat</span>
                 <span>Conclusão: 2021</span>
@@ -49,80 +58,91 @@ export default function About() {
             <h4>Formação Educacional</h4>
             <ul>
               <li>
-                <strong>Tecnólogo em Redes de Computadores</strong>
-                <span>Universidade Federal de Santa Maria | Ensino Médio</span>
+                <strong>
+                  Tecnólogo em Redes de Computadores
+                  <Label text="Ensino Superior" />
+                </strong>
+                <span>Universidade Federal de Santa Maria</span>
               </li>
               <li>
-                <strong>Técnico em Informática</strong>
+                <strong>
+                  Técnico em Informática
+                  <Label text="Ensino Técnico" />
+                </strong>
                 <span>
-                  Escola Estadual de Ensino Médio Professora Maria Rocha |
-                  Ensino Técnico
+                  Escola Estadual de Ensino Médio Professora Maria Rocha
                 </span>
               </li>
             </ul>
           </section>
           <section className={styles.tecnologiasTrabalhadas}>
             <h4>Tecnologias trabalhadas</h4>
-            <div />
+            <div>
+              <Image
+                src="/images/thumbnails/Typescript-Thumb.png"
+                width={49}
+                height={49}
+                title="Typescript"
+              />
+              <Image
+                src="/images/thumbnails/React-Thumb.png"
+                width={49}
+                height={49}
+                title="ReactJS"
+              />
+              <Image
+                src="/images/thumbnails/NextJS-Thumb.png"
+                width={49}
+                height={49}
+                title="NextJS"
+              />
+              <Image
+                src="/images/thumbnails/Typescript-Thumb.png"
+                width={49}
+                height={49}
+                title="Typescript"
+              />
+              <Image
+                src="/images/thumbnails/Typescript-Thumb.png"
+                width={49}
+                height={49}
+                title="Typescript"
+              />
+              <Image
+                src="/images/thumbnails/Typescript-Thumb.png"
+                width={49}
+                height={49}
+                title="Typescript"
+              />
+            </div>
           </section>
           <section className={styles.experiencias}>
             <h4>Experiências na área de desenvolvimento</h4>
             <ul>
               <li>
+                <strong>Desenvolvedor Full-stack</strong>
+                <span className={styles.companyName}>
+                  Empresa: Easy Auth Sistemas
+                </span>
+                <span className="duration">Julho/2021 - Atual</span>
+                <p>
+                  Utilizando Javascript de ponta-a-ponta auxiliei na construção de uma plataforma de eventos esportivos. Integração com gateways de pagamentos como Stripe, armazenamento de dados e envio de emails/SMS através da AWS e utilização de GraphQL para obtenção de dados foram algumas tecnologias e ferramentas utilizadas.
+                </p>
+                <p>Com a plataforma em produção, ela já conta com mais de 1000 atletas inscritos em diferentes eventos distribuídos em todo o estado do Rio Grande do Sul.</p>
+              </li>
+              <li>
                 <strong>Estágio - Desenvolvedor Front-end</strong>
                 <span className={styles.companyName}>
                   Empresa: Lunix Tecnologia
                 </span>
-                <span className="duration">Janeiro/2020 - Atual</span>
+                <span className="duration">Janeiro/2020 - Julho/2021</span>
                 <p>
-                  Ingressei na empresa como estágiario a fim de solucionar um
-                  problema de escalabilidade existente na criação de relatórios
-                  de desempenho. Como alternativa foi desenvolvido uma
-                  ferramenta que trouxe alta escalabilidade e automação para a
-                  empresa.
+                  Ingressei na empresa como estagiário a fim de solucionar um problema de escalabilidade existente na criação de relatórios de desempenho. Como alternativa utilizando python foi desenvolvido uma ferramenta que trouxe alta escalabilidade e automação para a empresa. Com a ferramenta foi possível reduzir o tempo de criação de relatórios de 3 dias para segundos, poupando tempo e mão de obra.
                 </p>
-                <ul>
-                  <li>
-                    Selecionei Python como linguagem de programação visando seu
-                    uso em Machine Learning e IA na análise de dados;
-                  </li>
-                  <li>
-                    Junto com a equipe de desenvolvedores montamos uma REST API
-                    flexível e escalável para obtenção dos dados necessários
-                    para os relatórios;
-                  </li>
-                  <li>
-                    <strong>
-                      Com a ferramenta pronta foi possivel reduzir o tempo de
-                      criação de relatórios de 3 dias para segundos, poupando
-                      tempo e mão de obra.
-                    </strong>
-                  </li>
-                </ul>
                 <p>
-                  Após a conclusão da ferramenta de automação, fiquei
-                  responsavel pela construção do front-end da plataforma de
-                  sorteios online da empresa.
+                  Após a conclusão da ferramenta de automação, fiquei responsável pela construção do front-end da plataforma de sorteios online da empresa. Utilizando React com NextJS, a plataforma atingiu a marca de 5000 sorteios realizados em 3 meses.
                 </p>
-                <ul>
-                  <li>
-                    Escolhi utilizar o framework NextJS para a construção da
-                    interface da plataforma devido ao seu foco em performance e
-                    SEO.
-                  </li>
-                  <li>
-                    Utilizei ContextAPI do ReactJS para a autenticação e
-                    compartilhamento de informações dentro da plataforma.
-                  </li>
-                  <li>
-                    <strong>
-                      Com a plataforma em produção concluimos a marca de 2000
-                      sorteios realizados no período de 1 meses.
-                    </strong>
-                  </li>
-                </ul>
               </li>
-              <hr />
               <li>
                 <strong>Estágio - Desenvolvedor Full-stack</strong>
                 <span className="company">
@@ -130,39 +150,20 @@ export default function About() {
                 </span>
                 <span className="duration">Junho, 2019 - Agosto, 2019</span>
                 <p>
-                  Construi este projeto com objetivo de facilitar a comunicação
-                  da escola com professores e estudantes. Para isso foi
-                  modernizado o site da escola e implementado um portal cujo o
-                  objetivo principal era facilitar o acesso as informações para
-                  os estudantes, como notas, frequências e noticías importantes.
+                  Utilizando PHP, Javascript e MYSQL construí um projeto com objetivo de facilitar a comunicação da escola com professores e estudantes. Para isso foi modernizado o site da escola e implementado um portal cujo o objetivo principal era facilitar o acesso as informações para os estudantes, como notas, frequências e notícias importantes. Após algumas entrevistas com alunos e professores sobre usabilidade e interface, alunos, professores e a equipe diretiva conseguiram se comunicar mais facilmente através da plataforma sendo utilizada até hoje.
                 </p>
-                <ul>
-                  <li>
-                    Realizei diversas pesquisas com estudantes e professores
-                    para encontrar a melhor experiência para usuário possível;
-                  </li>
-                  <li>
-                    PHP foi a linguagem de programação utilizada e teve como
-                    objetivo facilitar futuras implementações pelos
-                    orientadores;
-                  </li>
-                  <li>
-                    <strong>
-                      Com o site atualizado, os alunos conseguiram consultar a
-                      grade de cada curso disponível além de ficarem sabendo as
-                      noticiais gerais da escola.
-                    </strong>
-                  </li>
-                  <li>
-                    <strong>
-                      Após o portal finalizado, estudantes e professores
-                      conseguiram melhorar sua comunicação.
-                    </strong>
-                  </li>
-                </ul>
+
               </li>
             </ul>
           </section>
+        </div>
+
+        <div className={styles.downloadProfessionalResume}>
+          <div>
+            <h4>Prefere da maneira tradicional?</h4>
+            <span>Sem problemas, baixe meu currículo em PDF</span>
+          </div>
+          <button type="button">Baixar currículo</button>
         </div>
       </main>
       {/* <span>© Guilherme Selair. 2021</span> */}

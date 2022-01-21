@@ -5,6 +5,7 @@
     url("/images/blob_bg_right.svg") no-repeat right/50%;
   background-size: 6%, 50%;
   position: relative;
+  overflow-x: hidden;
 
   > span {
     position: absolute;
@@ -47,7 +48,7 @@
   width: 3rem;
   height: 3rem;
   color: var(--text-orange);
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 
 .aboutContainer {
@@ -59,7 +60,7 @@
     "tecnologias_trabalhadas experiencias";
   gap: 2rem;
   width: 100%;
-  margin-top: 2rem;
+  margin-top: 4rem;
 
   section {
     padding: 2rem;
@@ -116,6 +117,10 @@
         font-weight: 400;
         font-size: 0.875rem;
         color: #5a5a5a;
+      }
+
+      p + p {
+        margin-top: 4px;
       }
 
       .companyName {
@@ -193,9 +198,11 @@
       strong {
         font-size: 1.125rem;
         margin-bottom: 0.25rem;
+        display: inline-flex;
+        align-items: center;
       }
 
-      span {
+      > span {
         font-weight: 400;
         font-size: 0.875rem;
         color: #5a5a5a;
@@ -210,4 +217,50 @@
 
 .tecnologiasTrabalhadas {
   grid-area: tecnologias_trabalhadas;
+
+  div {
+    > span {
+      & + span {
+        margin-left: 1rem !important;
+      }
+    }
+  }
+}
+
+.downloadProfessionalResume {
+  width: 100%;
+  background: var(--text-orange);
+  color: var(--text-light);
+  margin-top: 2rem;
+  border-radius: 16px;
+  padding: 56px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > div {
+    text-align: right;
+    margin-right: 4.375rem;
+
+    > h4 {
+      font-size: 2rem;
+    }
+
+    > span {
+      font-size: 1rem;
+      text-decoration: underline;
+      margin-top: 0.25rem;
+    }
+  }
+
+  > button {
+    border: none;
+    border-radius: 16px;
+    background: var(--text-light);
+    color: var(--text-orange);
+    padding: 1.125rem 3rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
 }
