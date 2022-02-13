@@ -15,7 +15,7 @@ export default function Home() {
         <h3>Desenvolvedor Front-end</h3>
 
         <section className={styles.labelsGroup}>
-          <Link href="/sobre">
+          <Link href="/about">
             <a>
               <div>
                 <h4>Sobre mim 👋</h4>
@@ -27,7 +27,7 @@ export default function Home() {
               </span>
             </a>
           </Link>
-          <Link href="/projetos">
+          <Link href="/projects">
             <a>
               <div>
                 <h4>Projetos realizados</h4>
