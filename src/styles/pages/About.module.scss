@@ -7,14 +7,10 @@
   position: relative;
   overflow-x: hidden;
 
-  > span {
-    position: absolute;
-    bottom: 3rem;
-    left: 7.25rem;
-
-    color: var(--text-light-alternative);
-    font-size: 1rem;
-    font-weight: 300;
+  @media (max-width: 768px) {
+    background: url("/images/square_balls.svg") no-repeat 10% 55%,
+      url("/images/blob_bg_right.svg") no-repeat 400% 0%;
+    background-size: 15%, 90%;
   }
 }
 
@@ -29,14 +25,23 @@
   flex-direction: column;
   align-items: center;
 
+  @media (max-width: 768px) {
+    padding: var(--padding-global-mobile);
+  }
+
   h2 {
     font-size: 5rem;
     font-weight: 700;
-    line-height: 93px;
     margin-top: 8.875rem;
     color: var(--text-light);
     line-height: 94px;
     text-align: center;
+
+    @media (max-width: 768px) {
+      margin-top: 5rem;
+      font-size: 3rem;
+      line-height: 3.5rem;
+    }
 
     b {
       color: var(--text-orange);
@@ -51,7 +56,7 @@
   margin-top: 2rem;
 }
 
-.aboutContainer {
+.aboutContainerDesktop {
   display: grid;
   grid-template-areas:
     "declaracoes_pessoais experiencias"
@@ -61,6 +66,10 @@
   gap: 2rem;
   width: 100%;
   margin-top: 4rem;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 
   section {
     padding: 2rem;
@@ -84,65 +93,80 @@
   }
 }
 
-.declaracoesPessoais {
-  grid-area: declaracoes_pessoais;
-}
+.aboutContainerMobile {
+  display: none;
 
-.experiencias {
-  grid-area: experiencias;
-
-  > ul {
-    list-style: none;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
+    margin-top: 1rem;
 
-    hr {
-      margin-bottom: 0.5rem;
-    }
+    .aboutContent {
+      width: 100%;
 
-    li + li {
-      margin-top: 0.5rem;
-    }
+      section {
+        padding: 2rem;
+        background: var(--text-light);
+        border-radius: 1rem;
+        color: var(--text-gray);
 
-    > li {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+        & + section {
+          margin-top: 1rem;
+        }
 
-      > strong {
-        font-size: 1.125rem;
-        margin-bottom: 0.5rem;
-      }
+        h4 {
+          font-size: 1.625rem;
+          font-weight: bold;
+          margin-bottom: 1rem;
+        }
 
-      span {
-        font-weight: 400;
-        font-size: 0.875rem;
-        color: #5a5a5a;
-      }
+        p {
+          text-align: justify;
+        }
 
-      p + p {
-        margin-top: 4px;
-      }
-
-      .companyName {
-        color: var(--text-dark);
-      }
-
-      span + span {
-        margin-top: 0.25rem;
-        margin-bottom: 0.5rem;
+        li {
+          text-align: justify;
+        }
       }
 
       > ul {
-        list-style-type: disc;
-        list-style-position: inside;
-        margin: 0.5rem 0;
+        list-style: none;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-bottom: 1rem;
 
         li {
-          margin: 4px 0;
+          &:first-child {
+            border-radius: 4px 0 0 4px;
+          }
+
+          &:last-child {
+            border-radius: 0 4px 4px 0;
+          }
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--text-orange);
+          padding: 16px 0;
+
+          &[aria-selected="true"] {
+            background: var(--text-light);
+            color: var(--text-orange);
+            font-weight: bold;
+          }
         }
       }
     }
   }
+}
+
+.declaracoesPessoais {
+  grid-area: declaracoes_pessoais;
 }
 
 .cursosCertificacoes {

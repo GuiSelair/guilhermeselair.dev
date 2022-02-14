@@ -30,6 +30,7 @@
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "react/jsx-props-no-spreading": "off",
+    "import/no-extraneous-dependencies": "off",
     "react/prop-types": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "quotes": "off",

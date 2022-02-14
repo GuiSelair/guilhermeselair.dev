@@ -11,6 +11,11 @@
     display: flex;
     justify-content: space-between;
     padding: 16px 0;
+
+    @media (max-width: 768px) {
+      padding: var(--padding-global-mobile);
+      padding-top: 2rem;
+    }
   }
 }
 
@@ -25,8 +30,14 @@
     margin-right: 16px;
 
     > svg {
-      width: 24px;
-      height: 24px;
+      width: 1.6rem;
+      height: 1.6rem;
+
+      @media (max-width: 768px) {
+        width: 2rem;
+        height: 2rem;
+        margin-right: 0.54rem;
+      }
     }
   }
 }
@@ -34,6 +45,10 @@
 .rightSide {
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 
   a {
     font-size: 0;
