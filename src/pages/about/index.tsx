@@ -9,6 +9,8 @@ import styles from "@styles/About.module.scss";
 import Header from "components/shared/Header";
 import Label from "components/shared/Label";
 import ProfessionalExperiencesSection from "components/pages/about/ProfessionalExperiencesSection";
+import DownloadProfessionalResumeBanner from "components/pages/about/DownloadProfessionalResumeBanner";
+import TechnologiesWorked from "components/pages/about/TechnologiesWorked";
 
 export default function About() {
   return (
@@ -79,47 +81,7 @@ export default function About() {
               </li>
             </ul>
           </section>
-          <section className={styles.tecnologiasTrabalhadas}>
-            <h4>Tecnologias trabalhadas</h4>
-            <div>
-              <Image
-                src="/images/thumbnails/Typescript-Thumb.png"
-                width={49}
-                height={49}
-                title="Typescript"
-              />
-              <Image
-                src="/images/thumbnails/React-Thumb.png"
-                width={49}
-                height={49}
-                title="ReactJS"
-              />
-              <Image
-                src="/images/thumbnails/NextJS-Thumb.png"
-                width={49}
-                height={49}
-                title="NextJS"
-              />
-              <Image
-                src="/images/thumbnails/Typescript-Thumb.png"
-                width={49}
-                height={49}
-                title="Typescript"
-              />
-              <Image
-                src="/images/thumbnails/Typescript-Thumb.png"
-                width={49}
-                height={49}
-                title="Typescript"
-              />
-              <Image
-                src="/images/thumbnails/Typescript-Thumb.png"
-                width={49}
-                height={49}
-                title="Typescript"
-              />
-            </div>
-          </section>
+          <TechnologiesWorked />
           <ProfessionalExperiencesSection />
         </div>
 
@@ -229,13 +191,7 @@ export default function About() {
           </Tabs>
         </div>
 
-        <div className={styles.downloadProfessionalResume}>
-          <div>
-            <h4>Prefere da maneira tradicional?</h4>
-            <span>Sem problemas, baixe meu currículo em PDF</span>
-          </div>
-          <button type="button">Baixar currículo</button>
-        </div>
+        <DownloadProfessionalResumeBanner />
       </main>
       {/* <span>© Guilherme Selair. 2021</span> */}
     </div>
