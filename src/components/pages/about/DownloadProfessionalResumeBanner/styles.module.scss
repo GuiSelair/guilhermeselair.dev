@@ -1,0 +1,81 @@
+.container {
+  width: 100%;
+  background: var(--text-orange)
+    url("../../../../../public/images/pfd-icon-group-background.png") no-repeat
+    left -2% top 50%;
+  color: var(--text-light);
+  margin-top: 2rem;
+  border-radius: 16px;
+  padding: 56px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // MOBILE
+  @media (max-width: 425px) {
+    background: var(--text-orange);
+    padding: 2rem 1rem;
+    flex-direction: column;
+  }
+
+  // TABLET
+  @media (min-width: 426px) and (max-width: 768px) {
+    background: var(--text-orange);
+    padding: 4rem 1rem;
+  }
+
+  > div {
+    text-align: right;
+    margin-right: 4.375rem;
+
+    // MOBILE
+    @media (max-width: 425px) {
+      text-align: left;
+      margin-right: unset;
+    }
+
+    // TABLET
+    @media (min-width: 426px) and (max-width: 768px) {
+      text-align: left;
+      margin-right: 3rem;
+    }
+
+    > h4 {
+      font-size: 2rem;
+
+      // MOBILE
+      @media (max-width: 425px) {
+        font-size: 1.8rem;
+      }
+    }
+
+    > span {
+      display: block;
+      font-size: 1rem;
+      text-decoration: underline;
+      margin-top: 0.5rem;
+      color: var(--text-light-alternative);
+
+      // MOBILE
+      @media (max-width: 425px) {
+        margin-bottom: 1.725rem;
+      }
+    }
+  }
+
+  > button {
+    border: none;
+    border-radius: 8px;
+    background: var(--text-light);
+    color: var(--text-orange);
+    padding: 1.125rem 3rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+
+    // MOBILE
+    @media (max-width: 425px) {
+      width: 100%;
+    }
+  }
+}
