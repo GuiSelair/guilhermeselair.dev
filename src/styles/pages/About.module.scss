@@ -45,7 +45,13 @@
     }
 
     b {
-      color: var(--text-orange);
+      // color: var(--text-orange);
+      background: #ffb787;
+      background: -webkit-linear-gradient(to right, #ffb787 0%, #ff784b 100%);
+      background: -moz-linear-gradient(to right, #ffb787 0%, #ff784b 100%);
+      background: linear-gradient(to right, #ffb787 0%, #ff784b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   }
 }
@@ -235,18 +241,6 @@
 
       span + span {
         margin-top: 0.25rem;
-      }
-    }
-  }
-}
-
-.tecnologiasTrabalhadas {
-  grid-area: tecnologias_trabalhadas;
-
-  div {
-    > span {
-      & + span {
-        margin-left: 1rem !important;
       }
     }
   }
