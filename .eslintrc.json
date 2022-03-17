@@ -27,6 +27,8 @@
     "react-hooks/exhaustive-deps": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "import/prefer-default-export": "off",
+		"no-tabs": "off",
+		"react/require-default-props": "off",
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "react/jsx-props-no-spreading": "off",
