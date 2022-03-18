@@ -15,7 +15,6 @@ export default function Projects() {
           <h1>
             Em busca
             <br />
-            {' '}
             do próximo
             <b> nível!</b>
           </h1>
@@ -25,21 +24,24 @@ export default function Projects() {
 
           <div className={styles.projectContainer}>
             <ProjectCard
+              projectId="1"
               projectImage="/images/project-thumbnail-example.png"
               projectName="Windfit"
               projectType="web"
               projectTechologies={["reactjs"]}
             />
             <ProjectCard
+              projectId="2"
               projectImage="/images/project-thumbnail-example.png"
-              projectName="Windfit"
-              projectType="web"
+              projectName="Opa! Ganhei - Plataforma de sorteios online"
+              projectType="mobile"
               projectTechologies={["reactjs"]}
             />
             <ProjectCard
+              projectId="3"
               projectImage="/images/project-thumbnail-example.png"
-              projectName="Windfit"
-              projectType="web"
+              projectName="Move.it - NLW#04"
+              projectType="desktop"
               projectTechologies={["reactjs"]}
             />
           </div>
