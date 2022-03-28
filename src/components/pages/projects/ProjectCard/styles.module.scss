@@ -2,10 +2,23 @@
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+	transition: all 0.2s;
+
+	&:hover {
+		transform: translateY(-2px);
+	}
 
 	.imageContainer {
 		width: 100%;
 		margin-bottom: 0.5rem;
+		border: 2px solid transparent;
+		border-radius: 12px;
+
+		transition: all 0.8s;
+
+		&:hover {
+			border-color: var(--background-gray);
+		}
 
 		> span {
 			border-radius: 12px;
@@ -20,10 +33,11 @@
 		align-items: flex-start;
 		justify-content: space-between;
 
-		span {
+		> span {
 			font-size: 1.2rem;
 			font-weight: 600;
 			color: var(--text-light);
+			min-height: 42px;
 		}
 
 		.label {
@@ -31,16 +45,13 @@
 		}
 	}
 
-	.label {
-		flex-shrink: 0;
-		border-radius: 4px;
-		width: 72px;
-		height: 20px;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		background: var(--label);
-		font-size: 14px;
-		font-weight: 300;
+	.techologiesContainer {
+		margin-top: 0.5rem;
+
+		> span {
+			& + span {
+				margin-left: 0.5rem !important;
+			}
+		}
 	}
 }
