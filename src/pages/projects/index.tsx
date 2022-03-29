@@ -1,10 +1,10 @@
-import { CgArrowLongDown } from "react-icons/cg";
+import { CgArrowLongDown } from 'react-icons/cg';
 
-import SEO from "components/shared/SEO";
-import styles from "styles/pages/Project.module.scss";
-import Header from "components/shared/Header";
-import ProjectCard from "components/pages/projects/ProjectCard";
-import BannerWithCTA from "components/shared/BannerWithCTA";
+import SEO from 'components/shared/SEO';
+import styles from 'styles/pages/Project.module.scss';
+import Header from 'components/shared/Header';
+import ProjectCard from 'components/pages/projects/ProjectCard';
+import BannerWithCTA from 'components/shared/BannerWithCTA';
 
 export default function Projects() {
   return (
@@ -29,25 +29,25 @@ export default function Projects() {
               projectImage="/images/project-thumbnail-example.png"
               projectName="Windfit"
               projectType="web"
-              projectTechologies={["react"]}
+              projectTechologies={['react']}
             />
             <ProjectCard
               projectId="2"
               projectImage="/images/project-thumbnail-example.png"
               projectName="Opa! Ganhei - Plataforma de sorteios online"
               projectType="mobile"
-              projectTechologies={["react"]}
+              projectTechologies={['react']}
             />
             <ProjectCard
               projectId="3"
               projectImage="/images/project-thumbnail-example.png"
               projectName="Move.it - NLW#04"
               projectType="desktop"
-              projectTechologies={["react", "typescript"]}
+              projectTechologies={['react', 'typescript']}
             />
           </div>
           <BannerWithCTA
-            CTAAction={() => console.log("OPA")}
+            CTAAction={() => console.log('OPA')}
             CTAText="Entrar em contato"
             title="Procurando um desenvolvedor front-end?"
             description="Seus problemas acabaram!"
@@ -56,6 +56,29 @@ export default function Projects() {
             backgroundPositionX="3%"
             backgroundPositionY="110%"
           />
+          <div className={styles.projectContainer}>
+            <ProjectCard
+              projectId="1"
+              projectImage="/images/project-thumbnail-example.png"
+              projectName="Windfit"
+              projectType="web"
+              projectTechologies={['react']}
+            />
+            <ProjectCard
+              projectId="2"
+              projectImage="/images/project-thumbnail-example.png"
+              projectName="Opa! Ganhei - Plataforma de sorteios online"
+              projectType="mobile"
+              projectTechologies={['react']}
+            />
+            <ProjectCard
+              projectId="3"
+              projectImage="/images/project-thumbnail-example.png"
+              projectName="Move.it - NLW#04"
+              projectType="desktop"
+              projectTechologies={['react', 'typescript']}
+            />
+          </div>
         </main>
       </div>
     </>
