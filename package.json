@@ -5,10 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "codegen": "graphql-codegen"
   },
   "dependencies": {
     "@types/react": "^17.0.7",
+    "graphql": "^16.3.0",
+    "graphql-request": "^4.2.0",
     "next": "12",
     "react": "latest",
     "react-dom": "latest",
@@ -18,6 +21,12 @@
     "sass": "^1.34.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "2.6.2",
+    "@graphql-codegen/introspection": "2.1.1",
+    "@graphql-codegen/typescript": "2.4.8",
+    "@graphql-codegen/typescript-graphql-request": "^4.4.5",
+    "@graphql-codegen/typescript-operations": "2.3.5",
+    "@graphql-codegen/typescript-resolvers": "2.6.1",
     "@types/node": "^15.6.1",
     "@types/react-tabs": "^2.3.4",
     "@typescript-eslint/eslint-plugin": "^5.17.0",

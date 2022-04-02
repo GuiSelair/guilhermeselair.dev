@@ -7,6 +7,12 @@
       ],
       "@components/*": [
         "/components/*"
+      ],
+			"@services/*": [
+        "/services/*"
+      ],
+			"@generated/*": [
+        "/generated/*"
       ]
     },
     "target": "es5",

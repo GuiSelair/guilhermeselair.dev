@@ -1,5 +1,4 @@
-import React from 'react';
-import { GetServerSideProps } from "next";
+import SEO from "components/shared/SEO";
 
 type IProject = {
 	projectSlug: string;
@@ -7,19 +6,8 @@ type IProject = {
 
 export default function Project({ projectSlug }: IProject) {
   return (
-    <div>
-      Project-
-      {projectSlug}
-    </div>
+    <SEO
+      title="Projeto"
+    />
   );
 }
-
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const { slug } = params;
-  console.log(slug);
-  return {
-    props: {
-      projectSlug: slug,
-    },
-  };
-};
