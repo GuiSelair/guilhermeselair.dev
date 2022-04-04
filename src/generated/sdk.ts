@@ -36,6 +36,7 @@ export type Aggregate = {
 /** Asset system model */
 export type Asset = Node & {
   __typename?: 'Asset';
+  coverProject: Array<Project>;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
   /** User that created this document */
@@ -44,6 +45,7 @@ export type Asset = Node & {
   documentInStages: Array<Asset>;
   /** The file name */
   fileName: Scalars['String'];
+  galleryProject: Array<Project>;
   /** The file handle */
   handle: Scalars['String'];
   /** The height of the file */
@@ -79,6 +81,19 @@ export type Asset = Node & {
 
 
 /** Asset system model */
+export type AssetCoverProjectArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<ProjectOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ProjectWhereInput>;
+};
+
+
+/** Asset system model */
 export type AssetCreatedAtArgs = {
   variation?: SystemDateTimeFieldVariation;
 };
@@ -95,6 +110,19 @@ export type AssetDocumentInStagesArgs = {
   includeCurrent?: Scalars['Boolean'];
   inheritLocale?: Scalars['Boolean'];
   stages?: Array<Stage>;
+};
+
+
+/** Asset system model */
+export type AssetGalleryProjectArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<ProjectOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ProjectWhereInput>;
 };
 
 
@@ -172,8 +200,10 @@ export type AssetConnection = {
 };
 
 export type AssetCreateInput = {
+  coverProject?: InputMaybe<ProjectCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   fileName: Scalars['String'];
+  galleryProject?: InputMaybe<ProjectCreateManyInlineInput>;
   handle: Scalars['String'];
   height?: InputMaybe<Scalars['Float']>;
   /** Inline mutations for managing document localizations excluding the default locale */
@@ -239,6 +269,9 @@ export type AssetManyWhereInput = {
   OR?: InputMaybe<Array<AssetWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  coverProject_every?: InputMaybe<ProjectWhereInput>;
+  coverProject_none?: InputMaybe<ProjectWhereInput>;
+  coverProject_some?: InputMaybe<ProjectWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -255,6 +288,9 @@ export type AssetManyWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
   createdBy?: InputMaybe<UserWhereInput>;
+  galleryProject_every?: InputMaybe<ProjectWhereInput>;
+  galleryProject_none?: InputMaybe<ProjectWhereInput>;
+  galleryProject_some?: InputMaybe<ProjectWhereInput>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -343,7 +379,9 @@ export type AssetTransformationInput = {
 };
 
 export type AssetUpdateInput = {
+  coverProject?: InputMaybe<ProjectUpdateManyInlineInput>;
   fileName?: InputMaybe<Scalars['String']>;
+  galleryProject?: InputMaybe<ProjectUpdateManyInlineInput>;
   handle?: InputMaybe<Scalars['String']>;
   height?: InputMaybe<Scalars['Float']>;
   /** Manage document localizations */
@@ -481,6 +519,9 @@ export type AssetWhereInput = {
   OR?: InputMaybe<Array<AssetWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  coverProject_every?: InputMaybe<ProjectWhereInput>;
+  coverProject_none?: InputMaybe<ProjectWhereInput>;
+  coverProject_some?: InputMaybe<ProjectWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -516,6 +557,9 @@ export type AssetWhereInput = {
   fileName_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   fileName_starts_with?: InputMaybe<Scalars['String']>;
+  galleryProject_every?: InputMaybe<ProjectWhereInput>;
+  galleryProject_none?: InputMaybe<ProjectWhereInput>;
+  galleryProject_some?: InputMaybe<ProjectWhereInput>;
   handle?: InputMaybe<Scalars['String']>;
   /** All values containing the given string. */
   handle_contains?: InputMaybe<Scalars['String']>;
@@ -1213,12 +1257,17 @@ export type PageInfo = {
 /** Model responsable to represent project items */
 export type Project = Node & {
   __typename?: 'Project';
+  cover: Asset;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
   /** User that created this document */
   createdBy?: Maybe<User>;
+  /** Description of project */
+  description: Scalars['String'];
   /** Get the document in other stages */
   documentInStages: Array<Project>;
+  gallery: Array<Asset>;
+  githubUrl?: Maybe<Scalars['String']>;
   /** List of Project versions */
   history: Array<Version>;
   /** The unique identifier */
@@ -1229,12 +1278,25 @@ export type Project = Node & {
   /** User that last published this document */
   publishedBy?: Maybe<User>;
   scheduledIn: Array<ScheduledOperation>;
+  slug: Scalars['String'];
   /** System stage field */
   stage: Stage;
+  /** List of technologies used in project */
+  technologies: Array<Scalars['String']>;
+  /** Project type: mobile | desktop | web */
+  type?: Maybe<Scalars['String']>;
   /** The time the document was updated */
   updatedAt: Scalars['DateTime'];
   /** User that last updated this document */
   updatedBy?: Maybe<User>;
+  /** Link of project in production environment. */
+  websiteUrl?: Maybe<Scalars['String']>;
+};
+
+
+/** Model responsable to represent project items */
+export type ProjectCoverArgs = {
+  locales?: InputMaybe<Array<Locale>>;
 };
 
 
@@ -1249,6 +1311,19 @@ export type ProjectDocumentInStagesArgs = {
   includeCurrent?: Scalars['Boolean'];
   inheritLocale?: Scalars['Boolean'];
   stages?: Array<Stage>;
+};
+
+
+/** Model responsable to represent project items */
+export type ProjectGalleryArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<AssetOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<AssetWhereInput>;
 };
 
 
@@ -1301,9 +1376,17 @@ export type ProjectConnection = {
 };
 
 export type ProjectCreateInput = {
+  cover: AssetCreateOneInlineInput;
   createdAt?: InputMaybe<Scalars['DateTime']>;
+  description: Scalars['String'];
+  gallery?: InputMaybe<AssetCreateManyInlineInput>;
+  githubUrl?: InputMaybe<Scalars['String']>;
   name: Scalars['String'];
+  slug: Scalars['String'];
+  technologies?: InputMaybe<Array<Scalars['String']>>;
+  type?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
+  websiteUrl?: InputMaybe<Scalars['String']>;
 };
 
 export type ProjectCreateManyInlineInput = {
@@ -1339,6 +1422,7 @@ export type ProjectManyWhereInput = {
   OR?: InputMaybe<Array<ProjectWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  cover?: InputMaybe<AssetWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -1355,6 +1439,47 @@ export type ProjectManyWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
   createdBy?: InputMaybe<UserWhereInput>;
+  description?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  description_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  description_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  description_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  description_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  description_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  description_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  description_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  description_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  description_starts_with?: InputMaybe<Scalars['String']>;
+  gallery_every?: InputMaybe<AssetWhereInput>;
+  gallery_none?: InputMaybe<AssetWhereInput>;
+  gallery_some?: InputMaybe<AssetWhereInput>;
+  githubUrl?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  githubUrl_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  githubUrl_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  githubUrl_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  githubUrl_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  githubUrl_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  githubUrl_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  githubUrl_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  githubUrl_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  githubUrl_starts_with?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -1412,6 +1537,54 @@ export type ProjectManyWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  slug?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  slug_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  slug_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  slug_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  slug_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  slug_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  slug_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  slug_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  slug_starts_with?: InputMaybe<Scalars['String']>;
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  technologies?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains *all* items provided to the filter */
+  technologies_contains_all?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  technologies_contains_none?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains at least one item provided to the filter */
+  technologies_contains_some?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  technologies_not?: InputMaybe<Array<Scalars['String']>>;
+  type?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  type_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  type_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  type_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  type_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  type_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  type_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  type_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  type_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  type_starts_with?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -1428,23 +1601,62 @@ export type ProjectManyWhereInput = {
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
   updatedBy?: InputMaybe<UserWhereInput>;
+  websiteUrl?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  websiteUrl_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  websiteUrl_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  websiteUrl_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  websiteUrl_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  websiteUrl_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  websiteUrl_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  websiteUrl_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  websiteUrl_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  websiteUrl_starts_with?: InputMaybe<Scalars['String']>;
 };
 
 export enum ProjectOrderByInput {
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
+  DescriptionAsc = 'description_ASC',
+  DescriptionDesc = 'description_DESC',
+  GithubUrlAsc = 'githubUrl_ASC',
+  GithubUrlDesc = 'githubUrl_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
   NameAsc = 'name_ASC',
   NameDesc = 'name_DESC',
   PublishedAtAsc = 'publishedAt_ASC',
   PublishedAtDesc = 'publishedAt_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  TechnologiesAsc = 'technologies_ASC',
+  TechnologiesDesc = 'technologies_DESC',
+  TypeAsc = 'type_ASC',
+  TypeDesc = 'type_DESC',
   UpdatedAtAsc = 'updatedAt_ASC',
-  UpdatedAtDesc = 'updatedAt_DESC'
+  UpdatedAtDesc = 'updatedAt_DESC',
+  WebsiteUrlAsc = 'websiteUrl_ASC',
+  WebsiteUrlDesc = 'websiteUrl_DESC'
 }
 
 export type ProjectUpdateInput = {
+  cover?: InputMaybe<AssetUpdateOneInlineInput>;
+  description?: InputMaybe<Scalars['String']>;
+  gallery?: InputMaybe<AssetUpdateManyInlineInput>;
+  githubUrl?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  slug?: InputMaybe<Scalars['String']>;
+  technologies?: InputMaybe<Array<Scalars['String']>>;
+  type?: InputMaybe<Scalars['String']>;
+  websiteUrl?: InputMaybe<Scalars['String']>;
 };
 
 export type ProjectUpdateManyInlineInput = {
@@ -1465,8 +1677,9 @@ export type ProjectUpdateManyInlineInput = {
 };
 
 export type ProjectUpdateManyInput = {
-  /** No fields in updateMany data input */
-  _?: InputMaybe<Scalars['String']>;
+  description?: InputMaybe<Scalars['String']>;
+  technologies?: InputMaybe<Array<Scalars['String']>>;
+  type?: InputMaybe<Scalars['String']>;
 };
 
 export type ProjectUpdateManyWithNestedWhereInput = {
@@ -1522,6 +1735,7 @@ export type ProjectWhereInput = {
   OR?: InputMaybe<Array<ProjectWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  cover?: InputMaybe<AssetWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -1538,6 +1752,47 @@ export type ProjectWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
   createdBy?: InputMaybe<UserWhereInput>;
+  description?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  description_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  description_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  description_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  description_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  description_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  description_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  description_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  description_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  description_starts_with?: InputMaybe<Scalars['String']>;
+  gallery_every?: InputMaybe<AssetWhereInput>;
+  gallery_none?: InputMaybe<AssetWhereInput>;
+  gallery_some?: InputMaybe<AssetWhereInput>;
+  githubUrl?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  githubUrl_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  githubUrl_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  githubUrl_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  githubUrl_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  githubUrl_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  githubUrl_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  githubUrl_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  githubUrl_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  githubUrl_starts_with?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -1595,6 +1850,54 @@ export type ProjectWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
+  slug?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  slug_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  slug_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  slug_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  slug_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  slug_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  slug_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  slug_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  slug_starts_with?: InputMaybe<Scalars['String']>;
+  /** Matches if the field array contains *all* items provided to the filter and order does match */
+  technologies?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains *all* items provided to the filter */
+  technologies_contains_all?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contain any of the items provided to the filter */
+  technologies_contains_none?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array contains at least one item provided to the filter */
+  technologies_contains_some?: InputMaybe<Array<Scalars['String']>>;
+  /** Matches if the field array does not contains *all* items provided to the filter or order does not match */
+  technologies_not?: InputMaybe<Array<Scalars['String']>>;
+  type?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  type_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  type_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  type_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  type_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  type_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  type_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  type_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  type_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  type_starts_with?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   updatedAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -1611,12 +1914,34 @@ export type ProjectWhereInput = {
   /** All values that are not contained in given list. */
   updatedAt_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
   updatedBy?: InputMaybe<UserWhereInput>;
+  websiteUrl?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  websiteUrl_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  websiteUrl_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  websiteUrl_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values that are not equal to given value. */
+  websiteUrl_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  websiteUrl_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  websiteUrl_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  websiteUrl_not_in?: InputMaybe<Array<Scalars['String']>>;
+  /** All values not starting with the given string. */
+  websiteUrl_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  websiteUrl_starts_with?: InputMaybe<Scalars['String']>;
 };
 
 /** References Project record uniquely */
 export type ProjectWhereUniqueInput = {
+  githubUrl?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   name?: InputMaybe<Scalars['String']>;
+  slug?: InputMaybe<Scalars['String']>;
+  websiteUrl?: InputMaybe<Scalars['String']>;
 };
 
 export type PublishLocaleInput = {
@@ -3345,17 +3670,62 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization'
 }
 
+export type ProjectQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+export type ProjectQuery = { __typename?: 'Query', project?: { __typename?: 'Project', slug: string, name: string, description: string, technologies: Array<string>, githubUrl?: string | null, websiteUrl?: string | null, cover: { __typename?: 'Asset', url: string, thumbnailToSEO: string }, gallery: Array<{ __typename?: 'Asset', url: string }> } | null };
+
 export type ProjectsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ProjectsQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'Project', name: string, id: string }> };
+export type ProjectsQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'Project', name: string, slug: string, type?: string | null, technologies: Array<string>, cover: { __typename?: 'Asset', url: string } }> };
+
+export type SlugsOfProjectsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
+export type SlugsOfProjectsQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'Project', slug: string }> };
+
+
+export const ProjectDocument = gql`
+    query Project($slug: String!) {
+  project(where: {slug: $slug}) {
+    slug
+    name
+    description
+    cover {
+      thumbnailToSEO: url(
+        transformation: {image: {resize: {width: 800, height: 600, fit: clip}}}
+      )
+      url
+    }
+    gallery {
+      url
+    }
+    technologies
+    githubUrl
+    websiteUrl
+  }
+}
+    `;
 export const ProjectsDocument = gql`
     query Projects {
   projects {
     name
-    id
+    slug
+    type
+    technologies
+    cover {
+      url
+    }
+  }
+}
+    `;
+export const SlugsOfProjectsDocument = gql`
+    query SlugsOfProjects {
+  projects {
+    slug
   }
 }
     `;
@@ -3367,8 +3737,14 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    Project(variables: ProjectQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<ProjectQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ProjectQuery>(ProjectDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Project', 'query');
+    },
     Projects(variables?: ProjectsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<ProjectsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ProjectsQuery>(ProjectsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Projects', 'query');
+    },
+    SlugsOfProjects(variables?: SlugsOfProjectsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<SlugsOfProjectsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<SlugsOfProjectsQuery>(SlugsOfProjectsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'SlugsOfProjects', 'query');
     }
   };
 }

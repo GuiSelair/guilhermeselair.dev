@@ -9,14 +9,14 @@ const TECHOLOGIES_IMAGES_NAME = {
   react: "React-Thumb.png",
   typescript: "Typescript-Thumb.png",
   javascript: "Javascript-Thumb.png",
-  Next: "NextJS-Thumb.png",
+  nextjs: "NextJS-Thumb.png",
 };
 
 interface IProjectCard {
 	projectId: string;
 	projectImage: string;
 	projectName: string;
-	projectType: "web" | "mobile" | "desktop";
+	projectType: string;
 	projectTechologies: string[];
 }
 

@@ -17,8 +17,8 @@ function SEO({
   shouldIndexPage = true,
   children,
 }: ISEO) {
-  const pageTitle = `${title} ${!shouldExcludeTitleSuffix ? "| Windfit Sports" : ""}`;
-  const pageImage = image ? `${process.env.NEXT_PUBLIC_URL_FRONTEND}/${image}` : null;
+  const pageTitle = `${title} ${!shouldExcludeTitleSuffix ? "| Dev.Frontend Guilherme Selair" : ""}`;
+  const pageImage = image ? `${image}` : null;
 
   return (
     <Head>

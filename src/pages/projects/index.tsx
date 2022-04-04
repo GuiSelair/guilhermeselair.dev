@@ -7,15 +7,9 @@ import Header from 'components/shared/Header';
 import ProjectCard from 'components/pages/projects/ProjectCard';
 import BannerWithCTA from 'components/shared/BannerWithCTA';
 import { graphSDK } from "services/graphql-request";
+import { ProjectsQuery } from "generated/sdk";
 
-type IProjects = {
-	projects: {
-		name: string;
-		id: string;
-	}[]
-}
-
-export default function Projects({ projects }: IProjects) {
+export default function Projects({ projects }: ProjectsQuery) {
   return (
     <>
       <SEO title="Projetos" />
@@ -35,12 +29,12 @@ export default function Projects({ projects }: IProjects) {
           <div className={styles.projectContainer}>
             {projects.map((project) => (
               <ProjectCard
-                key={project.id}
-                projectId={project.id}
-                projectImage="/images/project-thumbnail-example.png"
+                key={project.slug}
+                projectId={project.slug}
+                projectImage={project.cover.url}
                 projectName={project.name}
-                projectType="web"
-                projectTechologies={['react']}
+                projectType={project.type}
+                projectTechologies={project.technologies}
               />
             ))}
 
@@ -55,29 +49,6 @@ export default function Projects({ projects }: IProjects) {
             backgroundPositionX="3%"
             backgroundPositionY="110%"
           />
-          <div className={styles.projectContainer}>
-            <ProjectCard
-              projectId="1"
-              projectImage="/images/project-thumbnail-example.png"
-              projectName="Windfit"
-              projectType="web"
-              projectTechologies={['react']}
-            />
-            <ProjectCard
-              projectId="2"
-              projectImage="/images/project-thumbnail-example.png"
-              projectName="Opa! Ganhei - Plataforma de sorteios online"
-              projectType="mobile"
-              projectTechologies={['react']}
-            />
-            <ProjectCard
-              projectId="3"
-              projectImage="/images/project-thumbnail-example.png"
-              projectName="Move.it - NLW#04"
-              projectType="desktop"
-              projectTechologies={['react', 'typescript']}
-            />
-          </div>
         </main>
       </div>
     </>
@@ -86,6 +57,7 @@ export default function Projects({ projects }: IProjects) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const { projects } = await graphSDK.Projects();
+  console.log(projects);
   return {
     props: {
       projects,

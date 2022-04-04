@@ -1,6 +1,17 @@
 query Projects{
 	projects{
 		name
-		id
+		slug
+		type
+		technologies
+		cover {
+			url
+		}
+	}
+}
+
+query SlugsOfProjects {
+	projects {
+		slug
 	}
 }

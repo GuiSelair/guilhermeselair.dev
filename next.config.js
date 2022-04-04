@@ -1,5 +1,5 @@
 module.exports = {
   images: {
-    domains: ['windfit.app'],
+    domains: ["media.graphassets.com"],
   },
 }
