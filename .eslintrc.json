@@ -26,7 +26,8 @@
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "import/prefer-default-export": "off",
 		"no-tabs": "off",
-
+		"no-plusplus": "off",
+		"@typescript-eslint/no-empty-function": "off",
 		"react/require-default-props": "off",
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
