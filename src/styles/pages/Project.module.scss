@@ -2,6 +2,7 @@
 	width: 100%;
 	display: flex;
 	flex-direction: column;
+	padding-bottom: 120px;
 
 	h1 {
 		font-size: 3rem;
@@ -56,8 +57,23 @@
 	}
 }
 
-.carouselImagesContainer {
+.carouselShowOnlyCoverContainer{
+	display: flex;
+	justify-content: center;
 
+	span {
+		width: min(100%, var(--max-width)) !important;
+		height: 400px !important;
+		border-radius: 16px;
+
+		img {
+			object-fit: cover !important;
+			object-position: 50% 50% !important;
+		}
+	}
+}
+
+.carouselImagesContainer {
 	span {
 		width: min(100%, 800px) !important;
 		height: 400px !important;
@@ -135,4 +151,121 @@
 	}
 }
 
+.content {
+	width: min(100%, var(--max-width));
+	margin: 4rem auto 0 auto;
+
+	> h2 {
+		font-size: 2rem;
+		font-weight: 700;
+		margin-bottom: 1rem;
+	}
+
+	.markdownContent {
+		width: 100%;
+		margin-bottom: 2rem;
+		line-height: 1.4rem;
+		font-size: 1rem;
+
+		p {
+			& + * {
+				margin-top: 8px;
+			}
+		}
+	}
+
+	.additionalSectionGridContainer {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		column-gap: 5rem;
+
+		.tecnologiesUsed {
+			display: flex;
+			flex-direction: column;
+
+			> h3 {
+				margin-bottom: 1.5rem;
+				font-size: 1.5rem;
+				line-height: 1.6rem;
+			}
+
+			ul {
+				display: flex;
+				align-items: center;
+				list-style: none;
+
+				li {
+					transition: all 0.2s;
+
+					& + li {
+						margin-left: 0.5rem;
+					}
+
+					&:hover {
+						transform: translateY(-2px);
+					}
+
+					span {
+						width: 40px !important;
+						height: 40px !important;
+
+						img {
+							width: 40px !important;
+							height: 40px !important;
+							object-fit: contain;
+						}
+					}
+				}
+			}
+		}
+
+		.viewMore {
+			display: flex;
+			flex-direction: column;
+
+			> h3 {
+				margin-bottom: 1.5rem;
+				font-size: 1.5rem;
+				line-height: 1.6rem;
+			}
+
+			> div {
+				display: flex;
+				align-items: center;
+
+				a {
+					transition: all 0.2s;
+					border: 1px solid transparent;
+
+					&:hover {
+						transform: translateY(-2px);
+						border-color: var(--text-light);
+					}
+					& + a {
+						margin-left: 0.5rem;
+					}
+
+					background: #1F2328;
+					padding: 12px 20px;
+					border-radius: 4px;
+					font-weight: 600;
+					display: flex;
+					align-items: center;
+
+					svg {
+						width: 1.2rem;
+						height: 1.2rem;
+						color: var(--text-light);
+						margin-left: 10px;
+					}
+
+					&.websiteLink {
+						background: var(--text-orange);
+						color: var(--text-light);
+					}
+				}
+			}
+		}
+	}
+}
 

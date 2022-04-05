@@ -4,19 +4,25 @@ import Image from "next/image";
 import { useMemo } from "react";
 import { isMobile } from "react-device-detect";
 import { Carousel } from "react-responsive-carousel";
-import { HiArrowNarrowLeft, HiArrowNarrowRight } from "react-icons/hi";
+import ReactMarkdown from "react-markdown";
+import { HiArrowNarrowLeft, HiArrowNarrowRight, HiOutlineExternalLink } from "react-icons/hi";
+import { AiFillGithub } from "react-icons/ai";
 
 import { graphSDK } from "services/graphql-request";
 import { ProjectQuery } from "generated/sdk";
 import SEO from "components/shared/SEO";
 import Header from "components/shared/Header";
+import Footer from "components/shared/Footer";
 import style from "styles/pages/Project.module.scss";
+import { getThumbnailFilename } from "utils/getThumbnailFilename";
 
 export default function Project({ project }: ProjectQuery) {
   const projectGallery = useMemo(
     () => [project.cover.url, ...project.gallery.map((image) => image.url)],
     [project],
   );
+
+  const hasProjectGalleryImages = project.gallery.length;
 
   return (
     <>
@@ -28,59 +34,129 @@ export default function Project({ project }: ProjectQuery) {
       <Header />
       <div className={style.container}>
         <h1>{project.name}</h1>
-        <Carousel
-          centerMode={!isMobile}
-          centerSlidePercentage={!isMobile ? 60 : 65}
-          autoPlay
-          infiniteLoop={(!isMobile && projectGallery.length !== 1)}
-          showThumbs={false}
-          showArrows
-          showStatus={false}
-          showIndicators
-          className={style.carouselContainer}
-          renderArrowNext={(clickHandler) => (
-            <button
-              className={style.nextImageArrowContainer}
-              type="button"
-              onClick={clickHandler}
+        {hasProjectGalleryImages
+          ? (
+            <Carousel
+              centerMode={!isMobile}
+              centerSlidePercentage={!isMobile ? 60 : 65}
+              autoPlay
+              infiniteLoop={!isMobile}
+              showThumbs={false}
+              showArrows
+              showStatus={false}
+              showIndicators
+              className={style.carouselContainer}
+              renderArrowNext={(clickHandler) => (
+                <button
+                  className={style.nextImageArrowContainer}
+                  type="button"
+                  onClick={clickHandler}
+                >
+                  <HiArrowNarrowRight />
+                </button>
+              )}
+              renderArrowPrev={(clickHandler) => (
+                <button
+                  className={style.previousImageArrowContainer}
+                  type="button"
+                  onClick={clickHandler}
+                >
+                  <HiArrowNarrowLeft />
+                </button>
+              )}
+              renderIndicator={(clickHandler, isSelected, index) => (
+                <button
+                  className={style.dot}
+                  onClick={clickHandler}
+                  data-selected={String(isSelected)}
+                  type="button"
+                  aria-label={`Indicador ${index}`}
+                />
+              )}
             >
-              <HiArrowNarrowRight />
-            </button>
-          )}
-          renderArrowPrev={(clickHandler) => (
-            <button
-              className={style.previousImageArrowContainer}
-              type="button"
-              onClick={clickHandler}
+              {projectGallery.map((projectImage) => (
+                <div className={style.carouselImagesContainer} key={projectImage}>
+                  <Image
+                    src={projectImage}
+                    layout="responsive"
+                    priority
+                    width={100}
+                    height={100}
+                  />
+                </div>
+              ))}
+
+            </Carousel>
+          )
+          : (
+            <Carousel
+              showThumbs={false}
+              showStatus={false}
+              showIndicators={false}
+              showArrows={false}
+              className={style.carouselContainer}
             >
-              <HiArrowNarrowLeft />
-            </button>
+              {projectGallery.map((projectImage) => (
+                <div className={style.carouselShowOnlyCoverContainer} key={projectImage}>
+                  <Image
+                    src={projectImage}
+                    layout="responsive"
+                    priority
+                    width={100}
+                    height={100}
+                  />
+                </div>
+              ))}
+            </Carousel>
           )}
-          renderIndicator={(clickHandler, isSelected, index) => (
-            <button
-              className={style.dot}
-              onClick={clickHandler}
-              data-selected={String(isSelected)}
-              type="button"
-              aria-label={`Indicador ${index}`}
-            />
-          )}
-        >
-          {projectGallery.map((projectImage) => (
-            <div className={style.carouselImagesContainer} key={projectImage}>
-              <Image
-                src={projectImage}
-                layout="responsive"
-                priority
-                width={100}
-                height={100}
-              />
-            </div>
-          ))}
 
-        </Carousel>
+        <div className={style.content}>
+          <h2>DESCRIÇÃO</h2>
+          <ReactMarkdown
+            className={style.markdownContent}
+          >
+            {project.description}
+          </ReactMarkdown>
 
+          <div className={style.additionalSectionGridContainer}>
+            <section className={style.tecnologiesUsed}>
+              <h3>PRINCIPAIS TECNOLOGIAS UTILIZADAS</h3>
+              <ul>
+                {project.technologies.map((technology) => (
+                  <li>
+                    <Image
+                      src={`/images/thumbnails/${getThumbnailFilename(technology)}`}
+                      width={30}
+                      height={30}
+                      layout="responsive"
+                    />
+                  </li>
+                ))}
+              </ul>
+            </section>
+            <section className={style.viewMore}>
+              <h3>VEJA MAIS</h3>
+              <div>
+                <a
+                  href={project.githubUrl || "#"}
+                  className={style.githubLink}
+                >
+                  REPOSITORIO NO GITHUB
+                  <AiFillGithub />
+                </a>
+                <a
+                  href={project.websiteUrl || "#"}
+                  className={style.websiteLink}
+                >
+                  VEJA A DEMO
+                  <HiOutlineExternalLink />
+                </a>
+              </div>
+            </section>
+          </div>
+        </div>
       </div>
+      <Footer />
     </>
   );
 }
