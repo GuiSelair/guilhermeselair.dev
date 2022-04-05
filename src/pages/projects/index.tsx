@@ -1,15 +1,35 @@
 import { CgArrowLongDown } from 'react-icons/cg';
+import { useMemo } from "react";
 import { GetStaticProps } from "next";
 
 import SEO from 'components/shared/SEO';
-import styles from 'styles/pages/Project.module.scss';
+import styles from 'styles/pages/Projects.module.scss';
 import Header from 'components/shared/Header';
 import ProjectCard from 'components/pages/projects/ProjectCard';
 import BannerWithCTA from 'components/shared/BannerWithCTA';
 import { graphSDK } from "services/graphql-request";
 import { ProjectsQuery } from "generated/sdk";
 
+type IProjectChunk = ProjectsQuery["projects"][];
+
 export default function Projects({ projects }: ProjectsQuery) {
+  const projectsChunk = useMemo<IProjectChunk>(() => {
+    const projectsBlocks = [];
+    const projectPerBlock = 6;
+    const chunkLimit = {
+      start: 0,
+      end: projectPerBlock,
+    };
+    const blocksOfProjects = Math.ceil(projects.length / projectPerBlock);
+
+    for (let i = 0; i < blocksOfProjects; i++) {
+      projectsBlocks.push(projects.slice(chunkLimit.start, chunkLimit.end));
+      chunkLimit.start += projectPerBlock;
+    }
+
+    return projectsBlocks;
+  }, [projects]);
+
   return (
     <>
       <SEO title="Projetos" />
@@ -27,7 +47,7 @@ export default function Projects({ projects }: ProjectsQuery) {
           </div>
 
           <div className={styles.projectContainer}>
-            {projects.map((project) => (
+            {projectsChunk[0].map((project) => (
               <ProjectCard
                 key={project.slug}
                 projectId={project.slug}
@@ -37,10 +57,9 @@ export default function Projects({ projects }: ProjectsQuery) {
                 projectTechologies={project.technologies}
               />
             ))}
-
           </div>
           <BannerWithCTA
-            CTAAction={() => console.log('OPA')}
+            CTAAction={() => {}}
             CTAText="Entrar em contato"
             title="Procurando um desenvolvedor front-end?"
             description="Seus problemas acabaram!"
@@ -49,6 +68,7 @@ export default function Projects({ projects }: ProjectsQuery) {
             backgroundPositionX="3%"
             backgroundPositionY="110%"
           />
+
         </main>
       </div>
     </>
@@ -57,11 +77,10 @@ export default function Projects({ projects }: ProjectsQuery) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const { projects } = await graphSDK.Projects();
-  console.log(projects);
   return {
     props: {
       projects,
     },
-    revalidate: 60 * 60,
+    revalidate: 60 * 60 * 24, // 24 hours,
   };
 };
