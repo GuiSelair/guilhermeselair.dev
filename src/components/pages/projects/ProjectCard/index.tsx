@@ -3,14 +3,8 @@ import Link from "next/link";
 import Label from "components/shared/Label";
 import { memo } from "react";
 
+import { getThumbnailFilename } from "utils/getThumbnailFilename";
 import styles from "./styles.module.scss";
-
-const TECHOLOGIES_IMAGES_NAME = {
-  react: "React-Thumb.png",
-  typescript: "Typescript-Thumb.png",
-  javascript: "Javascript-Thumb.png",
-  nextjs: "NextJS-Thumb.png",
-};
 
 interface IProjectCard {
 	projectId: string;
@@ -47,7 +41,7 @@ function ProjectCard({
         <div className={styles.techologiesContainer}>
           {projectTechologies.map((techology) => (
             <Image
-              src={`/images/thumbnails/${TECHOLOGIES_IMAGES_NAME[techology || "react"]}`}
+              src={`/images/thumbnails/${getThumbnailFilename(techology)}`}
               width={30}
               height={30}
               key={techology}
