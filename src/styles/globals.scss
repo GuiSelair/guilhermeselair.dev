@@ -12,14 +12,15 @@
   --label: #22221f;
 
   --padding-global-mobile: 0 1rem;
+  --padding-global-tablet: 0 3rem;
   --padding-global-desktop: 0 4.4rem;
   --max-width: 1120px;
 
   /**
     // MOBILE
-    @media (max-width: 425px) {}
-    // TABLET
-    @media (min-width: 426px) and (max-width: 768px) {}
+		@media (max-width: 768px) {}
+		// TABLET
+		@media (min-width: 769px) and (max-width: 1024px) {}
   */
 }
 
