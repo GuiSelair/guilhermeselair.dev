@@ -12,9 +12,11 @@ query Project($slug: String!) {
         }
       )
 			url
+			id
 		}
 		gallery {
 			url
+			id
 		}
 		technologies
 		githubUrl

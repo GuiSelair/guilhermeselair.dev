@@ -1678,8 +1678,10 @@ export type ProjectUpdateManyInlineInput = {
 
 export type ProjectUpdateManyInput = {
   description?: InputMaybe<Scalars['String']>;
+  githubUrl?: InputMaybe<Scalars['String']>;
   technologies?: InputMaybe<Array<Scalars['String']>>;
   type?: InputMaybe<Scalars['String']>;
+  websiteUrl?: InputMaybe<Scalars['String']>;
 };
 
 export type ProjectUpdateManyWithNestedWhereInput = {
@@ -1937,11 +1939,9 @@ export type ProjectWhereInput = {
 
 /** References Project record uniquely */
 export type ProjectWhereUniqueInput = {
-  githubUrl?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   name?: InputMaybe<Scalars['String']>;
   slug?: InputMaybe<Scalars['String']>;
-  websiteUrl?: InputMaybe<Scalars['String']>;
 };
 
 export type PublishLocaleInput = {
@@ -3675,7 +3675,7 @@ export type ProjectQueryVariables = Exact<{
 }>;
 
 
-export type ProjectQuery = { __typename?: 'Query', project?: { __typename?: 'Project', slug: string, name: string, description: string, technologies: Array<string>, githubUrl?: string | null, websiteUrl?: string | null, cover: { __typename?: 'Asset', url: string, thumbnailToSEO: string }, gallery: Array<{ __typename?: 'Asset', url: string }> } | null };
+export type ProjectQuery = { __typename?: 'Query', project?: { __typename?: 'Project', slug: string, name: string, description: string, technologies: Array<string>, githubUrl?: string | null, websiteUrl?: string | null, cover: { __typename?: 'Asset', url: string, id: string, thumbnailToSEO: string }, gallery: Array<{ __typename?: 'Asset', url: string, id: string }> } | null };
 
 export type ProjectsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3699,9 +3699,11 @@ export const ProjectDocument = gql`
         transformation: {image: {resize: {width: 800, height: 600, fit: clip}}}
       )
       url
+      id
     }
     gallery {
       url
+      id
     }
     technologies
     githubUrl
