@@ -1,35 +1,78 @@
-import { FaWhatsappSquare, FaLinkedin, FaGithubSquare } from "react-icons/fa";
-import { HiArrowNarrowLeft } from "react-icons/hi";
+import { AiOutlineWhatsApp, AiFillGithub, AiFillLinkedin } from "react-icons/ai";
+import { HiArrowNarrowLeft, HiOutlineLockClosed } from "react-icons/hi";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 import style from "./style.module.scss";
 
-const Header = () => {
+function Header() {
   const router = useRouter();
 
   return (
     <header className={style.container}>
-      <div>
-        <div className={style.leftSide}>
-          <button type="button" title="Voltar" onClick={() => router.push("/")}>
-            <HiArrowNarrowLeft />
-          </button>
-          <a href="mailto:contato@guilhermeselair.dev">contato@guilhermeselair.dev</a>
-        </div>
-        <div className={style.rightSide}>
-          <a title="Entrar em contato por whatsapp" href="https://www.api.whatsapp.com" target="_blank" rel="noreferrer">
-            <FaWhatsappSquare />
-          </a>
-          <a title="Entrar em contato pelo Linkedin" href="https://www.linkedin.com/in/guilherme-selair/" target="_blank" rel="noreferrer">
-            <FaLinkedin />
-          </a>
-          <a title="Entrar em contato pelo Linkedin" href="https://github.com/GuiSelair" target="_blank" rel="noreferrer">
-            <FaGithubSquare />
-          </a>
-          <button type="button" onClick={() => router.push("/contato")}>CONTATO</button>
-        </div>
+      <div className={style.leftSide}>
+        <Link href="/">
+          <a>S</a>
+        </Link>
+        {/* <button type="button" title="Voltar" onClick={() => router.back()}>
+          <HiArrowNarrowLeft />
+        </button> */}
+      </div>
+      <nav className={style.centerNav}>
+        <ul>
+          <li>
+            <Link href="/about">
+              <a className={style.isSelected}>
+                <span>SOBRE</span>
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/projects">
+              <a>
+                <span>PROJETOS</span>
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link href="#" prefetch={false}>
+              <a className={style.isDisabled} tabIndex={-1}>
+                <span>
+                  ARTIGOS
+                  <HiOutlineLockClosed />
+                </span>
+              </a>
+            </Link>
+          </li>
+        </ul>
+      </nav>
+      <div className={style.rightSide}>
+        <a
+          title="Entrar em contato por Whatsapp"
+          href="https://www.api.whatsapp.com"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <AiOutlineWhatsApp />
+        </a>
+        <a
+          title="Veja meu Linkedin"
+          href="https://www.linkedin.com/in/guilherme-selair/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <AiFillLinkedin />
+        </a>
+        <a
+          title="Veja meu Github"
+          href="https://github.com/GuiSelair"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <AiFillGithub />
+        </a>
       </div>
     </header>
   );
-};
+}
 export default Header;
