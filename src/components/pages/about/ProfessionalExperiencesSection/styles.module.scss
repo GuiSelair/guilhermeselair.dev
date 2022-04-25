@@ -27,15 +27,18 @@
       span {
         font-weight: 400;
         font-size: 0.875rem;
-        color: #5a5a5a;
+        color: rgba($color: #FFF, $alpha: 0.4);
       }
 
-      p + p {
+      p {
+				line-height: 1.5rem;
+
+				& + p {
         margin-top: 4px;
-      }
+      }}
 
       .companyName {
-        color: var(--text-dark);
+				font-weight: 600;
       }
 
       span + span {
@@ -55,53 +58,17 @@
     }
   }
 
-  .controlSlidesButtons {
-    .previousButton {
-      position: absolute;
-      top: 36px;
-      right: 56px;
-
-      background: var(--text-orange);
-      border: none;
-      border-radius: 4px 0 0 4px;
-      font-size: 0;
-      transition: filter 0.2s;
-      padding-right: 0.25rem;
-
-      > svg {
-        width: 1.5rem;
-        height: 1.5rem;
-      }
-    }
-
-    .nextButton {
-      position: absolute;
-      top: 36px;
-      right: 30px;
-      border-radius: 0 4px 4px 0;
-      background: var(--text-orange);
-      border: none;
-      font-size: 0;
-      transition: filter 0.2s;
-      padding-left: 0.25rem;
-
-      > svg {
-        width: 1.5rem;
-        height: 1.5rem;
-      }
-    }
-
-    button:hover {
-      filter: brightness(0.9);
-    }
-  }
-
   .controlSlidesButtonsEndSection {
     width: 100%;
     margin-top: 4px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+
+		// MOBILE
+		@media (max-width: 768px) {
+			margin-top: 1.5rem;
+		}
 
     > button {
       background: var(--text-orange);
@@ -113,6 +80,12 @@
       > svg {
         width: 1.2rem;
         height: 1.2rem;
+
+				// MOBILE
+				@media (max-width: 768px) {
+					width: 1.8rem;
+					height: 1.8rem;
+				}
       }
 
       & + button {
