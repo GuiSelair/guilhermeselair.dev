@@ -41,7 +41,6 @@ function ProjectCarousel({ gallery }: IProjectCarousel) {
 			</Carousel>
 		);
 	}
-	console.log(isMobile);
 	return (
 		<Carousel
 			centerMode={!isMobile}

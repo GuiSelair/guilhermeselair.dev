@@ -83,6 +83,11 @@
 			width: 100% !important;
 			height: 300px !important;
 		}
+		// LAPTOP to 1366x768
+		@media (min-width: 1024px) and (max-width: 1366px) {
+			width: min(100%, 800px) !important;
+			height: 400px !important;
+		}
 
 		img {
 			object-fit: cover !important;
