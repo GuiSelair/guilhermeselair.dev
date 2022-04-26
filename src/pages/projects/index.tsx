@@ -11,6 +11,7 @@ import ProjectCard from "components/pages/projects/ProjectCard";
 import BannerWithCTA from "components/shared/BannerWithCTA";
 import { graphSDK } from "services/graphql-request";
 import { ProjectsQuery } from "generated/sdk";
+import Footer from "components/shared/Footer";
 
 type IProjectChunk = ProjectsQuery["projects"][];
 
@@ -58,6 +59,10 @@ export default function Projects({ projects }: ProjectsQuery) {
 						<CgArrowLongDown />
 					</div>
 
+					<div className={styles.moreProjectDiviser}>
+						<h4>MAIS PROJETOS</h4>
+					</div>
+
 					<div className={styles.projectContainer}>
 						{hasProject &&
 							projectsChunk[0].map((project) => (
@@ -82,6 +87,7 @@ export default function Projects({ projects }: ProjectsQuery) {
 						backgroundPositionY="110%"
 					/>
 				</main>
+				<Footer />
 			</div>
 		</>
 	);

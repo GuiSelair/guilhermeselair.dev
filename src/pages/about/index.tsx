@@ -1,17 +1,18 @@
-import Head from 'next/head'
-import { CgArrowLongDown } from 'react-icons/cg'
-import Image from 'next/image'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import Head from "next/head";
+import { CgArrowLongDown } from "react-icons/cg";
+import Image from "next/image";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
-import styles from '@styles/About.module.scss'
-import Header from 'components/shared/Header'
-import Label from 'components/shared/Label'
-import ProfessionalExperiencesSection from 'components/pages/about/ProfessionalExperiencesSection'
-import DownloadProfessionalResumeBanner from 'components/pages/about/DownloadProfessionalResumeBanner'
-import TechnologiesWorked from 'components/pages/about/TechnologiesWorked'
-import SEO from 'components/shared/SEO'
-import CoursesAndCertifications from 'components/pages/about/CoursesAndCertifications'
-import Educations from 'components/pages/about/Educations'
+import styles from "@styles/About.module.scss";
+import Header from "components/shared/Header";
+import Label from "components/shared/Label";
+import ProfessionalExperiencesSection from "components/pages/about/ProfessionalExperiencesSection";
+import DownloadProfessionalResumeBanner from "components/pages/about/DownloadProfessionalResumeBanner";
+import TechnologiesWorked from "components/pages/about/TechnologiesWorked";
+import SEO from "components/shared/SEO";
+import CoursesAndCertifications from "components/pages/about/CoursesAndCertifications";
+import Educations from "components/pages/about/Educations";
+import Footer from "components/shared/Footer";
 
 export default function About() {
 	return (
@@ -22,7 +23,7 @@ export default function About() {
 				<h2>Always learning!</h2>
 				<div className={styles.apresentationContainer}>
 					<Image
-						src={'https://github.com/guiselair.png'}
+						src={"https://github.com/guiselair.png"}
 						width={100}
 						height={100}
 						layout="responsive"
@@ -74,7 +75,7 @@ export default function About() {
 
 				<DownloadProfessionalResumeBanner />
 			</main>
-			{/* <span>© Guilherme Selair. 2021</span> */}
+			<Footer />
 		</div>
-	)
+	);
 }
