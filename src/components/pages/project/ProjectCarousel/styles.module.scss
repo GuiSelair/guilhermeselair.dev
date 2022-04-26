@@ -52,8 +52,13 @@
 
 	span {
 		width: min(100%, var(--max-width)) !important;
-		height: 400px !important;
+		height: 600px !important;
 		border-radius: 16px;
+
+		// MOBILE
+		@media (max-width: 768px) {
+			height: 200px !important;
+		}
 
 		img {
 			object-fit: cover !important;
@@ -64,17 +69,17 @@
 
 .carouselImagesContainer {
 	span {
-		width: min(100%, 800px) !important;
-		height: 400px !important;
+		width: min(100%, 1100px) !important;
+		height: 600px !important;
 		border-radius: 16px;
 
 		// MOBILE
-		@media (max-width: 425px) {
+		@media (max-width: 768px) {
 			width: 100% !important;
 			height: 200px !important;
 		}
 		// TABLET
-		@media (min-width: 426px) and (max-width: 768px) {
+		@media (min-width: 769px) and (max-width: 1024px) {
 			width: 100% !important;
 			height: 300px !important;
 		}
@@ -99,6 +104,12 @@
 	border: none;
 	padding: 8px;
 
+	// MOBILE
+	@media (max-width: 768px) {
+		right: 5%;
+		top: 45%;
+	}
+
 	&:hover {
 		> svg {
 			color: var(--text-light);
@@ -110,13 +121,19 @@
 		height: 1.2rem;
 		color: var(--text-orange);
 		transition: all 0.2s;
+
+		// MOBILE
+		@media (max-width: 768px) {
+			width: 1.6rem;
+			height: 1.6rem;
+		}
 	}
 }
 
 .previousImageArrowContainer {
 	position: absolute;
 	top: 50%;
-	left: 24%;
+	left: 23%;
 	z-index: 1;
 	padding: 8px;
 
@@ -126,6 +143,12 @@
 	border-radius: 50%;
 	border: none;
 
+	// MOBILE
+	@media (max-width: 768px) {
+		left: 5%;
+		top: 45%
+	}
+
 	&:hover {
 		> svg {
 			color: var(--text-light);
@@ -137,5 +160,11 @@
 		height: 1.2rem;
 		color: var(--text-orange);
 		transition: all 0.2s;
+
+		// MOBILE
+		@media (max-width: 768px) {
+			width: 1.6rem;
+			height: 1.6rem;
+		}
 	}
 }
