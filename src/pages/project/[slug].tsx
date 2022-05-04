@@ -14,6 +14,7 @@ import Header from "components/shared/Header";
 import Footer from "components/shared/Footer";
 import style from "styles/pages/Project.module.scss";
 import { getThumbnailFilename } from "utils/getThumbnailFilename";
+import ShowTechnologiesThumnails from "components/shared/ShowTechnologiesThumnails";
 
 export default function Project({ project }: ProjectQuery) {
 	const projectGallery = useMemo(
@@ -51,37 +52,40 @@ export default function Project({ project }: ProjectQuery) {
 					<div className={style.additionalSectionGridContainer}>
 						<section className={style.tecnologiesUsed}>
 							<h3>PRINCIPAIS TECNOLOGIAS UTILIZADAS</h3>
-							<ul>
-								{project.technologies.map((technology) => (
-									<li key={technology} title={technology.toUpperCase()}>
-										<Image
-											src={`/images/thumbnails/${getThumbnailFilename(
-												technology
-											)}`}
-											width={30}
-											height={30}
-											layout="responsive"
-										/>
-									</li>
-								))}
-							</ul>
+							<ShowTechnologiesThumnails
+								size="md"
+								technologies={project.technologies}
+							/>
 						</section>
-						<section className={style.viewMore}>
-							<h3>VEJA MAIS</h3>
-							<div>
-								<a href={project.githubUrl || "#"} className={style.githubLink}>
-									REPOSITORIO NO GITHUB
-									<AiFillGithub />
-								</a>
-								<a
-									href={project.websiteUrl || "#"}
-									className={style.websiteLink}
-								>
-									VEJA A DEMO
-									<HiOutlineExternalLink />
-								</a>
-							</div>
-						</section>
+						{(!!project.githubUrl || !!project.websiteUrl) && (
+							<section className={style.viewMore}>
+								<h3>VEJA MAIS</h3>
+								<div>
+									{!!project.githubUrl && (
+										<a
+											href={project.githubUrl}
+											className={style.githubLink}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											REPOSITORIO NO GITHUB
+											<AiFillGithub />
+										</a>
+									)}
+									{!!project.websiteUrl && (
+										<a
+											href={project.websiteUrl}
+											className={style.websiteLink}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											VEJA O PROJETO
+											<HiOutlineExternalLink />
+										</a>
+									)}
+								</div>
+							</section>
+						)}
 					</div>
 				</div>
 			</div>

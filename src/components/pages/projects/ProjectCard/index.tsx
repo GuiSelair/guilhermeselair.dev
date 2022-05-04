@@ -3,7 +3,7 @@ import Link from "next/link";
 import Label from "components/shared/Label";
 import { memo } from "react";
 
-import { getThumbnailFilename } from "utils/getThumbnailFilename";
+import ShowTechnologiesThumnails from "components/shared/ShowTechnologiesThumnails";
 import styles from "./styles.module.scss";
 
 interface IProjectCard {
@@ -15,42 +15,38 @@ interface IProjectCard {
 }
 
 function ProjectCard({
-  projectId,
-  projectImage,
-  projectName,
-  projectType,
-  projectTechologies,
+	projectId,
+	projectImage,
+	projectName,
+	projectType,
+	projectTechologies,
 }: IProjectCard) {
-  return (
-    <Link href={`/project/${projectId}`}>
-      <a className={styles.container}>
-        <div className={styles.imageContainer}>
-          <Image
-            src={projectImage}
-            alt={projectName}
-            width={200}
-            height={140}
-            layout="responsive"
-            objectFit="cover"
-          />
-        </div>
-        <div className={styles.detailContainer}>
-          <span>{projectName}</span>
-          <Label text={projectType} size="md" />
-        </div>
-        <div className={styles.techologiesContainer}>
-          {projectTechologies.map((techology) => (
-            <Image
-              src={`/images/thumbnails/${getThumbnailFilename(techology)}`}
-              width={30}
-              height={30}
-              key={techology}
-            />
-          ))}
-        </div>
-      </a>
-    </Link>
-  );
+	return (
+		<Link href={`/project/${projectId}`}>
+			<a className={styles.container}>
+				<div className={styles.imageContainer}>
+					<Image
+						src={projectImage}
+						alt={projectName}
+						width={200}
+						height={140}
+						layout="responsive"
+						objectFit="cover"
+					/>
+				</div>
+				<div className={styles.detailContainer}>
+					<span>{projectName}</span>
+					<Label text={projectType} size="md" />
+				</div>
+				<div className={styles.techologiesContainer}>
+					<ShowTechnologiesThumnails
+						size="sm"
+						technologies={projectTechologies}
+					/>
+				</div>
+			</a>
+		</Link>
+	);
 }
 
 export default memo(ProjectCard);

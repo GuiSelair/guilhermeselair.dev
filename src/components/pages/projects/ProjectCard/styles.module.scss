@@ -48,11 +48,5 @@
 
 	.techologiesContainer {
 		margin-top: 0.5rem;
-
-		> span {
-			& + span {
-				margin-left: 0.5rem !important;
-			}
-		}
 	}
 }

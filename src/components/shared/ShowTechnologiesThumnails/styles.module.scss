@@ -1,0 +1,18 @@
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	list-style: none;
+
+	li {
+		transition: all 0.2s;
+
+		& + li {
+			margin-left: 0.5rem;
+		}
+
+		&:hover {
+			transform: translateY(-2px);
+		}
+	}
+}
