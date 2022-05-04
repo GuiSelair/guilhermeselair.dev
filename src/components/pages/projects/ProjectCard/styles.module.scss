@@ -6,6 +6,10 @@
 
 	&:hover {
 		transform: translateY(-2px);
+
+		.imageContainer {
+			border-color: #ffb7876c;
+		}
 	}
 
 	.imageContainer {
@@ -15,10 +19,6 @@
 		border-radius: 12px;
 
 		transition: all 0.8s;
-
-		&:hover {
-			border-color: var(--background-gray);
-		}
 
 		> span {
 			border-radius: 12px;

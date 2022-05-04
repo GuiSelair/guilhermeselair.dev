@@ -73,7 +73,7 @@
 		background: linear-gradient(to right, #ffb787 0%, #ff784b 100%);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
-		animation: 2s ease-in-out normal intro;
+		animation: 1.3s ease-in-out normal intro;
 
 
 		// MOBILE
@@ -90,7 +90,7 @@
     margin-bottom: 6rem;
     color: var(--text-light);
 		align-self: flex-start;
-		animation: 3s ease-in-out normal intro;
+		animation: 2s ease-in-out normal intro;
 
 		// MOBILE
 		@media (max-width: 768px) {
@@ -126,7 +126,7 @@
     text-decoration: none;
     border: 1px solid transparent;
     transition: all 0.2s;
-		animation: 4s ease-in-out normal introCard;
+		animation: 2.5s ease-in-out normal introCard;
 
 
 		// MOBILE
