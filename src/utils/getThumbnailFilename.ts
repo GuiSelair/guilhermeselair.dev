@@ -1,8 +1,10 @@
 const TECHOLOGIES_IMAGES_NAME = {
-  react: "react-thumb.png",
-  typescript: "typescript-thumb.png",
-  javascript: "javascript-thumb.png",
-  nextjs: "nextJS-thumb.png",
+  reactjs: "reactjs.png",
+  typescript: "typescript.png",
+  javascript: "javascript.png",
+  nextjs: "nextjs.png",
+	graphcms: "graphcms.png",
+	graphql: "graphql.png"
 };
 
 type IGetThumbnailFilename = (thumbnailName: string) => string;

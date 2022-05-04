@@ -53,7 +53,7 @@ export default function Project({ project }: ProjectQuery) {
 							<h3>PRINCIPAIS TECNOLOGIAS UTILIZADAS</h3>
 							<ul>
 								{project.technologies.map((technology) => (
-									<li key={technology}>
+									<li key={technology} title={technology.toUpperCase()}>
 										<Image
 											src={`/images/thumbnails/${getThumbnailFilename(
 												technology
