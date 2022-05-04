@@ -49,6 +49,7 @@
 .carouselShowOnlyCoverContainer{
 	display: flex;
 	justify-content: center;
+	cursor: pointer;
 
 	span {
 		width: min(100%, var(--max-width)) !important;
@@ -68,7 +69,9 @@
 }
 
 .carouselImagesContainer {
+
 	span {
+		cursor: pointer;
 		width: min(100%, 1100px) !important;
 		height: 600px !important;
 		border-radius: 16px;

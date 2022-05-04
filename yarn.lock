@@ -4296,6 +4296,11 @@ rc@^1.2.8:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-awesome-lightbox@^1.8.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/react-awesome-lightbox/-/react-awesome-lightbox-1.8.1.tgz#94a9f82a64fe1c43e34dd962b69911d7860d63bd"
+  integrity sha512-E/0Y+D1PaD3blNtzsjwEE0WNo+Zu6V0x0kpuM2eR8XdHh+7Iz783UP47jA1m/XxaCpO7xuvzRiV8mbUceCij6g==
+
 react-device-detect@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/react-device-detect/-/react-device-detect-2.1.2.tgz#60abb6fa361ec4cc839469a0c4c3e9b8ea17d6b5"
