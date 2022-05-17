@@ -4,7 +4,11 @@ const TECHOLOGIES_IMAGES_NAME = {
   javascript: "javascript.png",
   nextjs: "nextjs.png",
 	graphcms: "graphcms.png",
-	graphql: "graphql.png"
+	graphql: "graphql.png",
+	reactnative: "reactnative.png",
+	nodejs: "nodejs.png",
+	axios: "axios.png",
+	firebase: "firebase.png"
 };
 
 type IGetThumbnailFilename = (thumbnailName: string) => string;

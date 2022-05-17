@@ -2,10 +2,13 @@
   grid-area: tecnologias_trabalhadas;
 
   div {
-    > span {
-      & + span {
-        margin-left: 1rem !important;
-      }
-    }
+		display: grid;
+		grid-template-columns: repeat(8, 1fr);
+		gap: 1rem;
+    // > span {
+    //   & + span {
+    //     margin-left: 1rem !important;
+    //   }
+    // }
   }
 }

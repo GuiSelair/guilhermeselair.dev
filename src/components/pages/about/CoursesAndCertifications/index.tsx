@@ -1,6 +1,6 @@
-import { memo } from 'react'
+import { memo } from "react";
 
-import styles from './styles.module.scss'
+import styles from "./styles.module.scss";
 
 function CoursesAndCertifications() {
 	return (
@@ -10,7 +10,7 @@ function CoursesAndCertifications() {
 				<li>
 					<strong>Ignite - Trilha React</strong>
 					<span>Rocketseat</span>
-					<span>Conclusão: 2021</span>
+					<span>Conclusão: 2022 (Em andamento)</span>
 				</li>
 				<li>
 					<strong>Bootcamp GoStack</strong>
@@ -24,7 +24,7 @@ function CoursesAndCertifications() {
 				</li>
 			</ul>
 		</section>
-	)
+	);
 }
 
-export default memo(CoursesAndCertifications)
+export default memo(CoursesAndCertifications);

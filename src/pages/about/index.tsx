@@ -1,20 +1,24 @@
-import Head from "next/head";
-import { CgArrowLongDown } from "react-icons/cg";
 import Image from "next/image";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 import styles from "@styles/About.module.scss";
 import Header from "components/shared/Header";
-import Label from "components/shared/Label";
 import ProfessionalExperiencesSection from "components/pages/about/ProfessionalExperiencesSection";
-import DownloadProfessionalResumeBanner from "components/pages/about/DownloadProfessionalResumeBanner";
 import TechnologiesWorked from "components/pages/about/TechnologiesWorked";
 import SEO from "components/shared/SEO";
 import CoursesAndCertifications from "components/pages/about/CoursesAndCertifications";
 import Educations from "components/pages/about/Educations";
 import Footer from "components/shared/Footer";
+import BannerWithCTA from "components/shared/BannerWithCTA";
 
 export default function About() {
+	const handleRedirectToGoogleDriveFolder = () => {
+		return window.open(
+			"https://drive.google.com/drive/folders/1o5AbcKVycFeL5JZwFp2S4mpd_PXhhqGr?usp=sharing",
+			"_blank"
+		);
+	};
+
 	return (
 		<div className={styles.backgroundWrapper}>
 			<SEO title="Sobre mim" />
@@ -31,9 +35,8 @@ export default function About() {
 					/>
 					<div className={styles.apresentationDetails}>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Est
-							pellentesque velit augue elementum condimentum arcu aliquet
-							adipiscing sagittis.
+							Olá, eu sou Guilherme Selair mas quase todos me chamam de Selair.
+							Eu tenho 24 anos
 						</p>
 						<p>
 							Habitant erat faucibus maecenas nulla scelerisque. Sit
@@ -73,7 +76,16 @@ export default function About() {
 					</Tabs>
 				</div>
 
-				<DownloadProfessionalResumeBanner />
+				<BannerWithCTA
+					CTAAction={handleRedirectToGoogleDriveFolder}
+					CTAText="Baixar curriculo"
+					title="Prefere da maneira tradicional?"
+					description="Sem problemas, baixe meu currículo em PDF"
+					backgroundImage="pfd-icon-group-background.png"
+					backgroundPositionX="-2%"
+					backgroundPositionY="50%"
+					backgroundColor="#ff784b"
+				/>
 			</main>
 			<Footer />
 		</div>
