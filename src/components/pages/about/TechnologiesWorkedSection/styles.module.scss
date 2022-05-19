@@ -4,11 +4,14 @@
   div {
 		display: grid;
 		grid-template-columns: repeat(8, 1fr);
-		gap: 1rem;
-    // > span {
-    //   & + span {
-    //     margin-left: 1rem !important;
-    //   }
-    // }
+		gap: 0.5rem;
+
+		span {
+			transition: all 0.2s;
+
+			&:hover {
+				transform: translateY(-2px);
+			}
+		}
   }
 }
