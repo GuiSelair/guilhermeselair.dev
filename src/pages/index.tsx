@@ -14,7 +14,7 @@ export default function Home() {
 			<Header />
 			<main className={styles.container}>
 				<h1>Guilherme Selair</h1>
-				<h3>Desenvolvedor Front-end</h3>
+				<h3>Desenvolvedor de software</h3>
 
 				<section className={styles.labelsGroup}>
 					<Link href="/about">
@@ -24,8 +24,8 @@ export default function Home() {
 								<FiExternalLink />
 							</div>
 							<span>
-								Tenho 23 anos, sou desenvolvedor Front-end estudando para me
-								tornar Full Stack.
+								Tenho 24 anos, sou desenvolvedor estudando para me
+								especializar em Javascript.
 							</span>
 						</a>
 					</Link>

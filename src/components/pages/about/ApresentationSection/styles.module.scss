@@ -1,0 +1,32 @@
+.apresentationContainer {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 2rem;
+	margin-top: 1.5rem;
+
+	// MOBILE
+	@media (max-width: 768px) {
+		display: flex;
+		flex-direction: column;
+	}
+	// TABLET
+	@media (min-width: 769px) and (max-width: 1024px) {}
+
+	.apresentationImage {
+		width: 480px;
+		height: 355px;
+		border-radius: 8px;
+	}
+
+	.apresentationDetails {
+		p {
+			& + p {
+				margin-top: 1rem;
+			}
+
+			line-height: 1.7rem;
+			color: var(--text-light);
+			font-size: 1rem;
+		}
+	}
+}
