@@ -6,11 +6,12 @@ export default function ApresentationSection() {
 	return (
 		<div className={styles.apresentationContainer}>
 			<Image
-				src={"https://github.com/guiselair.png"}
+				src="/images/profile.png"
 				width={100}
 				height={100}
 				layout="responsive"
 				className={styles.apresentationImage}
+				objectFit="cover"
 			/>
 			<div className={styles.apresentationDetails}>
 				<p>
