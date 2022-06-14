@@ -7,6 +7,7 @@ import { HiArrowNarrowLeft, HiOutlineLockClosed } from "react-icons/hi";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
+import { basicInfos } from "config/basicInfos";
 import style from "./style.module.scss";
 
 function Header() {
@@ -71,7 +72,7 @@ function Header() {
 			<div className={style.rightSide}>
 				<a
 					title="Entrar em contato por Whatsapp"
-					href="https://www.api.whatsapp.com/"
+					href={`${basicInfos.whatsapp}?phone=${basicInfos.phone}`}
 					target="_blank"
 					rel="noreferrer"
 				>
@@ -79,7 +80,7 @@ function Header() {
 				</a>
 				<a
 					title="Veja meu Linkedin"
-					href="https://www.linkedin.com/in/guilherme-selair/"
+					href={basicInfos.linkedin}
 					target="_blank"
 					rel="noreferrer"
 				>
@@ -87,7 +88,7 @@ function Header() {
 				</a>
 				<a
 					title="Veja meu Github"
-					href="https://github.com/GuiSelair"
+					href={basicInfos.github}
 					target="_blank"
 					rel="noreferrer"
 				>
