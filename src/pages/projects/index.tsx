@@ -5,6 +5,7 @@ import Link from "next/link";
 import { CgArrowLongDown } from "react-icons/cg";
 
 import SEO from "components/shared/SEO";
+import { basicInfos } from "config/basicInfos";
 import styles from "styles/pages/Projects.module.scss";
 import Header from "components/shared/Header";
 import ProjectCard from "components/pages/projects/ProjectCard";
@@ -77,10 +78,13 @@ export default function Projects({ projects }: ProjectsQuery) {
 							))}
 					</div>
 					<BannerWithCTA
-						CTAAction={() => {}}
+						CTAAction={() => window.open(
+							`${basicInfos.whatsapp}?phone=${basicInfos.phone}`,
+							"_blank"
+						)}
 						CTAText="Entrar em contato"
-						title="Procurando um desenvolvedor front-end?"
-						description="Seus problemas acabaram!"
+						title="Gostou de algum projeto?"
+						description="Vamos conversar sobre ele!"
 						backgroundColor="#2D2C2A"
 						backgroundImage="message-icon.png"
 						backgroundPositionX="3%"
