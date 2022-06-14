@@ -9,6 +9,11 @@
 			align-items: center;
 			justify-content: center;
 			bottom: -40px !important;
+			list-style: none;
+
+			li + li {
+				margin-left: 4px;
+			}
 
 			.dot {
 				width: 12px;
@@ -25,9 +30,7 @@
 					background: var(--text-orange);
 				}
 
-				& + button {
-					margin-left: 4px;
-				}
+
 			}
 		}
 

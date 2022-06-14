@@ -13,6 +13,7 @@ export default function Footer() {
 			</div>
 			<div>
 				<a
+					aria-label="Github"
 					href={basicInfos.github}
 					target="_blank"
 					rel="noopener noreferrer"
@@ -20,6 +21,7 @@ export default function Footer() {
 					<AiFillGithub />
 				</a>
 				<a
+					aria-label="Linkedin"
 					href={basicInfos.linkedin}
 					target="_blank"
 					rel="noopener noreferrer"
@@ -27,6 +29,7 @@ export default function Footer() {
 					<AiFillLinkedin />
 				</a>
 				<a
+					aria-label="Dev.to"
 					href={basicInfos.devto}
 					target="_blank"
 					rel="noopener noreferrer"

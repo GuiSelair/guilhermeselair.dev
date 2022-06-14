@@ -18,7 +18,7 @@ export default function TechnologiesWorked() {
 
 	return (
 		<section className={styles.tecnologiasTrabalhadas}>
-			<h4>Tecnologias trabalhadas</h4>
+			<h3>Tecnologias trabalhadas</h3>
 			<div>
 				{technologiesList.map((technology) => (
 					<Image

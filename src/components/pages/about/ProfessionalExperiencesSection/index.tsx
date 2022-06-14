@@ -19,7 +19,7 @@ function ProfessionalExperiencesSection() {
 
 	return (
 		<section className={styles.experiencias}>
-			<h4>Carreira</h4>
+			<h3>Carreira</h3>
 			<Carousel
 				autoPlay={false}
 				showThumbs={false}
@@ -27,7 +27,6 @@ function ProfessionalExperiencesSection() {
 				showArrows={false}
 				showIndicators={false}
 				swipeable
-				useKeyboardArrows
 				className={styles.carouselContainer}
 				onChange={handleUpdateCurrentSelectedSlide}
 				selectedItem={currentSelectedSlide}

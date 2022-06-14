@@ -10,17 +10,17 @@ import styles from "../styles/pages/Home.module.scss";
 export default function Home() {
 	return (
 		<div className={styles.backgroundWrapper}>
-			<SEO title="Home" />
+			<SEO title="Home" description="Olá! Eu sou Guilherme Selair, desenvolvedor de software. Venha me conhecer melhor e dê uma olhada nos projetos que já fiz :D" />
 			<Header />
 			<main className={styles.container}>
 				<h1>Guilherme Selair</h1>
-				<h3>Desenvolvedor de software</h3>
+				<h2>Desenvolvedor de software</h2>
 
 				<section className={styles.labelsGroup}>
 					<Link href="/about">
 						<a>
 							<div>
-								<h4>Sobre mim </h4>
+								<h3>Sobre mim </h3>
 								<FiExternalLink />
 							</div>
 							<span>
@@ -32,7 +32,7 @@ export default function Home() {
 					<Link href="/projects">
 						<a>
 							<div>
-								<h4>Projetos realizados</h4>
+								<h3>Projetos realizados</h3>
 								<FiExternalLink />
 							</div>
 							<span>

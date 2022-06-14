@@ -21,11 +21,11 @@ export default function About() {
 
 	return (
 		<div className={styles.backgroundWrapper}>
-			<SEO title="Sobre mim" />
+			<SEO title="Sobre mim" description="Veja aqui um pouco da minha trajetória. Sinta-se à vontade de baixar meu currículo :D" />
 			<Header />
 			<main className={styles.container}>
 				<h2>Always learning!</h2>
-				<ApresentationSection/>
+				<ApresentationSection />
 				<div className={styles.aboutContainerDesktop}>
 					<CoursesAndCertifications />
 					<Educations />

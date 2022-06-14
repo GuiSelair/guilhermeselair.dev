@@ -6,7 +6,7 @@ import styles from './styles.module.scss'
 function Educations() {
 	return (
 		<section className={styles.container}>
-			<h4>Formação Educacional</h4>
+			<h3>Formação Educacional</h3>
 			<ul>
 				<li>
 					<strong>

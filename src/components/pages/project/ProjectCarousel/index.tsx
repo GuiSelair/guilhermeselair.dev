@@ -88,6 +88,7 @@ function ProjectCarousel({ gallery }: IProjectCarousel) {
 						className={style.nextImageArrowContainer}
 						type="button"
 						onClick={clickHandler}
+						aria-label="Próxima imagem"
 					>
 						<HiArrowNarrowRight />
 					</button>
@@ -97,18 +98,21 @@ function ProjectCarousel({ gallery }: IProjectCarousel) {
 						className={style.previousImageArrowContainer}
 						type="button"
 						onClick={clickHandler}
+						aria-label="Imagem anterior"
 					>
 						<HiArrowNarrowLeft />
 					</button>
 				)}
 				renderIndicator={(clickHandler, isSelected, index) => (
-					<button
-						className={style.dot}
-						onClick={clickHandler}
-						data-selected={String(isSelected)}
-						type="button"
-						aria-label={`Indicador ${index}`}
-					/>
+					<li>
+						<button
+							className={style.dot}
+							onClick={clickHandler}
+							data-selected={String(isSelected)}
+							type="button"
+							aria-label={`Indicador ${index}`}
+						/>
+					</li>
 				)}
 			>
 				{gallery.map((image) => (
@@ -124,6 +128,7 @@ function ProjectCarousel({ gallery }: IProjectCarousel) {
 							priority
 							width={100}
 							height={100}
+							blurDataURL={image.src}
 						/>
 					</div>
 				))}

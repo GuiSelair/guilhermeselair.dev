@@ -34,11 +34,11 @@ export default function Projects({ projects }: ProjectsQuery) {
 
 	const hasProject = projectsChunk.length > 0;
 
-	const highlightProject = projects[0];
+	const highlightProject = projects[1];
 
 	return (
 		<>
-			<SEO title="Projetos" />
+			<SEO title="Projetos" description="Veja um pouco sobre os projetos que já participei/fiz." />
 			<div className={styles.backgroundContainer}>
 				<Header />
 				<main className={styles.container}>
@@ -49,8 +49,11 @@ export default function Projects({ projects }: ProjectsQuery) {
 								src={highlightProject.cover.url}
 								width={100}
 								height={100}
+								priority
 								layout="responsive"
 								className={styles.highlightImage}
+								blurDataURL={highlightProject.cover.url}
+								alt="Imagem capa do projeto em destaque"
 							/>
 							<div className={styles.highlightBadge}>DESTAQUE</div>
 						</a>
@@ -61,7 +64,7 @@ export default function Projects({ projects }: ProjectsQuery) {
 					</div>
 
 					<div className={styles.moreProjectDiviser}>
-						<h4>MAIS PROJETOS</h4>
+						<h2>MAIS PROJETOS</h2>
 					</div>
 
 					<div className={styles.projectContainer}>

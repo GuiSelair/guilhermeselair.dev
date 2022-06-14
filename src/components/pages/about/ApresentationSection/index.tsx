@@ -12,6 +12,7 @@ export default function ApresentationSection() {
 				layout="responsive"
 				className={styles.apresentationImage}
 				objectFit="cover"
+				alt="Uma imagem que representa Guilherme Selair apresentando seu TCC"
 			/>
 			<div className={styles.apresentationDetails}>
 				<p>

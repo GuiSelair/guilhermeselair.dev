@@ -5,7 +5,7 @@ import styles from "./styles.module.scss";
 function CoursesAndCertifications() {
 	return (
 		<section className={styles.container}>
-			<h4>Cursos e Certificações</h4>
+			<h3>Cursos e Certificações</h3>
 			<ul>
 				<li>
 					<strong>Ignite - Trilha React</strong>

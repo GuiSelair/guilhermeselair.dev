@@ -21,6 +21,7 @@ function ShowTechnologiesThumnails({
 						src={`/images/thumbnails/${getThumbnailFilename(technology)}`}
 						width={size === "md" ? 44 : 30}
 						height={size === "md" ? 44 : 30}
+						alt={technology}
 					/>
 				</li>
 			))}
