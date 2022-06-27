@@ -1,33 +1,21 @@
 import Image from "next/image";
-import { getThumbnailFilename } from "utils/getThumbnailFilename";
+import { getThumbnailFilename, TECHOLOGIES_IMAGES_NAME } from "utils/getThumbnailFilename";
 import styles from "./styles.module.scss";
 
 export default function TechnologiesWorked() {
-	const technologiesList = [
-		"Typescript",
-		"ReactJS",
-		"NextJS",
-		"Javascript",
-		"NodeJS",
-		"Axios",
-		"Firebase",
-		"GraphQL",
-		"GraphCMS",
-		"ReactNative",
-	];
-
 	return (
 		<section className={styles.tecnologiasTrabalhadas}>
 			<h3>Tecnologias trabalhadas</h3>
 			<div>
-				{technologiesList.map((technology) => (
+				{Object.keys(TECHOLOGIES_IMAGES_NAME).map((technology) => (
 					<Image
 						src={`/images/thumbnails/${getThumbnailFilename(
-							technology.toLowerCase()
+							technology
 						)}`}
 						width={49}
 						height={49}
-						title={technology}
+						title={technology.toLocaleUpperCase()}
+						alt={`${technology.toLocaleUpperCase()} logo`}
 						key={technology}
 					/>
 				))}

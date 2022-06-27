@@ -1,4 +1,4 @@
-const TECHOLOGIES_IMAGES_NAME = {
+export const TECHOLOGIES_IMAGES_NAME = {
   reactjs: "reactjs.png",
   typescript: "typescript.png",
   javascript: "javascript.png",

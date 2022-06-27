@@ -52,7 +52,6 @@ export default function Projects({ projects }: ProjectsQuery) {
 								priority
 								layout="responsive"
 								className={styles.highlightImage}
-								blurDataURL={highlightProject.cover.url}
 								alt="Imagem capa do projeto em destaque"
 							/>
 							<div className={styles.highlightBadge}>DESTAQUE</div>
