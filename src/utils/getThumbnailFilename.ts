@@ -12,6 +12,7 @@ export const TECHOLOGIES_IMAGES_NAME = {
 	faunadb: "faunadb.png",
 	stripe: "stripe.png",
 	prismic: "prismic.png",
+	express: "express.png",
 };
 
 type IGetThumbnailFilename = (thumbnailName: string) => string;
