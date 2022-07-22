@@ -1,6 +1,6 @@
 overwrite: true
 
-schema: 'https://api-sa-east-1.graphcms.com/v2/cl1grspnn4pzt01xf8ioh5g1m/master'
+schema: ${NEXT_PUBLIC_GRAPHCMS_ENDPOINT}
 
 documents: 'src/graphql/**/*.graphql'
 
