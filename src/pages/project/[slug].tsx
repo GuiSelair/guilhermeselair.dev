@@ -3,7 +3,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
 import { useMemo } from "react";
 import ReactMarkdown from "react-markdown";
-import { HiOutlineExternalLink } from "react-icons/hi";
+import { HiOutlineClock, HiOutlineExternalLink } from "react-icons/hi";
 import { AiFillGithub } from "react-icons/ai";
 
 import { graphSDK } from "services/graphql-request";
@@ -83,6 +83,12 @@ export default function Project({ project }: ProjectQuery) {
 											<HiOutlineExternalLink />
 										</a>
 									)}
+									{project.hasDemo && !project.websiteUrl && (
+										<button className={style.demoButton} disabled>
+											EM BREVE DEMO
+											<HiOutlineClock />
+										</button>
+									)}
 								</div>
 							</section>
 						)}
@@ -109,7 +115,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const { project } = await graphSDK.Project({ slug: String(params.slug) });
-
 	return {
 		props: {
 			project,

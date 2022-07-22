@@ -13,18 +13,13 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  /** A date string, such as 2007-12-03 (YYYY-MM-DD), compliant with ISO 8601 standard for representation of dates using the Gregorian calendar. */
   Date: any;
-  /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the date-timeformat outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representationof dates and times using the Gregorian calendar. */
   DateTime: any;
   Hex: any;
-  /** Raw JSON value */
   Json: any;
-  /** The Long scalar type represents non-fractional signed whole numeric values. Long can represent values between -(2^63) and 2^63 - 1. */
   Long: any;
   RGBAHue: any;
   RGBATransparency: any;
-  /** Slate-compatible RichText AST */
   RichTextAST: any;
 };
 
@@ -1268,6 +1263,7 @@ export type Project = Node & {
   documentInStages: Array<Project>;
   gallery: Array<Asset>;
   githubUrl?: Maybe<Scalars['String']>;
+  hasDemo?: Maybe<Scalars['Boolean']>;
   /** List of Project versions */
   history: Array<Version>;
   /** The unique identifier */
@@ -1381,6 +1377,7 @@ export type ProjectCreateInput = {
   description: Scalars['String'];
   gallery?: InputMaybe<AssetCreateManyInlineInput>;
   githubUrl?: InputMaybe<Scalars['String']>;
+  hasDemo?: InputMaybe<Scalars['Boolean']>;
   name: Scalars['String'];
   slug: Scalars['String'];
   technologies?: InputMaybe<Array<Scalars['String']>>;
@@ -1480,6 +1477,9 @@ export type ProjectManyWhereInput = {
   githubUrl_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   githubUrl_starts_with?: InputMaybe<Scalars['String']>;
+  hasDemo?: InputMaybe<Scalars['Boolean']>;
+  /** All values that are not equal to given value. */
+  hasDemo_not?: InputMaybe<Scalars['Boolean']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -1629,6 +1629,8 @@ export enum ProjectOrderByInput {
   DescriptionDesc = 'description_DESC',
   GithubUrlAsc = 'githubUrl_ASC',
   GithubUrlDesc = 'githubUrl_DESC',
+  HasDemoAsc = 'hasDemo_ASC',
+  HasDemoDesc = 'hasDemo_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
   NameAsc = 'name_ASC',
@@ -1652,6 +1654,7 @@ export type ProjectUpdateInput = {
   description?: InputMaybe<Scalars['String']>;
   gallery?: InputMaybe<AssetUpdateManyInlineInput>;
   githubUrl?: InputMaybe<Scalars['String']>;
+  hasDemo?: InputMaybe<Scalars['Boolean']>;
   name?: InputMaybe<Scalars['String']>;
   slug?: InputMaybe<Scalars['String']>;
   technologies?: InputMaybe<Array<Scalars['String']>>;
@@ -1679,6 +1682,7 @@ export type ProjectUpdateManyInlineInput = {
 export type ProjectUpdateManyInput = {
   description?: InputMaybe<Scalars['String']>;
   githubUrl?: InputMaybe<Scalars['String']>;
+  hasDemo?: InputMaybe<Scalars['Boolean']>;
   technologies?: InputMaybe<Array<Scalars['String']>>;
   type?: InputMaybe<Scalars['String']>;
   websiteUrl?: InputMaybe<Scalars['String']>;
@@ -1795,6 +1799,9 @@ export type ProjectWhereInput = {
   githubUrl_not_starts_with?: InputMaybe<Scalars['String']>;
   /** All values starting with the given string. */
   githubUrl_starts_with?: InputMaybe<Scalars['String']>;
+  hasDemo?: InputMaybe<Scalars['Boolean']>;
+  /** All values that are not equal to given value. */
+  hasDemo_not?: InputMaybe<Scalars['Boolean']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -3675,7 +3682,7 @@ export type ProjectQueryVariables = Exact<{
 }>;
 
 
-export type ProjectQuery = { __typename?: 'Query', project?: { __typename?: 'Project', slug: string, name: string, description: string, technologies: Array<string>, githubUrl?: string | null, websiteUrl?: string | null, cover: { __typename?: 'Asset', url: string, id: string, thumbnailToSEO: string }, gallery: Array<{ __typename?: 'Asset', url: string, id: string }> } | null };
+export type ProjectQuery = { __typename?: 'Query', project?: { __typename?: 'Project', slug: string, name: string, description: string, technologies: Array<string>, githubUrl?: string | null, websiteUrl?: string | null, hasDemo?: boolean | null, cover: { __typename?: 'Asset', url: string, id: string, thumbnailToSEO: string }, gallery: Array<{ __typename?: 'Asset', url: string, id: string }> } | null };
 
 export type ProjectsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3708,6 +3715,7 @@ export const ProjectDocument = gql`
     technologies
     githubUrl
     websiteUrl
+    hasDemo
   }
 }
     `;

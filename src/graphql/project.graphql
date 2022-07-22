@@ -21,5 +21,6 @@ query Project($slug: String!) {
 		technologies
 		githubUrl
 		websiteUrl
+		hasDemo
 	}
 }

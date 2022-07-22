@@ -38,7 +38,10 @@ export default function Projects({ projects }: ProjectsQuery) {
 
 	return (
 		<>
-			<SEO title="Projetos" description="Veja um pouco sobre os projetos que já participei/fiz." />
+			<SEO
+				title="Projetos"
+				description="Veja um pouco sobre os projetos que já participei/fiz."
+			/>
 			<div className={styles.backgroundContainer}>
 				<Header />
 				<main className={styles.container}>
@@ -80,10 +83,12 @@ export default function Projects({ projects }: ProjectsQuery) {
 							))}
 					</div>
 					<BannerWithCTA
-						CTAAction={() => window.open(
-							`${basicInfos.whatsapp}?phone=${basicInfos.phone}`,
-							"_blank"
-						)}
+						CTAAction={() =>
+							window.open(
+								`${basicInfos.whatsapp}?phone=${basicInfos.phone}`,
+								"_blank"
+							)
+						}
 						CTAText="Entrar em contato"
 						title="Gostou de algum projeto?"
 						description="Vamos conversar sobre ele!"

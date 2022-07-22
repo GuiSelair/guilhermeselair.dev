@@ -98,13 +98,13 @@
 					width: 100%;
 				}
 
-				a {
+				a, button {
 					&:hover {
 						transform: translateY(-2px);
 						border-color: var(--text-light);
 					}
 
-					& + a {
+					& + a, & + button {
 						margin-left: 0.5rem;
 
 						// MOBILE
@@ -150,6 +150,17 @@
 					&.websiteLink {
 						background: var(--text-orange);
 						color: var(--text-light);
+					}
+
+					&.demoButton {
+						background: transparent;
+						border: 1px solid var(--text-orange);
+						color: var(--text-orange);
+						cursor: default;
+
+						svg {
+							color: var(--text-orange);
+						}
 					}
 				}
 			}

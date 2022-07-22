@@ -13,6 +13,9 @@ export const TECHOLOGIES_IMAGES_NAME = {
 	stripe: "stripe.png",
 	prismic: "prismic.png",
 	express: "express.png",
+	mongodb: "mongodb.png",
+	typeorm: "typeorm.png",
+	redis: "redis.png",
 };
 
 type IGetThumbnailFilename = (thumbnailName: string) => string;
