@@ -10,7 +10,7 @@ import styles from "../styles/pages/Home.module.scss";
 export default function Home() {
 	return (
 		<div className={styles.backgroundWrapper}>
-			<SEO title="Home" description="Olá! Eu sou Guilherme Selair, desenvolvedor de software. Venha me conhecer melhor e dê uma olhada nos projetos que já fiz :D" />
+			<SEO title="Guilherme Selair - Desenvolvedor de Software" description="Olá! Eu sou Guilherme Selair, desenvolvedor de software. Venha me conhecer melhor e dê uma olhada nos projetos que já fiz 🖖" shouldExcludeTitleSuffix />
 			<Header />
 			<main className={styles.container}>
 				<h1>Guilherme Selair</h1>
