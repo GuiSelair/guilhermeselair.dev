@@ -10,10 +10,16 @@ import styles from "../styles/pages/Home.module.scss";
 export default function Home() {
 	return (
 		<div className={styles.backgroundWrapper}>
-			<SEO title="Guilherme Selair - Desenvolvedor de Software" description="Olá! Eu sou Guilherme Selair, desenvolvedor de software. Venha me conhecer melhor e dê uma olhada nos projetos que já fiz 🖖" shouldExcludeTitleSuffix />
+			<SEO
+				title="Guilherme Selair - Desenvolvedor de Software"
+				description="Olá! Eu sou Guilherme Selair, desenvolvedor de software. Venha me conhecer melhor e dê uma olhada nos projetos que já fiz 🖖"
+				shouldExcludeTitleSuffix
+			/>
 			<Header />
 			<main className={styles.container}>
-				<h1>Guilherme Selair</h1>
+				<div>
+					<h1>Guilherme Selair</h1>
+				</div>
 				<h2>Desenvolvedor de software</h2>
 
 				<section className={styles.labelsGroup}>
@@ -24,8 +30,8 @@ export default function Home() {
 								<FiExternalLink />
 							</div>
 							<span>
-								Tenho 24 anos, sou desenvolvedor estudando para me
-								especializar em Javascript.
+								Tenho 24 anos, sou desenvolvedor estudando para me especializar
+								em Javascript.
 							</span>
 						</a>
 					</Link>

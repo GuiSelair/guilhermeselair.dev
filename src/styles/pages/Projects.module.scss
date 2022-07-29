@@ -56,14 +56,38 @@
 		font-size: 5rem;
 		font-weight: 700;
 		margin-top: 5rem;
-		background: #ffb787;
-		background: -webkit-linear-gradient(to right, #ffb787 0%, #ff784b 100%);
-		background: -moz-linear-gradient(to right, #ffb787 0%, #ff784b 100%);
-		background: linear-gradient(to right, #ffb787 0%, #ff784b 100%);
+		background-clip: text;
+		text-fill-color: transparent;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
-		line-height: 94px;
-		// text-align: center;
+		background-image: linear-gradient(273deg, #f5ab7a, #fa6e40, #F3A183);
+		color: #000;
+		background-size: 400% 400%;
+		-webkit-animation: textBackground 8s ease infinite;
+		-moz-animation: textBackground 8s ease infinite;
+		-o-animation: textBackground 8s ease infinite;
+		animation: textBackground 8s ease infinite;
+
+		@-webkit-keyframes textBackground {
+				0%{background-position:0% 50%}
+				50%{background-position:100% 50%}
+				100%{background-position:0% 50%}
+		}
+		@-moz-keyframes textBackground {
+				0%{background-position:0% 50%}
+				50%{background-position:100% 50%}
+				100%{background-position:0% 50%}
+		}
+		@-o-keyframes textBackground {
+				0%{background-position:0% 50%}
+				50%{background-position:100% 50%}
+				100%{background-position:0% 50%}
+		}
+		@keyframes textBackground {
+				0%{background-position:0% 50%}
+				50%{background-position:100% 50%}
+				100%{background-position:0% 50%}
+		}
 		align-self: flex-start;
 
 		@media (max-width: 768px) {
