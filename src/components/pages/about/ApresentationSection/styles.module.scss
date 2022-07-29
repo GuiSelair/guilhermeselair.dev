@@ -30,3 +30,25 @@
 		}
 	}
 }
+
+.linksSociais {
+	margin-top: 2rem;
+
+	a {
+		opacity: 0.5;
+		transition: all 0.2s;
+
+		&:hover {
+			opacity: 1;
+		}
+
+		& + a {
+			margin-left: 12px;
+		}
+
+		svg {
+			width: 1.5rem;
+			height: 1.5rem;
+		}
+	}
+}
