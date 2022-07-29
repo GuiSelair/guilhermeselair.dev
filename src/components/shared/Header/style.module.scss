@@ -92,6 +92,11 @@
 					span {
 						color: #484e55;
 					}
+
+					// MOBILE
+					@media (max-width: 768px) {
+						display: none;
+					}
 				}
 
 				&.isSelected {

@@ -6,10 +6,10 @@
 	background-image: linear-gradient(273deg, #f5ab7a, #fa6e40, #F3A183);
 	color: #000;
 	background-size: 400% 400%;
-	-webkit-animation: textBackground 8s ease infinite;
-	-moz-animation: textBackground 8s ease infinite;
-	-o-animation: textBackground 8s ease infinite;
-	animation: textBackground 8s ease infinite;
+	-webkit-animation: textBackground 5s ease infinite;
+	-moz-animation: textBackground 5s ease infinite;
+	-o-animation: textBackground 5s ease infinite;
+	animation: textBackground 5s ease infinite;
 
 	@-webkit-keyframes textBackground {
 			0%{background-position:0% 50%}
@@ -37,11 +37,7 @@
   width: 100%;
   height: 100%;
 	overflow-x: hidden;
-  // background: url("/images/square_balls.svg") no-repeat 10% 10%,
-  //   url("/images/blob_bg_left.svg") no-repeat left/30%,
-  //   url("/images/square_balls_45d.svg") no-repeat 90% 40%;
   position: relative;
-
 }
 
 .container {
@@ -53,14 +49,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-	// margin-top: 14rem;
 	justify-content: center;
 	// margin-bottom: 14rem;
 
 	// MOBILE
 	@media (max-width: 768px) {
 		padding: var(--padding-global-mobile);
-
 	}
 	// TABLET
 	@media (min-width: 769px) and (max-width: 1024px) {
@@ -100,21 +94,26 @@
 	> div {
 		animation: 1.3s ease-in-out normal intro;
 		align-self: flex-start;
+		margin-top:5rem;
+
+
+		h1 {
+			font-size: 5rem;
+			font-weight: 600;
+			line-height: 93px;
+
+			@include textBackground;
+
+			// MOBILE
+			@media (max-width: 768px) {
+				font-size: 4rem;
+				line-height: 4rem;
+				margin-bottom: 0.5rem;
+			}
+		}
 	}
 
-  h1 {
-    font-size: 5rem;
-    font-weight: 600;
-    line-height: 93px;
 
-		@include textBackground;
-
-		// MOBILE
-		@media (max-width: 768px) {
-			font-size: 4rem;
-			line-height: 4rem;
-		}
-  }
 
   h2 {
     font-size: 2rem;
