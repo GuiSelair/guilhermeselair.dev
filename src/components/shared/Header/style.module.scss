@@ -80,6 +80,7 @@
 		list-style: none;
 		display: flex;
 		align-items: center;
+		overflow-x: auto;
 
 		li {
 			a {
@@ -93,10 +94,6 @@
 						color: #484e55;
 					}
 
-					// MOBILE
-					@media (max-width: 768px) {
-						display: none;
-					}
 				}
 
 				&.isSelected {
@@ -114,6 +111,7 @@
 					padding: 12px;
 					display: inline-block;
 					font-size: 1rem;
+					white-space: nowrap;
 					font-weight: 400;
 					letter-spacing: 1.2px;
 					color: var(--text-secondary);
