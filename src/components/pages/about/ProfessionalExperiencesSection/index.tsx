@@ -26,7 +26,7 @@ function ProfessionalExperiencesSection() {
 				showStatus={false}
 				showArrows={false}
 				showIndicators={false}
-				swipeable
+				swipeable={false}
 				className={styles.carouselContainer}
 				onChange={handleUpdateCurrentSelectedSlide}
 				selectedItem={currentSelectedSlide}

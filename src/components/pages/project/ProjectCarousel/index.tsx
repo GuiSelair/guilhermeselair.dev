@@ -45,6 +45,7 @@ function ProjectCarousel({ gallery }: IProjectCarousel) {
 					showStatus={false}
 					showIndicators={false}
 					showArrows={false}
+					useKeyboardArrows
 					className={style.carouselContainer}
 				>
 					{gallery.map((image) => (
@@ -82,6 +83,7 @@ function ProjectCarousel({ gallery }: IProjectCarousel) {
 				showArrows
 				showStatus={false}
 				showIndicators
+				useKeyboardArrows
 				className={style.carouselContainer}
 				renderArrowNext={(clickHandler) => (
 					<button
