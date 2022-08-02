@@ -38,7 +38,7 @@ function Header() {
 						</Link>
 					</li>
 					<li>
-						<Link href="/about" prefetch>
+						<Link href="/about">
 							<a
 								className={router.pathname === "/about" ? style.isSelected : ""}
 							>
@@ -47,7 +47,7 @@ function Header() {
 						</Link>
 					</li>
 					<li>
-						<Link href="/projects" prefetch>
+						<Link href="/projects">
 							<a
 								className={
 									router.pathname === "/projects" ? style.isSelected : ""
@@ -58,7 +58,7 @@ function Header() {
 						</Link>
 					</li>
 					<li>
-						<Link href="#" prefetch={false}>
+						<Link href="#">
 							<a className={style.isDisabled} tabIndex={-1}>
 								<span>
 									ARTIGOS

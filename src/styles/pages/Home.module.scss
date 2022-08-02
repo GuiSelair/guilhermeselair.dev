@@ -1,37 +1,4 @@
-@mixin textBackground {
-	background-clip: text;
-	text-fill-color: transparent;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-image: linear-gradient(273deg, #f5ab7a, #fa6e40, #F3A183);
-	color: #000;
-	background-size: 400% 400%;
-	-webkit-animation: textBackground 5s ease infinite;
-	-moz-animation: textBackground 5s ease infinite;
-	-o-animation: textBackground 5s ease infinite;
-	animation: textBackground 5s ease infinite;
-
-	@-webkit-keyframes textBackground {
-			0%{background-position:0% 50%}
-			50%{background-position:100% 50%}
-			100%{background-position:0% 50%}
-	}
-	@-moz-keyframes textBackground {
-			0%{background-position:0% 50%}
-			50%{background-position:100% 50%}
-			100%{background-position:0% 50%}
-	}
-	@-o-keyframes textBackground {
-			0%{background-position:0% 50%}
-			50%{background-position:100% 50%}
-			100%{background-position:0% 50%}
-	}
-	@keyframes textBackground {
-			0%{background-position:0% 50%}
-			50%{background-position:100% 50%}
-			100%{background-position:0% 50%}
-	}
-}
+@import "../mixins.scss";
 
 .backgroundWrapper {
   width: 100%;
@@ -98,11 +65,10 @@
 
 
 		h1 {
+			@include headingBackground;
 			font-size: 5rem;
 			font-weight: 600;
 			line-height: 93px;
-
-			@include textBackground;
 
 			// MOBILE
 			@media (max-width: 768px) {

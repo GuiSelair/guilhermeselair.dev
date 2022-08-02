@@ -1,0 +1,34 @@
+@mixin headingBackground {
+	background-clip: text;
+	text-fill-color: transparent;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-image: linear-gradient(109.6deg, rgb(232, 252, 252) 11.2%, rgb(252, 215, 134) 56.2%, #ff784b 100.2%);
+	color: #000;
+	background-size: 400% 400%;
+	-webkit-animation: textBackground 10s ease infinite;
+	-moz-animation: textBackground 10s ease infinite;
+	-o-animation: textBackground 10s ease infinite;
+	animation: textBackground 10s ease infinite;
+
+	@-webkit-keyframes textBackground {
+			0%{background-position:0% 50%}
+			50%{background-position:100% 50%}
+			100%{background-position:0% 50%}
+	}
+	@-moz-keyframes textBackground {
+			0%{background-position:0% 50%}
+			50%{background-position:100% 50%}
+			100%{background-position:0% 50%}
+	}
+	@-o-keyframes textBackground {
+			0%{background-position:0% 50%}
+			50%{background-position:100% 50%}
+			100%{background-position:0% 50%}
+	}
+	@keyframes textBackground {
+			0%{background-position:0% 50%}
+			50%{background-position:100% 50%}
+			100%{background-position:0% 50%}
+	}
+}
