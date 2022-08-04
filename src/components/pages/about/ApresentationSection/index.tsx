@@ -35,7 +35,7 @@ export default function ApresentationSection() {
 					aventura desafiadora e incrível. Durante minha jornada já impactei
 					mais de 6000 pessoas com aplicações criativas e funcionais. Estou
 					sempre a procura do próximo nível 🚀, buscando enriquecer minha
-					experiência como desenvolvedor como objetivo de me tornar um
+					experiência como desenvolvedor com o objetivo de me tornar um
 					especialista na linguagem Javascript.
 				</p>
 				<p>
