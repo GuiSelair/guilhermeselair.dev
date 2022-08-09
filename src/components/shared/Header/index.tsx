@@ -12,14 +12,21 @@ import style from "./style.module.scss";
 
 function Header() {
 	const router = useRouter();
-
 	const isSubPage = router.pathname.includes("/project/");
+
+	function goBack() {
+		const isDemoPage = router.asPath.endsWith("/demo");
+
+		if (isDemoPage) return router.push(`/project/${router.query.slug}`);
+
+		return router.push(`/projects`);
+	}
 
 	return (
 		<header className={style.container}>
 			<div className={style.leftSide}>
 				{isSubPage ? (
-					<button type="button" title="Voltar" onClick={() => router.back()}>
+					<button type="button" title="Voltar" onClick={goBack}>
 						<HiArrowNarrowLeft />
 					</button>
 				) : (
@@ -50,7 +57,9 @@ function Header() {
 						<Link href="/projects">
 							<a
 								className={
-									router.pathname === "/projects" ? style.isSelected : ""
+									router.pathname === "/projects" || isSubPage
+										? style.isSelected
+										: ""
 								}
 							>
 								<span>PROJETOS</span>
