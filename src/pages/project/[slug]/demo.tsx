@@ -64,7 +64,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 		props: {
 			project,
 		},
-		revalidate: 60 * 60 * 24, // 24 hours
 	};
 };
 
