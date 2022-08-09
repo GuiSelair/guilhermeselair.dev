@@ -5,6 +5,7 @@ import { useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 import { HiOutlineClock, HiOutlineExternalLink } from "react-icons/hi";
 import { AiFillGithub } from "react-icons/ai";
+import Link from "next/link";
 
 import { graphSDK } from "services/graphql-request";
 import { ProjectQuery } from "generated/sdk";
@@ -57,7 +58,9 @@ export default function Project({ project }: ProjectQuery) {
 								technologies={project.technologies}
 							/>
 						</section>
-						{(!!project.githubUrl || !!project.websiteUrl) && (
+						{(!!project.githubUrl ||
+							!!project.websiteUrl ||
+							project.hasDemo) && (
 							<section className={style.viewMore}>
 								<h3>VEJA MAIS</h3>
 								<div>
@@ -72,7 +75,7 @@ export default function Project({ project }: ProjectQuery) {
 											<AiFillGithub />
 										</a>
 									)}
-									{!!project.websiteUrl && (
+									{!!project.websiteUrl && !project.hasDemo && (
 										<a
 											href={project.websiteUrl}
 											className={style.websiteLink}
@@ -82,6 +85,14 @@ export default function Project({ project }: ProjectQuery) {
 											VEJA O PROJETO
 											<HiOutlineExternalLink />
 										</a>
+									)}
+									{!!project.websiteUrl && project.hasDemo && (
+										<Link href={`/project/${project.slug}/demo`} passHref>
+											<a className={style.websiteLink}>
+												VEJA A DEMO
+												<HiOutlineExternalLink />
+											</a>
+										</Link>
 									)}
 									{project.hasDemo && !project.websiteUrl && (
 										<button className={style.demoButton} disabled>
