@@ -14,6 +14,10 @@ import { graphSDK } from "services/graphql-request";
 import { ProjectsQuery } from "generated/sdk";
 import Footer from "components/shared/Footer";
 
+// type IProjectChunk = {
+// 	type: "project" | "banner";
+// 	data: Pick<ProjectsQuery, "projects">[] | React.ReactNode;
+// }[];
 type IProjectChunk = ProjectsQuery["projects"][];
 
 export default function Projects({ projects }: ProjectsQuery) {
@@ -24,16 +28,17 @@ export default function Projects({ projects }: ProjectsQuery) {
 			start: 0,
 			end: projectPerBlock,
 		};
-		const blocksOfProjects = Math.ceil(projects.length / projectPerBlock);
-		for (let i = 0; i < blocksOfProjects; i++) {
+		const totalBlocksOfProjects = Math.ceil(projects.length / projectPerBlock);
+		for (let i = 0; i < totalBlocksOfProjects; i++) {
 			projectsBlocks.push(projects.slice(chunkLimit.start, chunkLimit.end));
 			chunkLimit.start += projectPerBlock;
+			chunkLimit.end += projectPerBlock;
 		}
+
 		return projectsBlocks;
 	}, [projects]);
 
 	const hasProject = projectsChunk.length > 0;
-
 	const highlightProject = projects[1];
 
 	return (
@@ -97,6 +102,19 @@ export default function Projects({ projects }: ProjectsQuery) {
 						backgroundPositionX="3%"
 						backgroundPositionY="110%"
 					/>
+					<div className={styles.projectContainer}>
+						{hasProject &&
+							projectsChunk[1].map((project) => (
+								<ProjectCard
+									key={project.slug}
+									projectId={project.slug}
+									projectImage={project.cover.url}
+									projectName={project.name}
+									projectType={project.type}
+									projectTechologies={project.technologies}
+								/>
+							))}
+					</div>
 				</main>
 				<Footer />
 			</div>
