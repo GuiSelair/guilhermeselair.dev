@@ -1,5 +1,5 @@
 import React from "react";
-import { GetStaticPaths, GetStaticProps } from "next/types";
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next/types";
 
 import Footer from "components/shared/Footer";
 import Header from "components/shared/Header";
@@ -48,20 +48,7 @@ const DemoProject = ({ project }: DemoQuery) => {
 	);
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-	const { projects } = await graphSDK.SlugsOfProjects();
-
-	return {
-		paths: projects.map((project) => ({
-			params: {
-				slug: project.slug,
-			},
-		})),
-		fallback: false,
-	};
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 	const { project } = await graphSDK.Demo({ slug: String(params.slug) });
 
 	if (!project.hasDemo || !project.websiteUrl) {
