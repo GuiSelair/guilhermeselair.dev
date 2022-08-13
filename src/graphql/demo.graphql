@@ -16,3 +16,14 @@ query Demo($slug: String!) {
 		description
 	}
 }
+
+query ProjectsWithDemo{
+	projects(
+		where: {
+			hasDemo: true,
+			websiteUrl_not: "",
+		}
+	) {
+    slug
+  }
+}

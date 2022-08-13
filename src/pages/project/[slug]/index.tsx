@@ -1,6 +1,5 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { GetStaticPaths, GetStaticProps } from "next";
-import Image from "next/image";
 import { useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 import { HiOutlineClock, HiOutlineExternalLink } from "react-icons/hi";
@@ -14,9 +13,7 @@ import ProjectCarousel from "components/pages/project/ProjectCarousel";
 import Header from "components/shared/Header";
 import Footer from "components/shared/Footer";
 import style from "styles/pages/Project.module.scss";
-import { getThumbnailFilename } from "utils/getThumbnailFilename";
 import ShowTechnologiesThumnails from "components/shared/ShowTechnologiesThumnails";
-
 export default function Project({ project }: ProjectQuery) {
 	const projectGallery = useMemo(
 		() => [

@@ -3684,6 +3684,11 @@ export type DemoQueryVariables = Exact<{
 
 export type DemoQuery = { __typename?: 'Query', project?: { __typename?: 'Project', slug: string, name: string, websiteUrl?: string | null, hasDemo?: boolean | null, description: string, cover: { __typename?: 'Asset', thumbnailToSEO: string } } | null };
 
+export type ProjectsWithDemoQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ProjectsWithDemoQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'Project', slug: string }> };
+
 export type ProjectQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
@@ -3715,6 +3720,13 @@ export const DemoDocument = gql`
       )
     }
     description
+  }
+}
+    `;
+export const ProjectsWithDemoDocument = gql`
+    query ProjectsWithDemo {
+  projects(where: {hasDemo: true, websiteUrl_not: ""}) {
+    slug
   }
 }
     `;
@@ -3772,6 +3784,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
   return {
     Demo(variables: DemoQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DemoQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<DemoQuery>(DemoDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Demo', 'query');
+    },
+    ProjectsWithDemo(variables?: ProjectsWithDemoQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<ProjectsWithDemoQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ProjectsWithDemoQuery>(ProjectsWithDemoDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'ProjectsWithDemo', 'query');
     },
     Project(variables: ProjectQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<ProjectQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ProjectQuery>(ProjectDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Project', 'query');

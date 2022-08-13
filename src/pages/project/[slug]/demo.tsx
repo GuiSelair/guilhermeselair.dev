@@ -48,15 +48,25 @@ const DemoProject = ({ project }: DemoQuery) => {
 	);
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+	const { projects } = await graphSDK.ProjectsWithDemo();
+
+	return {
+		paths: projects.map((project) => ({
+			params: {
+				slug: project.slug,
+			},
+		})),
+		fallback: false,
+	};
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const { project } = await graphSDK.Demo({ slug: String(params.slug) });
 
 	if (!project.hasDemo || !project.websiteUrl) {
 		return {
-			redirect: {
-				permanent: false,
-				destination: `/project/${project.slug}`,
-			},
+			notFound: true,
 		};
 	}
 
@@ -64,6 +74,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 		props: {
 			project,
 		},
+		revalidate: 60 * 60 * 24, // 24hours
 	};
 };
 
