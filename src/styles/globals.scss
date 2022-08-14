@@ -64,6 +64,10 @@ a {
   text-decoration: none;
 }
 
+svg {
+	flex-shrink: 0;
+}
+
 button {
   cursor: pointer;
 }

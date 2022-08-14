@@ -7,6 +7,11 @@
 	h1 {
 		font-size: 3rem;
 		margin: 2.5rem auto 2rem auto;
+
+		// MOBILE
+		@media (max-width: 768px) {
+			font-size: 2.5rem;
+		}
 	}
 }
 
