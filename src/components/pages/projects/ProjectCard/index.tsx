@@ -32,6 +32,7 @@ function ProjectCard({
 						height={140}
 						layout="responsive"
 						objectFit="cover"
+						placeholder="blur"
 					/>
 				</div>
 				<div className={styles.detailContainer}>
