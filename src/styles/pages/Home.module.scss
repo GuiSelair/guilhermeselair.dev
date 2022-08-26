@@ -1,12 +1,5 @@
 @import "../mixins.scss";
 
-.backgroundWrapper {
-  width: 100%;
-  height: 100%;
-	overflow-x: hidden;
-  position: relative;
-}
-
 .container {
   width: 100%;
   height: calc(100vh - 59px - 60px);
@@ -40,21 +33,6 @@
 		100% {
 			opacity: 1;
 			transform: translateX(0px);
-		}
-	};
-
-	@keyframes introCard {
-		0% {
-			opacity: 0;
-			transform: translateY(50px);
-		};
-		50% {
-			opacity: 0;
-
-		};
-		100% {
-			opacity: 1;
-			transform: translateY(0px);
 		}
 	};
 
@@ -124,7 +102,7 @@
     text-decoration: none;
     border: 1px solid transparent;
     transition: all 0.2s;
-		animation: 2.5s ease-in-out normal introCard;
+		@include animationStart(2.5s);
 
 
 		// MOBILE

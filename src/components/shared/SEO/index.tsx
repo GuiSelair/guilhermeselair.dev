@@ -1,15 +1,15 @@
-import Head from 'next/head';
+import Head from "next/head";
 
 interface ISEO {
 	title: string;
 	description?: string;
 	image?: string;
 	shouldExcludeTitleSuffix?: boolean;
-	shouldIndexPage?: boolean,
-	children?: React.ReactNode
+	shouldIndexPage?: boolean;
+	children?: React.ReactNode;
 }
 
-function SEO({
+export function SEO({
 	title,
 	description,
 	image,
@@ -17,7 +17,9 @@ function SEO({
 	shouldIndexPage = true,
 	children,
 }: ISEO) {
-	const pageTitle = `${title} ${!shouldExcludeTitleSuffix ? "| Dev. Guilherme Selair" : ""}`;
+	const pageTitle = `${title} ${
+		!shouldExcludeTitleSuffix ? "| Dev. Guilherme Selair" : ""
+	}`;
 	const pageImage = image ? `${image}` : null;
 
 	return (
@@ -53,5 +55,3 @@ function SEO({
 		</Head>
 	);
 }
-
-export default SEO;

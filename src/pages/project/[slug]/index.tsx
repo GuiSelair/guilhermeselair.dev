@@ -6,14 +6,12 @@ import { HiOutlineClock, HiOutlineExternalLink } from "react-icons/hi";
 import { AiFillGithub } from "react-icons/ai";
 import Link from "next/link";
 
-import { graphSDK } from "services/graphql-request";
-import { ProjectQuery } from "generated/sdk";
-import SEO from "components/shared/SEO";
-import ProjectCarousel from "components/pages/project/ProjectCarousel";
-import Header from "components/shared/Header";
-import Footer from "components/shared/Footer";
-import style from "styles/pages/Project.module.scss";
-import ShowTechnologiesThumnails from "components/shared/ShowTechnologiesThumnails";
+import { graphSDK } from "@services/graphql-request";
+import { ProjectQuery } from "@generated/sdk";
+import { SEO, ShowTechnologiesThumnails } from "@components/shared";
+import { ProjectCarousel } from "@components/pages/project";
+import style from "@styles/pages/Project.module.scss";
+
 export default function Project({ project }: ProjectQuery) {
 	const projectGallery = useMemo(
 		() => [
@@ -36,7 +34,6 @@ export default function Project({ project }: ProjectQuery) {
 				image={project.cover.thumbnailToSEO}
 				description={`${project.description.slice(0, 150)}...`}
 			/>
-			<Header />
 			<div className={style.container}>
 				<h1>{project.name}</h1>
 				<ProjectCarousel gallery={projectGallery} />
@@ -103,7 +100,6 @@ export default function Project({ project }: ProjectQuery) {
 					</div>
 				</div>
 			</div>
-			<Footer />
 		</>
 	);
 }

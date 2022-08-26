@@ -1,15 +1,14 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
-import styles from "@styles/About.module.scss";
-import Header from "components/shared/Header";
-import ProfessionalExperiencesSection from "components/pages/about/ProfessionalExperiencesSection";
-import TechnologiesWorked from "components/pages/about/TechnologiesWorkedSection";
-import SEO from "components/shared/SEO";
-import CoursesAndCertifications from "components/pages/about/CoursesAndCertificationsSection";
-import Educations from "components/pages/about/EducationsSection";
-import Footer from "components/shared/Footer";
-import BannerWithCTA from "components/shared/BannerWithCTA";
-import ApresentationSection from "components/pages/about/ApresentationSection";
+import styles from "@styles/pages/About.module.scss";
+import { BannerWithCTA, SEO } from "@components/shared";
+import {
+	ApresentationSection,
+	CoursesAndCertifications,
+	Educations,
+	TechnologiesWorked,
+	ProfessionalExperiencesSection,
+} from "@components/pages/about";
 
 export default function About() {
 	const handleRedirectToGoogleDriveFolder = () => {
@@ -20,9 +19,11 @@ export default function About() {
 	};
 
 	return (
-		<div className={styles.backgroundWrapper}>
-			<SEO title="Sobre mim" description="Veja aqui um pouco da minha trajetória. Sinta-se à vontade de baixar meu currículo :D" />
-			<Header />
+		<>
+			<SEO
+				title="Sobre mim"
+				description="Veja aqui um pouco da minha trajetória. Sinta-se à vontade de baixar meu currículo :D"
+			/>
 			<main className={styles.container}>
 				<h2>Always learning!</h2>
 				<ApresentationSection />
@@ -63,7 +64,6 @@ export default function About() {
 					backgroundColor="#ff784b"
 				/>
 			</main>
-			<Footer />
-		</div>
+		</>
 	);
 }

@@ -1,7 +1,7 @@
 import { memo } from "react";
 import Image from "next/image";
 
-import { getThumbnailFilename } from "utils/getThumbnailFilename";
+import { getThumbnailFilename } from "@utils/getThumbnailFilename";
 import styles from "./styles.module.scss";
 
 type IShowTechnologiesThumnails = {
@@ -9,7 +9,7 @@ type IShowTechnologiesThumnails = {
 	technologies: string[];
 };
 
-function ShowTechnologiesThumnails({
+export function ShowTechnologiesThumnails({
 	size,
 	technologies,
 }: IShowTechnologiesThumnails) {
@@ -28,5 +28,3 @@ function ShowTechnologiesThumnails({
 		</ul>
 	);
 }
-
-export default memo(ShowTechnologiesThumnails);

@@ -16,7 +16,7 @@ type IProjectCarousel = {
 	}[];
 };
 
-function ProjectCarousel({ gallery }: IProjectCarousel) {
+export function ProjectCarousel({ gallery }: IProjectCarousel) {
 	const [lightboxProps, setLightboxProps] = useState({
 		isOpen: false,
 		currentImage: "",
@@ -143,4 +143,3 @@ function ProjectCarousel({ gallery }: IProjectCarousel) {
 	);
 }
 
-export default memo(ProjectCarousel);

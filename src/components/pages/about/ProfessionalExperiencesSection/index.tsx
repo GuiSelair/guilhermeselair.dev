@@ -5,7 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import styles from "./styles.module.scss";
 
-function ProfessionalExperiencesSection() {
+function ProfessionalExperiencesSectionWithoutMemo() {
 	const [currentSelectedSlide, setCurrentSelectedSlide] = useState(0);
 
 	const handleUpdateCurrentSelectedSlide = (slideIndex: number) => {
@@ -153,4 +153,4 @@ function ProfessionalExperiencesSection() {
 	);
 }
 
-export default memo(ProfessionalExperiencesSection);
+export const ProfessionalExperiencesSection = memo(ProfessionalExperiencesSectionWithoutMemo);

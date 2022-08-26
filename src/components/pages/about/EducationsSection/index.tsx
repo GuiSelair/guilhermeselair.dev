@@ -1,9 +1,9 @@
 import { memo } from 'react'
 
-import Label from 'components/shared/Label'
+import { Label } from '@components/shared/Label'
 import styles from './styles.module.scss'
 
-function Educations() {
+function EducationsWithoutMemo() {
 	return (
 		<section className={styles.container}>
 			<h3>Formação Educacional</h3>
@@ -27,4 +27,4 @@ function Educations() {
 	)
 }
 
-export default memo(Educations)
+export const Educations = memo(EducationsWithoutMemo)

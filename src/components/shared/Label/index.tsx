@@ -1,3 +1,4 @@
+import { memo } from "react";
 import style from "./style.module.scss";
 
 interface ILabel {
@@ -5,7 +6,7 @@ interface ILabel {
 	size?: "sm" | "md";
 }
 
-function Label({ text, size = "sm" }: ILabel) {
+function LabelWithoutMemo({ text, size = "sm" }: ILabel) {
   return (
     <div className={style.container} data-size={size}>
       <span>{text}</span>
@@ -13,4 +14,4 @@ function Label({ text, size = "sm" }: ILabel) {
   );
 }
 
-export default Label;
+export const Label = memo(LabelWithoutMemo);

@@ -1,15 +1,12 @@
 import React from "react";
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next/types";
-
-import Footer from "components/shared/Footer";
-import Header from "components/shared/Header";
-import SEO from "components/shared/SEO";
-import { graphSDK } from "services/graphql-request";
-
-import styles from "styles/pages/Demo.module.scss";
-import { HiOutlineArrowSmDown } from "react-icons/hi";
-import { DemoQuery } from "generated/sdk";
+import { GetStaticPaths, GetStaticProps } from "next/types";
 import { FiExternalLink } from "react-icons/fi";
+import { HiOutlineArrowSmDown } from "react-icons/hi";
+
+import { SEO } from "@components/shared";
+import { graphSDK } from "@services/graphql-request";
+import { DemoQuery } from "@generated/sdk";
+import styles from "@styles/pages/Demo.module.scss";
 
 const DemoProject = ({ project }: DemoQuery) => {
 	return (
@@ -19,7 +16,6 @@ const DemoProject = ({ project }: DemoQuery) => {
 				image={project.cover.thumbnailToSEO}
 				description={`${project.description.slice(0, 150)}...`}
 			/>
-			<Header />
 			<div className={styles.container}>
 				<h1>{project.name}</h1>
 				<span>
@@ -43,7 +39,6 @@ const DemoProject = ({ project }: DemoQuery) => {
 					<FiExternalLink />
 				</a>
 			</div>
-			<Footer />
 		</>
 	);
 };

@@ -1,24 +1,24 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
       "@styles/*": [
-        "/styles/pages/*"
+        "src/styles/*"
       ],
       "@components/*": [
-        "/components/*"
+        "src/components/*"
       ],
 			"@services/*": [
-        "/services/*"
+        "src/core/services/*"
       ],
 			"@generated/*": [
-        "/generated/*"
+        "src/core/generated/*"
       ],
 			"@utils/*": [
-        "/utils/*"
+        "src/utils/*"
       ],
-			"@config/*": [
-        "/config/*"
+			"@configs/*": [
+        "src/core/configs/*"
       ]
     },
     "target": "es5",
@@ -43,7 +43,7 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
   ],
   "exclude": [
     "node_modules"

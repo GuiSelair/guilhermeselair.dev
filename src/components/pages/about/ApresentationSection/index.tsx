@@ -1,18 +1,17 @@
-import { basicInfos } from "config/basicInfos";
+import { memo } from "react";
 import Image from "next/image";
 import {
 	AiFillGithub,
 	AiFillLinkedin,
-	AiFillMail,
-	AiOutlineMail,
 	AiOutlineWhatsApp,
 } from "react-icons/ai";
 import { FaDev } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 
+import { basicInfos } from "@configs/basicInfos";
 import styles from "./styles.module.scss";
 
-export default function ApresentationSection() {
+function ApresentationSectionWithoutMemo() {
 	return (
 		<div className={styles.apresentationContainer}>
 			<Image
@@ -26,7 +25,7 @@ export default function ApresentationSection() {
 			/>
 			<div className={styles.apresentationDetails}>
 				<p>
-					Salve salve 🖖, eu sou Guilherme Selair mas pode me chamar de Selair
+					Salve Salve 🖖, eu sou Guilherme Selair mas pode me chamar de Selair
 					ou SeuLair, tenho 24 anos e sou gaúcho. Eu comecei a desenvolver em
 					2018, trabalhando com Python.
 				</p>
@@ -89,3 +88,5 @@ export default function ApresentationSection() {
 		</div>
 	);
 }
+
+export const ApresentationSection = memo(ApresentationSectionWithoutMemo);

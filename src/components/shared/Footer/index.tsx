@@ -1,11 +1,11 @@
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import { FaDev } from "react-icons/fa";
+import { memo } from "react";
 
 import style from "./styles.module.scss";
-import { basicInfos } from "config/basicInfos";
+import { basicInfos } from "@configs/basicInfos";
 
-
-export default function Footer() {
+function FooterWithoutMemo() {
 	return (
 		<footer className={style.container}>
 			<div>
@@ -40,3 +40,5 @@ export default function Footer() {
 		</footer>
 	);
 }
+
+export const Footer = memo(FooterWithoutMemo);

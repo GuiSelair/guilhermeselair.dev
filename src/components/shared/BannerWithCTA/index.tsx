@@ -14,7 +14,7 @@ type IBannerWithCTA = {
 	classNameContainer?: React.CSSProperties
 }
 
-function BannerWithCTA({
+export function BannerWithCTA({
   CTAAction,
   CTAText,
   title,
@@ -46,5 +46,3 @@ function BannerWithCTA({
     </div>
   );
 }
-
-export default memo(BannerWithCTA);

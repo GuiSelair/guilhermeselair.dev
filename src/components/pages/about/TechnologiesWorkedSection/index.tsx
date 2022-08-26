@@ -1,8 +1,9 @@
 import Image from "next/image";
-import { getThumbnailFilename, TECHOLOGIES_IMAGES_NAME } from "utils/getThumbnailFilename";
+import { memo } from "react";
+import { getThumbnailFilename, TECHOLOGIES_IMAGES_NAME } from "@utils/getThumbnailFilename";
 import styles from "./styles.module.scss";
 
-export default function TechnologiesWorked() {
+function TechnologiesWorkedWithoutMemo() {
 	return (
 		<section className={styles.tecnologiasTrabalhadas}>
 			<h3>Tecnologias trabalhadas</h3>
@@ -23,3 +24,5 @@ export default function TechnologiesWorked() {
 		</section>
 	);
 }
+
+export const TechnologiesWorked = memo(TechnologiesWorkedWithoutMemo)

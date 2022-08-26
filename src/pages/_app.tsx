@@ -1,8 +1,13 @@
+import { Footer, Header } from '@components/shared';
 import '../styles/globals.scss';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Component {...pageProps} />
+		<>
+			<Header />
+    	<Component {...pageProps} />
+			<Footer />
+		</>
   );
 }
 

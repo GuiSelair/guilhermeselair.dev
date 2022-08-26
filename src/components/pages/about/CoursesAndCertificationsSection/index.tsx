@@ -2,7 +2,7 @@ import { memo } from "react";
 
 import styles from "./styles.module.scss";
 
-function CoursesAndCertifications() {
+function CoursesAndCertificationsWithoutMemo() {
 	return (
 		<section className={styles.container}>
 			<h3>Cursos e Certificações</h3>
@@ -27,4 +27,4 @@ function CoursesAndCertifications() {
 	);
 }
 
-export default memo(CoursesAndCertifications);
+export const CoursesAndCertifications = memo(CoursesAndCertificationsWithoutMemo);

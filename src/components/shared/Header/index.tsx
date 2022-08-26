@@ -7,10 +7,10 @@ import { HiArrowNarrowLeft, HiOutlineLockClosed } from "react-icons/hi";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-import { basicInfos } from "config/basicInfos";
+import { basicInfos } from "@configs/basicInfos";
 import style from "./style.module.scss";
 
-function Header() {
+export function Header() {
 	const router = useRouter();
 	const isSubPage = router.pathname.includes("/project/");
 
@@ -107,4 +107,3 @@ function Header() {
 		</header>
 	);
 }
-export default Header;

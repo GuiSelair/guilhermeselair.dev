@@ -1,9 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import Label from "components/shared/Label";
-import { memo } from "react";
 
-import ShowTechnologiesThumnails from "components/shared/ShowTechnologiesThumnails";
+import { ShowTechnologiesThumnails, Label } from "@components/shared";
 import styles from "./styles.module.scss";
 
 interface IProjectCard {
@@ -14,7 +12,7 @@ interface IProjectCard {
 	projectTechologies: string[];
 }
 
-function ProjectCard({
+export function ProjectCard({
 	projectId,
 	projectImage,
 	projectName,
@@ -33,6 +31,7 @@ function ProjectCard({
 						layout="responsive"
 						objectFit="cover"
 						placeholder="blur"
+						blurDataURL={projectImage}
 					/>
 				</div>
 				<div className={styles.detailContainer}>
@@ -49,5 +48,3 @@ function ProjectCard({
 		</Link>
 	);
 }
-
-export default memo(ProjectCard);

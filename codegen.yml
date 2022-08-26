@@ -2,10 +2,10 @@ overwrite: true
 
 schema: ${NEXT_PUBLIC_GRAPHCMS_ENDPOINT}
 
-documents: 'src/graphql/**/*.graphql'
+documents: 'src/core/graphql/**/*.graphql'
 
 generates:
-  src/generated/sdk.ts:
+  src/core/generated/sdk.ts:
     plugins:
       - 'typescript'
       - 'typescript-operations'
