@@ -19,6 +19,9 @@
       ],
 			"@configs/*": [
         "src/core/configs/*"
+      ],
+			"@hooks/*": [
+        "src/core/hooks/*"
       ]
     },
     "target": "es5",

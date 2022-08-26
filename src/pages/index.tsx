@@ -1,7 +1,7 @@
-import { SEO, Header, Footer } from "@components/shared";
 import Link from "next/link";
 import { FiExternalLink } from "react-icons/fi";
 
+import { SEO } from "@components/shared";
 import styles from "../styles/pages/Home.module.scss";
 
 export default function Home() {
