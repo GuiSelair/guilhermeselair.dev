@@ -26,7 +26,7 @@ function ApresentationSectionWithoutMemo() {
 			<div className={styles.apresentationDetails}>
 				<p>
 					Salve Salve 🖖, eu sou Guilherme Selair mas pode me chamar de Selair
-					ou SeuLair, tenho 24 anos e sou gaúcho. Eu comecei a desenvolver em
+					ou SeuLair, tenho 25 anos e sou gaúcho. Eu comecei a desenvolver em
 					2018, trabalhando com Python.
 				</p>
 				<p>

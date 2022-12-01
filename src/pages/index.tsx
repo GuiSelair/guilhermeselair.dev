@@ -26,7 +26,7 @@ export default function Home() {
 								<FiExternalLink />
 							</div>
 							<span>
-								Tenho 24 anos, sou desenvolvedor estudando para me especializar
+								Tenho 25 anos, sou desenvolvedor estudando para me especializar
 								em Javascript.
 							</span>
 						</a>
