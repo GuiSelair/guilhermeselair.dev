@@ -20,7 +20,7 @@ const DemoProject = ({ project }: DemoQuery) => {
 				<h1>{project.name}</h1>
 				<span>
 					<HiOutlineArrowSmDown />
-					Abaixo esta uma demonstração navegavel do projeto em questão.
+					Abaixo esta uma demonstração navegável do projeto em questão.
 					<HiOutlineArrowSmDown />
 				</span>
 				<iframe

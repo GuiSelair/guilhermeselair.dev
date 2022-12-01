@@ -10,7 +10,7 @@ function CoursesAndCertificationsWithoutMemo() {
 				<li>
 					<strong>Ignite - Trilha React</strong>
 					<span>Rocketseat</span>
-					<span>Conclusão: 2022 (Em andamento)</span>
+					<span>Conclusão: 2022</span>
 				</li>
 				<li>
 					<strong>Bootcamp GoStack</strong>
