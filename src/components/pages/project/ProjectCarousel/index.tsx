@@ -4,7 +4,7 @@ import { isMobile } from "react-device-detect";
 import { HiArrowNarrowLeft, HiArrowNarrowRight } from "react-icons/hi";
 import Lightbox from "react-awesome-lightbox";
 import Image from "next/image";
-import { memo, useState } from "react";
+import { useState } from "react";
 
 import style from "./styles.module.scss";
 
@@ -76,8 +76,8 @@ export function ProjectCarousel({ gallery }: IProjectCarousel) {
 		<>
 			<Carousel
 				centerMode={!isMobile}
-				centerSlidePercentage={!isMobile ? 59.5 : 65}
-				autoPlay
+				centerSlidePercentage={!isMobile ? 60 : 65}
+				autoPlay={false}
 				infiniteLoop={!isMobile}
 				showThumbs={false}
 				showArrows
@@ -142,4 +142,3 @@ export function ProjectCarousel({ gallery }: IProjectCarousel) {
 		</>
 	);
 }
-

@@ -1,19 +1,15 @@
-
 .carouselContainer {
-	> div{
+	>div {
 		overflow: unset !important;
 
-		> ul {
+		>ul {
 			// control-dots
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			bottom: -40px !important;
 			list-style: none;
-
-			li + li {
-				margin-left: 4px;
-			}
+			gap: 4px;
 
 			.dot {
 				width: 12px;
@@ -21,7 +17,8 @@
 				background: var(--text-gray);
 				display: inline-block;
 				border-radius: 50%;
-				border: none;;
+				border: none;
+				;
 				cursor: pointer;
 
 				&[data-selected="true"] {
@@ -29,27 +26,12 @@
 					height: 16px;
 					background: var(--text-orange);
 				}
-
-
-			}
-		}
-
-		> div > ul {
-			li {
-				// MOBILE
-				@media (max-width: 425px) {
-					min-width: 100% !important;
-				}
-				// TABLET
-				@media (min-width: 426px) and (max-width: 768px) {
-					min-width: 100% !important;
-				}
 			}
 		}
 	}
 }
 
-.carouselShowOnlyCoverContainer{
+.carouselShowOnlyCoverContainer {
 	display: flex;
 	justify-content: center;
 	cursor: pointer;
@@ -72,6 +54,7 @@
 }
 
 .carouselImagesContainer {
+	padding: 0 8px;
 
 	span {
 		cursor: pointer;
@@ -84,11 +67,13 @@
 			width: 100% !important;
 			height: 200px !important;
 		}
+
 		// TABLET
 		@media (min-width: 769px) and (max-width: 1024px) {
 			width: 100% !important;
 			height: 300px !important;
 		}
+
 		// LAPTOP to 1366x768
 		@media (min-width: 1024px) and (max-width: 1366px) {
 			width: min(100%, 800px) !important;
@@ -122,12 +107,12 @@
 	}
 
 	&:hover {
-		> svg {
+		>svg {
 			color: var(--text-light);
 		}
 	}
 
-	> svg {
+	>svg {
 		width: 1.2rem;
 		height: 1.2rem;
 		color: var(--text-orange);
@@ -161,12 +146,12 @@
 	}
 
 	&:hover {
-		> svg {
+		>svg {
 			color: var(--text-light);
 		}
 	}
 
-	> svg {
+	>svg {
 		width: 1.2rem;
 		height: 1.2rem;
 		color: var(--text-orange);

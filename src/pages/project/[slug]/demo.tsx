@@ -28,6 +28,7 @@ const DemoProject = ({ project }: DemoQuery) => {
 					src={project.websiteUrl}
 					frameBorder="0"
 					loading="lazy"
+					title="Demo do projeto"
 				/>
 				<a
 					href={project.websiteUrl}
