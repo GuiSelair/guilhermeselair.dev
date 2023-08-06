@@ -34,10 +34,29 @@ function ProfessionalExperiencesSectionWithoutMemo() {
 				<div>
 					<ul>
 						<li>
+							<strong>Desenvolvedor Front-end e Mobile</strong>
+							<span className={styles.companyName}>Freelancer</span>
+							<span className="duration">Junho/2023 - Atual</span>
+							<p>
+								Ingressei nesse projeto a fim de entregar uma solução simples,
+								funcional e criativa para redes de combustivéis. Utilizando
+								React Native e React foram construídos uma plataforma de gestão
+								e um aplicativo prático e rápido para ser utilizado por
+								frentistas e consumidor.
+							</p>
+						</li>
+						<li>
 							<strong>Desenvolvedor Front-end Pleno</strong>
 							<span className={styles.companyName}>Empresa: Getrak</span>
 							<span className="duration">Abril/2022 - Atual</span>
-							<p></p>
+							<p>
+								Criação, manutenção e integração de micro-frontends construídos
+								com React a micro-serviços faziam parte do meu dia-a-dia.
+								Utilizando PHP e Javascript realizei diversas manutenções no
+								principal sistema legado da empresa. Participei ativamente da
+								criação do design system da empresa, criando os principais
+								componentes que seriam utilizados por devs de todos os squads.
+							</p>
 						</li>
 						<li>
 							<strong>Desenvolvedor Full-stack</strong>
@@ -58,6 +77,10 @@ function ProfessionalExperiencesSectionWithoutMemo() {
 								estado do Rio Grande do Sul.
 							</p>
 						</li>
+					</ul>
+				</div>
+				<div>
+					<ul>
 						<li>
 							<strong>Estágio - Desenvolvedor Front-end</strong>
 							<span className={styles.companyName}>
@@ -93,10 +116,6 @@ function ProfessionalExperiencesSectionWithoutMemo() {
 								o público.
 							</p>
 						</li>
-					</ul>
-				</div>
-				<div>
-					<ul>
 						<li>
 							<strong>Estágio - Desenvolvedor Full-stack</strong>
 							<span className={styles.companyName}>
@@ -115,6 +134,10 @@ function ProfessionalExperiencesSectionWithoutMemo() {
 								facilmente através da plataforma sendo utilizada até hoje.
 							</p>
 						</li>
+					</ul>
+				</div>
+				<div>
+					<ul>
 						<li>
 							<strong>Auxiliar Administrativo</strong>
 							<span className={styles.companyName}>
@@ -153,4 +176,6 @@ function ProfessionalExperiencesSectionWithoutMemo() {
 	);
 }
 
-export const ProfessionalExperiencesSection = memo(ProfessionalExperiencesSectionWithoutMemo);
+export const ProfessionalExperiencesSection = memo(
+	ProfessionalExperiencesSectionWithoutMemo
+);
