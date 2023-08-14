@@ -1,99 +1,101 @@
 .experiencias {
-  grid-area: experiencias;
-  position: relative;
+	grid-area: experiencias;
+	position: relative;
 
-  ul {
-    list-style: none;
-    width: 100%;
-
-    hr {
-      margin-bottom: 0.5rem;
-    }
-
-    > li {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-
-			& + li {
-				padding-top: 0.5rem;
-				margin-top: 0.5rem;
-				border-top: 1px solid rgba($color: #FFF, $alpha: 0.1);
-
-			}
-
-      > strong {
-        font-size: 1.125rem;
-        margin-bottom: 0.5rem;
-      }
-
-      span {
-        font-weight: 400;
-        font-size: 0.875rem;
-        color: rgba($color: #FFF, $alpha: 0.4);
-      }
-
-      p {
-				line-height: 1.5rem;
-
-				& + p {
-        margin-top: 4px;
-      }}
-
-      .companyName {
-				font-weight: 600;
-      }
-
-      span + span {
-        margin-top: 0.25rem;
-        margin-bottom: 0.5rem;
-      }
-
-      > ul {
-        list-style-type: disc;
-        list-style-position: inside;
-        margin: 0.5rem 0;
-
-        li {
-          margin: 4px 0;
-        }
-      }
-    }
-  }
-
-  .controlSlidesButtonsEndSection {
-    width: 100%;
-    margin-top: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+	.controlSlidesButtonsEndSection {
+		width: 100%;
+		margin-top: 4px;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
 
 		// MOBILE
 		@media (max-width: 768px) {
 			margin-top: 1.5rem;
 		}
 
-    > button {
-      background: var(--text-orange);
-      border: none;
-      border-radius: 4px;
-      font-size: 0;
-      transition: filter 0.2s;
+		>button {
+			background: var(--text-orange);
+			border: none;
+			border-radius: 4px;
+			font-size: 0;
+			transition: filter 0.2s;
 
-      > svg {
-        width: 1.2rem;
-        height: 1.2rem;
+			&:hover {
+				filter: brightness(0.8);
+			}
+
+			&:disabled {
+				cursor: not-allowed;
+				opacity: 0.5;
+			}
+
+			>svg {
+				width: 1.5rem;
+				height: 1.5rem;
 
 				// MOBILE
 				@media (max-width: 768px) {
 					width: 1.8rem;
 					height: 1.8rem;
 				}
-      }
+			}
 
-      & + button {
-        margin-left: 0.25rem;
-      }
-    }
-  }
+			&+button {
+				margin-left: 0.25rem;
+			}
+		}
+	}
+}
+
+.experiencesSectionContainer {
+	ul {
+		list-style: none;
+		width: 100%;
+
+		>li {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+
+			&+li {
+				padding-top: 1rem;
+				margin-top: 1rem;
+				border-top: 1px solid rgba($color: #FFF, $alpha: 0.1);
+			}
+
+			>strong {
+				font-size: 1.125rem;
+				margin-bottom: 0.5rem;
+			}
+
+			span {
+				font-weight: 400;
+				font-size: 0.875rem;
+				color: rgba($color: #FFF, $alpha: 0.4);
+
+				&+span {
+					margin-top: 0.25rem;
+					margin-bottom: 0.5rem;
+				}
+			}
+
+			p {
+				line-height: 160%;
+
+				&+p {
+					margin-top: 4px;
+				}
+			}
+
+			.companyName {
+				font-weight: 600;
+			}
+
+			.duration {
+				margin-top: 0.5rem;
+			}
+
+		}
+	}
 }

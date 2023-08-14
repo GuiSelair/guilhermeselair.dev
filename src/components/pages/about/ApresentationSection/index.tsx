@@ -27,7 +27,7 @@ function ApresentationSectionWithoutMemo() {
 				<p>
 					Salve Salve 🖖, eu sou Guilherme Selair mas pode me chamar de Selair
 					ou SeuLair, tenho 25 anos e sou gaúcho. Eu comecei a desenvolver em
-					2018, trabalhando com Python.
+					2019, trabalhando com Python.
 				</p>
 				<p>
 					Atualmente eu sou desenvolvedor front-end na Getrak e está sendo uma
