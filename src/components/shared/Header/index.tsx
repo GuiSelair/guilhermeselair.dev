@@ -1,5 +1,4 @@
 import {
-	AiOutlineWhatsApp,
 	AiFillGithub,
 	AiFillLinkedin,
 } from "react-icons/ai";
@@ -79,14 +78,6 @@ export function Header() {
 				</ul>
 			</nav>
 			<div className={style.rightSide}>
-				<a
-					title="Entrar em contato por Whatsapp"
-					href={`${basicInfos.whatsapp}?phone=${basicInfos.phone}`}
-					target="_blank"
-					rel="noreferrer"
-				>
-					<AiOutlineWhatsApp />
-				</a>
 				<a
 					title="Veja meu Linkedin"
 					href={basicInfos.linkedin}

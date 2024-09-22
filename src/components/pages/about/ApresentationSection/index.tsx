@@ -3,7 +3,6 @@ import Image from "next/image";
 import {
 	AiFillGithub,
 	AiFillLinkedin,
-	AiOutlineWhatsApp,
 } from "react-icons/ai";
 import { FaDev } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
@@ -25,21 +24,14 @@ function ApresentationSectionWithoutMemo() {
 			/>
 			<div className={styles.apresentationDetails}>
 				<p>
-					Salve Salve 🖖, eu sou Guilherme Selair mas pode me chamar de Selair
-					ou SeuLair, tenho 25 anos e sou gaúcho. Eu comecei a desenvolver em
-					2019, trabalhando com Python.
+					Salve Salve 🖖, eu sou Guilherme Selair, mas pode me chamar de Selair. Sou desenvolvedor de software há 5 anos, com foco na experiência do usuário. Ao longo do tempo, já tive o privilégio de impactar mais de 10 mil pessoas por meio de projetos criativos, sempre com o objetivo de entregar experiências intuitivas, inovadores e de alta performance.
 				</p>
 				<p>
-					Atualmente eu sou desenvolvedor front-end na Getrak e está sendo uma
-					aventura desafiadora e incrível. Durante minha jornada já impactei
-					mais de 6000 pessoas com aplicações criativas e funcionais. Estou
-					sempre a procura do próximo nível 🚀, buscando enriquecer minha
-					experiência como desenvolvedor com o objetivo de me tornar um
-					especialista na linguagem Javascript.
+					Durante minha jornada, trabalhei com diversas tecnologias como PHP, Python, Javascript, NodeJS, ReactJS, React Native, NextJS, GraphQL, entre outras. Hoje, atuar no front-end é o que mais me cativa, ter uma abordagem prática, valorizando performance e uma experiência de usuário fluida. Porém como desenvolvedor busco sempre expandir meus conhecimentos explorando novas tecnologias para assim entregar aplicações de ponta-a-ponta com qualidade.
 				</p>
 				<p>
 					Sou natural de Santa Maria, Rio Grande do Sul. Atualmente, moro na
-					minha cidade natal em um apezinho com minha namorada espetacular 🥰.
+					na capital do meu estado, Porto Alegre.
 					No meu tempo livre, curto demais jogar meu Euro Truck, catar novas
 					techs e ir ao cinema, comer aquela pipoquinha 😋.
 				</p>
@@ -47,14 +39,6 @@ function ApresentationSectionWithoutMemo() {
 				<div className={styles.linksSociais}>
 					<a title="Envie um email" href={`mailto:${basicInfos.email}`}>
 						<FiMail />
-					</a>
-					<a
-						title="Entrar em contato por Whatsapp"
-						href={`${basicInfos.whatsapp}?phone=${basicInfos.phone}`}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<AiOutlineWhatsApp />
 					</a>
 					<a
 						aria-label="Github"

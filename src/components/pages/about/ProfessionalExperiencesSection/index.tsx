@@ -7,22 +7,10 @@ import styles from "./styles.module.scss";
 
 const PROFESSIONAL_EXPERIENCES = [
 	{
-		office: "Desenvolvedor Front-end e Mobile",
-		companyName: "Freelancer",
-		duration: "Junho/2023 - Atual",
-		description: `Ingressei nesse projeto a fim de entregar uma solução simples, funcional e criativa para redes de combustivéis. Utilizando React Native e React foram construídos uma plataforma de gestão e um aplicativo prático e rápido para ser utilizado por frentistas e consumidor.`,
-		hasCompany: false,
-	},
-	{
 		office: "Desenvolvedor Front-end Pleno",
 		companyName: "Getrak",
-		duration: "Abril/2022 - Atual",
-		description: `Criação, manutenção e integração de micro-frontends construídos
-		com React a micro-serviços faziam parte do meu dia-a-dia.
-		Utilizando PHP e Javascript realizei diversas manutenções no
-		principal sistema legado da empresa. Participei ativamente da
-		criação do design system da empresa, criando os principais
-		componentes que seriam utilizados por devs de todos os squads.`,
+		duration: "Abril/2022 - Setembro/2024",
+		description: `Atuei na criação, manutenção e integração de micro-frontends utilizando React, conectando-os a micro-serviços. Trabalhei ativamente no principal sistema legado da empresa, realizando manutenções com PHP e JavaScript, o que resultou em melhorias significativas na estabilidade e performance do sistema. Além disso, participei da criação do design system, desenvolvendo do zero componentes centrais que foram adotados por todos os squads, garantindo consistência e eficiência no desenvolvimento de interfaces`,
 		hasCompany: true,
 	},
 	{
@@ -30,15 +18,7 @@ const PROFESSIONAL_EXPERIENCES = [
 		companyName: "Easy Auth Sistemas",
 		hasCompany: true,
 		duration: "Julho/2021 - Abril/2022",
-		description: `Utilizando Javascript de ponta-a-ponta auxiliei na construção de
-		uma plataforma de eventos esportivos. Integração com gateways de
-		pagamentos como Stripe, armazenamento de dados e envio de
-		emails/SMS através da AWS e utilização de GraphQL para obtenção
-		de dados foram algumas tecnologias e ferramentas utilizadas.
-		<br />
-		Com a plataforma em produção, ela já conta com mais de 1000
-		atletas inscritos em diferentes eventos distribuídos em todo o
-		estado do Rio Grande do Sul.`,
+		description: `Contribuí para o desenvolvimento de uma plataforma de eventos esportivos utilizando JavaScript em toda a stack. Realizei integrações com gateways de pagamento, como Stripe, e implementei soluções de armazenamento de dados e envio de emails/SMS com AWS. Além disso, utilizei GraphQL para otimizar a obtenção de dados, garantindo uma comunicação eficiente entre o front-end e o back-end da aplicação`,
 	},
 	{
 		office: "Estágio - Desenvolvedor Front-end",
@@ -46,18 +26,7 @@ const PROFESSIONAL_EXPERIENCES = [
 		hasCompany: true,
 		duration: "Janeiro/2020 - Julho/2021",
 		description: `
-		Ingressei na empresa como estagiário a fim de solucionar um
-		problema de escalabilidade existente na criação de relatórios de
-		desempenho. Como alternativa utilizando python foi desenvolvido
-		uma ferramenta que trouxe alta escalabilidade e automação para a
-		empresa. Com a ferramenta foi possível reduzir o tempo de
-		criação de relatórios de 3 dias para segundos, poupando tempo e
-		mão de obra.
-		<br/>
-		Após a conclusão da ferramenta de automação, fiquei responsável
-		pela construção do front-end da plataforma de sorteios online da
-		empresa. Utilizando React com NextJS, a plataforma atingiu a
-		marca de 5000 sorteios realizados em 3 meses.
+		Entrei na Lunix para solucionar problemas de escalabilidade na criação de relatórios de desempenho. Desenvolvi uma ferramenta em Python e PHP que automatizou esse processo, resultando em maior eficiência e escalabilidade para a empresa. Após a conclusão deste projeto, fui responsável pela construção do front-end da plataforma de sorteios online, utilizando ReactJS para entregar uma interface moderna e de alta performance.
 		`,
 	},
 	{
@@ -65,17 +34,14 @@ const PROFESSIONAL_EXPERIENCES = [
 		companyName: "Sistemas & Informações",
 		hasCompany: true,
 		duration: "Setembro, 2019 - Dezembro, 2019",
-		description: `Entrei na empresa para auxiliar a equipe de suporte com o
-		aumento da demanda de solicitações. Como resultado a empresa
-		conseguiu suprir a demanda e eu adquiri experiência em falar com
-		o público.`,
+		description: `Atuei na equipe de suporte para ajudar a lidar com o aumento da demanda de solicitações dos clientes. Isso me permitiu desenvolver habilidades de comunicação, além de aprimorar minha capacidade de resolução de problemas em tempo real.`,
 	},
 	{
 		office: "Estágio - Desenvolvedor Full-stack",
 		companyName: "Escola de Ensino Médio Professora Maria Rocha",
 		hasCompany: true,
 		duration: "Junho, 2019 - Agosto, 2019",
-		description: `Utilizando PHP, Javascript e MYSQL construí um projeto com objetivo de facilitar a comunicação da escola com professores e estudantes. Para isso foi modernizado o site da escola e implementado um portal do aluno, com notas, frequências e notícias importantes.`,
+		description: `Desenvolvi um projeto para modernizar o site da escola e facilitar a comunicação entre professores, estudantes e a instituição. A principal entrega foi a criação de um portal que permitia aos estudantes acessar facilmente informações como notas, frequência e notícias importantes. O projeto trouxe uma interface mais intuitiva e uma navegação otimizada, melhorando a experiência dos usuários.`,
 	},
 	{
 		office: "Auxiliar Administrativo",

@@ -82,21 +82,6 @@ export default function Projects({ projects }: ProjectsQuery) {
 							/>
 						))}
 				</div>
-				<BannerWithCTA
-					CTAAction={() =>
-						window.open(
-							`${basicInfos.whatsapp}?phone=${basicInfos.phone}`,
-							"_blank"
-						)
-					}
-					CTAText="Entrar em contato"
-					title="Gostou de algum projeto?"
-					description="Vamos conversar sobre ele!"
-					backgroundColor="#2D2C2A"
-					backgroundImage="message-icon.png"
-					backgroundPositionX="3%"
-					backgroundPositionY="110%"
-				/>
 				<div className={styles.projectContainer}>
 					{hasProject &&
 						projectsChunk[1].map((project) => (

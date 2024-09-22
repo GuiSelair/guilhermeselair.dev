@@ -9,7 +9,7 @@ function FooterWithoutMemo() {
 	return (
 		<footer className={style.container}>
 			<div>
-				<span>© Guilherme Selair. 2022</span>
+				<span>© Guilherme Selair. {new Date().getFullYear()}</span>
 			</div>
 			<div>
 				<a

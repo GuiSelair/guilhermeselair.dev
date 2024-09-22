@@ -26,7 +26,7 @@ export default function Home() {
 								<FiExternalLink />
 							</div>
 							<span>
-								Tenho 25 anos, sou desenvolvedor estudando para me especializar
+								Tenho 26 anos, sou desenvolvedor há 5 anos me especializando
 								em Javascript.
 							</span>
 						</a>
@@ -38,8 +38,7 @@ export default function Home() {
 								<FiExternalLink />
 							</div>
 							<span>
-								Em busca do novo, vou seguindo meu caminho sempre almejando o
-								próximo nível.
+								Busco sempre expandir meus conhecimentos explorando novas tecnologias para assim entregar aplicações de ponta-a-ponta com qualidade.
 							</span>
 						</a>
 					</Link>
