@@ -31,7 +31,7 @@ function ApresentationSectionWithoutMemo() {
 				</p>
 				<p>
 					Sou natural de Santa Maria, Rio Grande do Sul. Atualmente, moro na
-					na capital do meu estado, Porto Alegre.
+					capital do meu estado, Porto Alegre.
 					No meu tempo livre, curto demais jogar meu Euro Truck, catar novas
 					techs e ir ao cinema, comer aquela pipoquinha 😋.
 				</p>
