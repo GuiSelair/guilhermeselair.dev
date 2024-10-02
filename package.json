@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,15 +9,15 @@
     "codegen": "graphql-codegen --require dotenv/config --config codegen.yml dotenv_config_path=.env.local"
   },
   "dependencies": {
-    "@types/react": "^17.0.7",
+    "@types/react": "^17.0.2",
     "firebase": "^9.9.2",
     "graphql": "^16.3.0",
     "graphql-request": "^4.2.0",
     "next": "12",
-    "react": "latest",
+    "react": "^17.0.2",
     "react-awesome-lightbox": "^1.8.1",
     "react-device-detect": "^2.1.2",
-    "react-dom": "latest",
+    "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
     "react-markdown": "^8.0.2",
     "react-responsive-carousel": "^3.2.22",
