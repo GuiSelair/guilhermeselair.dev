@@ -75,8 +75,7 @@ function ProfessionalExperiencesSectionWithoutMemo() {
 
 	const goToSectionTop = () => {
 		sectionRef.current?.scrollIntoView({
-			behavior: "smooth",
-			block: "center",
+			block: "start",
 		});
 	};
 	const handleNextSlide = () => {
