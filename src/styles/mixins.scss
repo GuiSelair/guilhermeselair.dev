@@ -6,10 +6,10 @@
 	background-image: linear-gradient(109.6deg, rgb(232, 252, 252) 11.2%, rgb(252, 215, 134) 56.2%, #ff784b 100.2%);
 	color: #000;
 	background-size: 400% 400%;
-	-webkit-animation: textBackground 10s ease infinite;
-	-moz-animation: textBackground 10s ease infinite;
-	-o-animation: textBackground 10s ease infinite;
-	animation: textBackground 10s ease infinite;
+	-webkit-animation: textBackground 6s ease infinite;
+	-moz-animation: textBackground 6s ease infinite;
+	-o-animation: textBackground 6s ease infinite;
+	animation: textBackground 6s ease infinite;
 
 	@-webkit-keyframes textBackground {
 			0%{background-position:0% 50%}
