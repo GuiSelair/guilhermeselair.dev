@@ -4,17 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { CgArrowLongDown } from "react-icons/cg";
 
-import { SEO, BannerWithCTA } from "@components/shared";
-import { basicInfos } from "@configs/basicInfos";
-import styles from "@styles/pages/Projects.module.scss";
+import { SEO } from "@components/shared";
 import { ProjectCard } from "@components/pages/projects";
 import { graphSDK } from "@services/graphql-request";
 import { ProjectsQuery } from "@generated/sdk";
+import styles from "@styles/pages/Projects.module.scss";
 
-// type IProjectChunk = {
-// 	type: "project" | "banner";
-// 	data: Pick<ProjectsQuery, "projects">[] | React.ReactNode;
-// }[];
 type IProjectChunk = ProjectsQuery["projects"][];
 
 export default function Projects({ projects }: ProjectsQuery) {
@@ -36,7 +31,7 @@ export default function Projects({ projects }: ProjectsQuery) {
 	}, [projects]);
 
 	const hasProject = projectsChunk.length > 0;
-	const highlightProject = projects[1];
+	const highlightProject = projects.find((project) => project.isHighlight) || projects[1];
 
 	return (
 		<>

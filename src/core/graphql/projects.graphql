@@ -4,6 +4,7 @@ query Projects{
 		slug
 		type
 		technologies
+		isHighlight
 		cover {
 			url
 		}

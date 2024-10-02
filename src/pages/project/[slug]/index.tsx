@@ -113,7 +113,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 				slug: project.slug,
 			},
 		})),
-		fallback: false,
+		fallback: 'blocking',
 	};
 };
 
