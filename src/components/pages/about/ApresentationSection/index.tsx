@@ -6,6 +6,7 @@ import {
 } from "react-icons/ai";
 import { FaDev } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
+import ReactMarkdown from "react-markdown";
 
 import { basicInfos } from "@configs/basicInfos";
 import styles from "./styles.module.scss";
@@ -27,7 +28,9 @@ function ApresentationSectionWithoutMemo({ profile }: ApresentationSectionProps)
 				alt="Uma imagem que representa Guilherme Selair apresentando seu TCC"
 			/>
 			<div className={styles.apresentationDetails}>
-				{profile}
+				<ReactMarkdown>
+					{profile}
+				</ReactMarkdown>
 
 				<div className={styles.linksSociais}>
 					<a title="Envie um email" href={`mailto:${basicInfos.email}`}>
