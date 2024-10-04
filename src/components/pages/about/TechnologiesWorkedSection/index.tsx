@@ -25,4 +25,4 @@ function TechnologiesWorkedWithoutMemo() {
 	);
 }
 
-export const TechnologiesWorked = memo(TechnologiesWorkedWithoutMemo)
+export const TechnologiesWorkedSection = memo(TechnologiesWorkedWithoutMemo)

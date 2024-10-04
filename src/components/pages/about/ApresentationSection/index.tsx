@@ -10,7 +10,11 @@ import { FiMail } from "react-icons/fi";
 import { basicInfos } from "@configs/basicInfos";
 import styles from "./styles.module.scss";
 
-function ApresentationSectionWithoutMemo() {
+interface ApresentationSectionProps {
+	profile: string
+}
+
+function ApresentationSectionWithoutMemo({ profile }: ApresentationSectionProps) {
 	return (
 		<div className={styles.apresentationContainer}>
 			<Image
@@ -23,18 +27,7 @@ function ApresentationSectionWithoutMemo() {
 				alt="Uma imagem que representa Guilherme Selair apresentando seu TCC"
 			/>
 			<div className={styles.apresentationDetails}>
-				<p>
-					Salve Salve 🖖, eu sou Guilherme Selair, mas pode me chamar de Selair. Sou desenvolvedor de software há 5 anos, com foco na experiência do usuário. Ao longo do tempo, já tive o privilégio de impactar mais de 10 mil pessoas por meio de projetos criativos, sempre com o objetivo de entregar experiências intuitivas, inovadores e de alta performance.
-				</p>
-				<p>
-					Durante minha jornada, trabalhei com diversas tecnologias como PHP, Python, Javascript, NodeJS, ReactJS, React Native, NextJS, GraphQL, entre outras. Hoje, atuar no front-end é o que mais me cativa, ter uma abordagem prática, valorizando performance e uma experiência de usuário fluida. Porém como desenvolvedor busco sempre expandir meus conhecimentos explorando novas tecnologias para assim entregar aplicações de ponta-a-ponta com qualidade.
-				</p>
-				<p>
-					Sou natural de Santa Maria, Rio Grande do Sul. Atualmente, moro na
-					capital do meu estado, Porto Alegre.
-					No meu tempo livre, curto demais jogar meu Euro Truck, catar novas
-					techs e ir ao cinema, comer aquela pipoquinha 😋.
-				</p>
+				{profile}
 
 				<div className={styles.linksSociais}>
 					<a title="Envie um email" href={`mailto:${basicInfos.email}`}>

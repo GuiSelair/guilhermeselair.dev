@@ -1,19 +1,26 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import { GetStaticProps } from "next";
+import { graphSDK } from "@services/graphql-request";
+import { AboutQuery } from "@generated/sdk";
 
 import styles from "@styles/pages/About.module.scss";
 import { BannerWithCTA, SEO } from "@components/shared";
 import {
 	ApresentationSection,
-	CoursesAndCertifications,
-	Educations,
-	TechnologiesWorked,
+	CoursesAndCertificationsSection,
+	EducationsSection,
+	TechnologiesWorkedSection,
 	ProfessionalExperiencesSection,
 } from "@components/pages/about";
 
-export default function About() {
+interface AboutPageProps {
+	about: AboutQuery['abouts'][0]
+}
+
+export default function AboutPage({ about }: AboutPageProps) {
 	const handleRedirectToGoogleDriveFolder = () => {
 		return window.open(
-			"https://drive.google.com/drive/folders/1o5AbcKVycFeL5JZwFp2S4mpd_PXhhqGr?usp=sharing",
+			about.cvUrl,
 			"_blank"
 		);
 	};
@@ -26,12 +33,13 @@ export default function About() {
 			/>
 			<main className={styles.container}>
 				<h2>Always learning!</h2>
-				<ApresentationSection />
+				<ApresentationSection profile={about.profile} />
+
 				<div className={styles.aboutContainerDesktop}>
-					<CoursesAndCertifications />
-					<Educations />
-					<TechnologiesWorked />
-					<ProfessionalExperiencesSection />
+					<CoursesAndCertificationsSection courses={about.coursesSection} />
+					<EducationsSection educations={about.educationSection} />
+					<TechnologiesWorkedSection />
+					<ProfessionalExperiencesSection experiences={about.experiencesSection} />
 				</div>
 
 				<div className={styles.aboutContainerMobile}>
@@ -42,13 +50,13 @@ export default function About() {
 						</TabList>
 
 						<TabPanel>
-							<CoursesAndCertifications />
-							<Educations />
-							<TechnologiesWorked />
+							<CoursesAndCertificationsSection courses={about.coursesSection} />
+							<EducationsSection educations={about.educationSection} />
+							<TechnologiesWorkedSection />
 						</TabPanel>
 
 						<TabPanel>
-							<ProfessionalExperiencesSection />
+							<ProfessionalExperiencesSection experiences={about.experiencesSection} />
 						</TabPanel>
 					</Tabs>
 				</div>
@@ -66,4 +74,14 @@ export default function About() {
 			</main>
 		</>
 	);
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+	const { abouts } = await graphSDK.About();
+	return {
+		props: {
+			about: abouts[0],
+		},
+		revalidate: 60 * 60 * 24, // 24 hours,
+	};
 }

@@ -1,30 +1,30 @@
 import { memo } from 'react'
+import { AboutQuery } from '@generated/sdk'
 
-import { Label } from '@components/shared/Label'
+import { Badge } from '@components/shared/Badge'
 import styles from './styles.module.scss'
 
-function EducationsWithoutMemo() {
+interface EducationsProps {
+	educations: AboutQuery['abouts'][0]['educationSection']
+}
+
+function EducationsWithoutMemo({ educations }: EducationsProps) {
 	return (
 		<section className={styles.container}>
 			<h3>Formação Educacional</h3>
 			<ul>
-				<li>
-					<strong>
-						Tecnólogo em Redes de Computadores
-						<Label text="Ensino Superior" />
-					</strong>
-					<span>Universidade Federal de Santa Maria</span>
-				</li>
-				<li>
-					<strong>
-						Técnico em Informática
-						<Label text="Ensino Técnico" />
-					</strong>
-					<span>Escola Estadual de Ensino Médio Professora Maria Rocha</span>
-				</li>
+				{educations.map(education => (
+					<li key={education.id}>
+						<strong>
+							{education.name}
+							<Badge text={education.level} />
+						</strong>
+						<span>{education.educationalCompany}</span>
+					</li>
+				))}
 			</ul>
 		</section>
 	)
 }
 
-export const Educations = memo(EducationsWithoutMemo)
+export const EducationsSection = memo(EducationsWithoutMemo)

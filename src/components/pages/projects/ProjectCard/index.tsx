@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { ShowTechnologiesThumnails, Label } from "@components/shared";
+import { ShowTechnologiesThumnails, Badge } from "@components/shared";
 import styles from "./styles.module.scss";
 
 interface IProjectCard {
@@ -36,7 +36,7 @@ export function ProjectCard({
 				</div>
 				<div className={styles.detailContainer}>
 					<span>{projectName}</span>
-					<Label text={projectType} size="md" />
+					<Badge text={projectType} size="md" />
 				</div>
 				<div className={styles.techologiesContainer}>
 					<ShowTechnologiesThumnails

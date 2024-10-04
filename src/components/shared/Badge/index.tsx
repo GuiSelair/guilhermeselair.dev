@@ -1,12 +1,12 @@
 import { memo } from "react";
 import style from "./style.module.scss";
 
-interface ILabel {
+interface BadgeProps {
   text: string;
 	size?: "sm" | "md";
 }
 
-function LabelWithoutMemo({ text, size = "sm" }: ILabel) {
+function BadgeWithoutMemo({ text, size = "sm" }: BadgeProps) {
   return (
     <div className={style.container} data-size={size}>
       <span>{text}</span>
@@ -14,4 +14,4 @@ function LabelWithoutMemo({ text, size = "sm" }: ILabel) {
   );
 }
 
-export const Label = memo(LabelWithoutMemo);
+export const Badge = memo(BadgeWithoutMemo);

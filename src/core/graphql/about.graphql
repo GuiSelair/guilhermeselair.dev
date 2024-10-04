@@ -1,0 +1,33 @@
+query About {
+  abouts {
+    id
+    profile
+    cvUrl
+    coursesSection {
+      ... on Course {
+				id
+        name
+        educationalCompany
+        conclusion
+      }
+    }
+    experiencesSection {
+      ... on Experience {
+				id
+        office
+        hasCompany
+        company
+        description
+        duration
+      }
+    }
+    educationSection {
+      ... on Education {
+        id
+        name
+        level
+        educationalCompany
+      }
+    }
+  }
+}

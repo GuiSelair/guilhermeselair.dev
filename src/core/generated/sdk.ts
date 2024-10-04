@@ -25,16 +25,21 @@ export type Scalars = {
 
 export type About = Entity & Node & {
   __typename?: 'About';
+  coursesSection: Array<AboutcoursesSectionUnion>;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
   /** User that created this document */
   createdBy?: Maybe<User>;
+  cvUrl: Scalars['String'];
   /** Get the document in other stages */
   documentInStages: Array<About>;
+  educationSection: Array<AbouteducationSectionUnion>;
+  experiencesSection: Array<AboutexperiencesSectionUnion>;
   /** List of About versions */
   history: Array<Version>;
   /** The unique identifier */
   id: Scalars['ID'];
+  profile: Scalars['String'];
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']>;
   /** User that last published this document */
@@ -49,6 +54,17 @@ export type About = Entity & Node & {
 };
 
 
+export type AboutCoursesSectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
 export type AboutCreatedByArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
@@ -59,6 +75,28 @@ export type AboutDocumentInStagesArgs = {
   includeCurrent?: Scalars['Boolean'];
   inheritLocale?: Scalars['Boolean'];
   stages?: Array<Stage>;
+};
+
+
+export type AboutEducationSectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type AboutExperiencesSectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
+  last?: InputMaybe<Scalars['Int']>;
+  locales?: InputMaybe<Array<Locale>>;
+  skip?: InputMaybe<Scalars['Int']>;
 };
 
 
@@ -110,7 +148,12 @@ export type AboutConnection = {
 };
 
 export type AboutCreateInput = {
+  coursesSection?: InputMaybe<AboutcoursesSectionUnionCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
+  cvUrl: Scalars['String'];
+  educationSection?: InputMaybe<AbouteducationSectionUnionCreateManyInlineInput>;
+  experiencesSection?: InputMaybe<AboutexperiencesSectionUnionCreateManyInlineInput>;
+  profile: Scalars['String'];
   updatedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
@@ -147,6 +190,10 @@ export type AboutManyWhereInput = {
   OR?: InputMaybe<Array<AboutWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  /** All values in which the union is empty. */
+  coursesSection_empty?: InputMaybe<Scalars['Boolean']>;
+  /** Matches if the modular component contains at least one connection to the item provided to the filter */
+  coursesSection_some?: InputMaybe<AboutcoursesSectionUnionWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -163,9 +210,36 @@ export type AboutManyWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   createdBy?: InputMaybe<UserWhereInput>;
+  cvUrl?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  cvUrl_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  cvUrl_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  cvUrl_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  cvUrl_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  cvUrl_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  cvUrl_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  cvUrl_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  cvUrl_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  cvUrl_starts_with?: InputMaybe<Scalars['String']>;
   documentInStages_every?: InputMaybe<AboutWhereStageInput>;
   documentInStages_none?: InputMaybe<AboutWhereStageInput>;
   documentInStages_some?: InputMaybe<AboutWhereStageInput>;
+  /** All values in which the union is empty. */
+  educationSection_empty?: InputMaybe<Scalars['Boolean']>;
+  /** Matches if the modular component contains at least one connection to the item provided to the filter */
+  educationSection_some?: InputMaybe<AbouteducationSectionUnionWhereInput>;
+  /** All values in which the union is empty. */
+  experiencesSection_empty?: InputMaybe<Scalars['Boolean']>;
+  /** Matches if the modular component contains at least one connection to the item provided to the filter */
+  experiencesSection_some?: InputMaybe<AboutexperiencesSectionUnionWhereInput>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -185,6 +259,25 @@ export type AboutManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  profile?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  profile_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  profile_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  profile_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  profile_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  profile_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  profile_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  profile_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  profile_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  profile_starts_with?: InputMaybe<Scalars['String']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -225,8 +318,12 @@ export type AboutManyWhereInput = {
 export enum AboutOrderByInput {
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
+  CvUrlAsc = 'cvUrl_ASC',
+  CvUrlDesc = 'cvUrl_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
+  ProfileAsc = 'profile_ASC',
+  ProfileDesc = 'profile_DESC',
   PublishedAtAsc = 'publishedAt_ASC',
   PublishedAtDesc = 'publishedAt_DESC',
   UpdatedAtAsc = 'updatedAt_ASC',
@@ -234,8 +331,11 @@ export enum AboutOrderByInput {
 }
 
 export type AboutUpdateInput = {
-  /** No fields in update input */
-  _?: InputMaybe<Scalars['String']>;
+  coursesSection?: InputMaybe<AboutcoursesSectionUnionUpdateManyInlineInput>;
+  cvUrl?: InputMaybe<Scalars['String']>;
+  educationSection?: InputMaybe<AbouteducationSectionUnionUpdateManyInlineInput>;
+  experiencesSection?: InputMaybe<AboutexperiencesSectionUnionUpdateManyInlineInput>;
+  profile?: InputMaybe<Scalars['String']>;
 };
 
 export type AboutUpdateManyInlineInput = {
@@ -256,8 +356,8 @@ export type AboutUpdateManyInlineInput = {
 };
 
 export type AboutUpdateManyInput = {
-  /** No fields in updateMany data input */
-  _?: InputMaybe<Scalars['String']>;
+  cvUrl?: InputMaybe<Scalars['String']>;
+  profile?: InputMaybe<Scalars['String']>;
 };
 
 export type AboutUpdateManyWithNestedWhereInput = {
@@ -319,6 +419,10 @@ export type AboutWhereInput = {
   OR?: InputMaybe<Array<AboutWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  /** All values in which the union is empty. */
+  coursesSection_empty?: InputMaybe<Scalars['Boolean']>;
+  /** Matches if the modular component contains at least one connection to the item provided to the filter */
+  coursesSection_some?: InputMaybe<AboutcoursesSectionUnionWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -335,9 +439,36 @@ export type AboutWhereInput = {
   /** All values that are not contained in given list. */
   createdAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   createdBy?: InputMaybe<UserWhereInput>;
+  cvUrl?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  cvUrl_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  cvUrl_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  cvUrl_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  cvUrl_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  cvUrl_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  cvUrl_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  cvUrl_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  cvUrl_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  cvUrl_starts_with?: InputMaybe<Scalars['String']>;
   documentInStages_every?: InputMaybe<AboutWhereStageInput>;
   documentInStages_none?: InputMaybe<AboutWhereStageInput>;
   documentInStages_some?: InputMaybe<AboutWhereStageInput>;
+  /** All values in which the union is empty. */
+  educationSection_empty?: InputMaybe<Scalars['Boolean']>;
+  /** Matches if the modular component contains at least one connection to the item provided to the filter */
+  educationSection_some?: InputMaybe<AbouteducationSectionUnionWhereInput>;
+  /** All values in which the union is empty. */
+  experiencesSection_empty?: InputMaybe<Scalars['Boolean']>;
+  /** Matches if the modular component contains at least one connection to the item provided to the filter */
+  experiencesSection_some?: InputMaybe<AboutexperiencesSectionUnionWhereInput>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -357,6 +488,25 @@ export type AboutWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  profile?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  profile_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  profile_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  profile_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  profile_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  profile_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  profile_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  profile_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  profile_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  profile_starts_with?: InputMaybe<Scalars['String']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   /** All values greater than the given value. */
   publishedAt_gt?: InputMaybe<Scalars['DateTime']>;
@@ -411,6 +561,240 @@ export type AboutWhereStageInput = {
 /** References About record uniquely */
 export type AboutWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
+};
+
+export type AboutcoursesSectionUnion = Course;
+
+export type AboutcoursesSectionUnionConnectInput = {
+  Course?: InputMaybe<CourseConnectInput>;
+};
+
+export type AboutcoursesSectionUnionCreateInput = {
+  Course?: InputMaybe<CourseCreateInput>;
+};
+
+export type AboutcoursesSectionUnionCreateManyInlineInput = {
+  /** Create and connect multiple existing AboutcoursesSectionUnion documents */
+  create?: InputMaybe<Array<AboutcoursesSectionUnionCreateInput>>;
+};
+
+export type AboutcoursesSectionUnionCreateOneInlineInput = {
+  /** Create and connect one AboutcoursesSectionUnion document */
+  create?: InputMaybe<AboutcoursesSectionUnionCreateInput>;
+};
+
+export type AboutcoursesSectionUnionCreateWithPositionInput = {
+  Course?: InputMaybe<CourseCreateWithPositionInput>;
+};
+
+export type AboutcoursesSectionUnionUpdateInput = {
+  Course?: InputMaybe<CourseUpdateInput>;
+};
+
+export type AboutcoursesSectionUnionUpdateManyInlineInput = {
+  /** Create and connect multiple AboutcoursesSectionUnion component instances */
+  create?: InputMaybe<Array<AboutcoursesSectionUnionCreateWithPositionInput>>;
+  /** Delete multiple AboutcoursesSectionUnion documents */
+  delete?: InputMaybe<Array<AboutcoursesSectionUnionWhereUniqueInput>>;
+  /** Update multiple AboutcoursesSectionUnion component instances */
+  update?: InputMaybe<Array<AboutcoursesSectionUnionUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple AboutcoursesSectionUnion component instances */
+  upsert?: InputMaybe<Array<AboutcoursesSectionUnionUpsertWithNestedWhereUniqueAndPositionInput>>;
+};
+
+export type AboutcoursesSectionUnionUpdateManyWithNestedWhereInput = {
+  Course?: InputMaybe<CourseUpdateManyWithNestedWhereInput>;
+};
+
+export type AboutcoursesSectionUnionUpdateOneInlineInput = {
+  /** Create and connect one AboutcoursesSectionUnion document */
+  create?: InputMaybe<AboutcoursesSectionUnionCreateInput>;
+  /** Delete currently connected AboutcoursesSectionUnion document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Update single AboutcoursesSectionUnion document */
+  update?: InputMaybe<AboutcoursesSectionUnionUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single AboutcoursesSectionUnion document */
+  upsert?: InputMaybe<AboutcoursesSectionUnionUpsertWithNestedWhereUniqueInput>;
+};
+
+export type AboutcoursesSectionUnionUpdateWithNestedWhereUniqueAndPositionInput = {
+  Course?: InputMaybe<CourseUpdateWithNestedWhereUniqueAndPositionInput>;
+};
+
+export type AboutcoursesSectionUnionUpdateWithNestedWhereUniqueInput = {
+  Course?: InputMaybe<CourseUpdateWithNestedWhereUniqueInput>;
+};
+
+export type AboutcoursesSectionUnionUpsertWithNestedWhereUniqueAndPositionInput = {
+  Course?: InputMaybe<CourseUpsertWithNestedWhereUniqueAndPositionInput>;
+};
+
+export type AboutcoursesSectionUnionUpsertWithNestedWhereUniqueInput = {
+  Course?: InputMaybe<CourseUpsertWithNestedWhereUniqueInput>;
+};
+
+export type AboutcoursesSectionUnionWhereInput = {
+  Course?: InputMaybe<CourseWhereInput>;
+};
+
+export type AboutcoursesSectionUnionWhereUniqueInput = {
+  Course?: InputMaybe<CourseWhereUniqueInput>;
+};
+
+export type AbouteducationSectionUnion = Education;
+
+export type AbouteducationSectionUnionConnectInput = {
+  Education?: InputMaybe<EducationConnectInput>;
+};
+
+export type AbouteducationSectionUnionCreateInput = {
+  Education?: InputMaybe<EducationCreateInput>;
+};
+
+export type AbouteducationSectionUnionCreateManyInlineInput = {
+  /** Create and connect multiple existing AbouteducationSectionUnion documents */
+  create?: InputMaybe<Array<AbouteducationSectionUnionCreateInput>>;
+};
+
+export type AbouteducationSectionUnionCreateOneInlineInput = {
+  /** Create and connect one AbouteducationSectionUnion document */
+  create?: InputMaybe<AbouteducationSectionUnionCreateInput>;
+};
+
+export type AbouteducationSectionUnionCreateWithPositionInput = {
+  Education?: InputMaybe<EducationCreateWithPositionInput>;
+};
+
+export type AbouteducationSectionUnionUpdateInput = {
+  Education?: InputMaybe<EducationUpdateInput>;
+};
+
+export type AbouteducationSectionUnionUpdateManyInlineInput = {
+  /** Create and connect multiple AbouteducationSectionUnion component instances */
+  create?: InputMaybe<Array<AbouteducationSectionUnionCreateWithPositionInput>>;
+  /** Delete multiple AbouteducationSectionUnion documents */
+  delete?: InputMaybe<Array<AbouteducationSectionUnionWhereUniqueInput>>;
+  /** Update multiple AbouteducationSectionUnion component instances */
+  update?: InputMaybe<Array<AbouteducationSectionUnionUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple AbouteducationSectionUnion component instances */
+  upsert?: InputMaybe<Array<AbouteducationSectionUnionUpsertWithNestedWhereUniqueAndPositionInput>>;
+};
+
+export type AbouteducationSectionUnionUpdateManyWithNestedWhereInput = {
+  Education?: InputMaybe<EducationUpdateManyWithNestedWhereInput>;
+};
+
+export type AbouteducationSectionUnionUpdateOneInlineInput = {
+  /** Create and connect one AbouteducationSectionUnion document */
+  create?: InputMaybe<AbouteducationSectionUnionCreateInput>;
+  /** Delete currently connected AbouteducationSectionUnion document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Update single AbouteducationSectionUnion document */
+  update?: InputMaybe<AbouteducationSectionUnionUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single AbouteducationSectionUnion document */
+  upsert?: InputMaybe<AbouteducationSectionUnionUpsertWithNestedWhereUniqueInput>;
+};
+
+export type AbouteducationSectionUnionUpdateWithNestedWhereUniqueAndPositionInput = {
+  Education?: InputMaybe<EducationUpdateWithNestedWhereUniqueAndPositionInput>;
+};
+
+export type AbouteducationSectionUnionUpdateWithNestedWhereUniqueInput = {
+  Education?: InputMaybe<EducationUpdateWithNestedWhereUniqueInput>;
+};
+
+export type AbouteducationSectionUnionUpsertWithNestedWhereUniqueAndPositionInput = {
+  Education?: InputMaybe<EducationUpsertWithNestedWhereUniqueAndPositionInput>;
+};
+
+export type AbouteducationSectionUnionUpsertWithNestedWhereUniqueInput = {
+  Education?: InputMaybe<EducationUpsertWithNestedWhereUniqueInput>;
+};
+
+export type AbouteducationSectionUnionWhereInput = {
+  Education?: InputMaybe<EducationWhereInput>;
+};
+
+export type AbouteducationSectionUnionWhereUniqueInput = {
+  Education?: InputMaybe<EducationWhereUniqueInput>;
+};
+
+export type AboutexperiencesSectionUnion = Experience;
+
+export type AboutexperiencesSectionUnionConnectInput = {
+  Experience?: InputMaybe<ExperienceConnectInput>;
+};
+
+export type AboutexperiencesSectionUnionCreateInput = {
+  Experience?: InputMaybe<ExperienceCreateInput>;
+};
+
+export type AboutexperiencesSectionUnionCreateManyInlineInput = {
+  /** Create and connect multiple existing AboutexperiencesSectionUnion documents */
+  create?: InputMaybe<Array<AboutexperiencesSectionUnionCreateInput>>;
+};
+
+export type AboutexperiencesSectionUnionCreateOneInlineInput = {
+  /** Create and connect one AboutexperiencesSectionUnion document */
+  create?: InputMaybe<AboutexperiencesSectionUnionCreateInput>;
+};
+
+export type AboutexperiencesSectionUnionCreateWithPositionInput = {
+  Experience?: InputMaybe<ExperienceCreateWithPositionInput>;
+};
+
+export type AboutexperiencesSectionUnionUpdateInput = {
+  Experience?: InputMaybe<ExperienceUpdateInput>;
+};
+
+export type AboutexperiencesSectionUnionUpdateManyInlineInput = {
+  /** Create and connect multiple AboutexperiencesSectionUnion component instances */
+  create?: InputMaybe<Array<AboutexperiencesSectionUnionCreateWithPositionInput>>;
+  /** Delete multiple AboutexperiencesSectionUnion documents */
+  delete?: InputMaybe<Array<AboutexperiencesSectionUnionWhereUniqueInput>>;
+  /** Update multiple AboutexperiencesSectionUnion component instances */
+  update?: InputMaybe<Array<AboutexperiencesSectionUnionUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple AboutexperiencesSectionUnion component instances */
+  upsert?: InputMaybe<Array<AboutexperiencesSectionUnionUpsertWithNestedWhereUniqueAndPositionInput>>;
+};
+
+export type AboutexperiencesSectionUnionUpdateManyWithNestedWhereInput = {
+  Experience?: InputMaybe<ExperienceUpdateManyWithNestedWhereInput>;
+};
+
+export type AboutexperiencesSectionUnionUpdateOneInlineInput = {
+  /** Create and connect one AboutexperiencesSectionUnion document */
+  create?: InputMaybe<AboutexperiencesSectionUnionCreateInput>;
+  /** Delete currently connected AboutexperiencesSectionUnion document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Update single AboutexperiencesSectionUnion document */
+  update?: InputMaybe<AboutexperiencesSectionUnionUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single AboutexperiencesSectionUnion document */
+  upsert?: InputMaybe<AboutexperiencesSectionUnionUpsertWithNestedWhereUniqueInput>;
+};
+
+export type AboutexperiencesSectionUnionUpdateWithNestedWhereUniqueAndPositionInput = {
+  Experience?: InputMaybe<ExperienceUpdateWithNestedWhereUniqueAndPositionInput>;
+};
+
+export type AboutexperiencesSectionUnionUpdateWithNestedWhereUniqueInput = {
+  Experience?: InputMaybe<ExperienceUpdateWithNestedWhereUniqueInput>;
+};
+
+export type AboutexperiencesSectionUnionUpsertWithNestedWhereUniqueAndPositionInput = {
+  Experience?: InputMaybe<ExperienceUpsertWithNestedWhereUniqueAndPositionInput>;
+};
+
+export type AboutexperiencesSectionUnionUpsertWithNestedWhereUniqueInput = {
+  Experience?: InputMaybe<ExperienceUpsertWithNestedWhereUniqueInput>;
+};
+
+export type AboutexperiencesSectionUnionWhereInput = {
+  Experience?: InputMaybe<ExperienceWhereInput>;
+};
+
+export type AboutexperiencesSectionUnionWhereUniqueInput = {
+  Experience?: InputMaybe<ExperienceWhereUniqueInput>;
 };
 
 export type Aggregate = {
@@ -1544,10 +1928,20 @@ export type ConnectPositionInput = {
 
 export type Course = Entity & {
   __typename?: 'Course';
+  conclusion: Scalars['String'];
+  educationalCompany: Scalars['String'];
   /** The unique identifier */
   id: Scalars['ID'];
+  name: Scalars['String'];
   /** System stage field */
   stage: Stage;
+};
+
+export type CourseConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: CourseWhereUniqueInput;
 };
 
 /** A connection to a list of items. */
@@ -1561,8 +1955,19 @@ export type CourseConnection = {
 };
 
 export type CourseCreateInput = {
-  /** No fields in create input */
-  _?: InputMaybe<Scalars['String']>;
+  conclusion: Scalars['String'];
+  educationalCompany: Scalars['String'];
+  name: Scalars['String'];
+};
+
+export type CourseCreateManyInlineInput = {
+  /** Create and connect multiple existing Course documents */
+  create?: InputMaybe<Array<CourseCreateInput>>;
+};
+
+export type CourseCreateOneInlineInput = {
+  /** Create and connect one Course document */
+  create?: InputMaybe<CourseCreateInput>;
 };
 
 export type CourseCreateWithPositionInput = {
@@ -1591,6 +1996,44 @@ export type CourseManyWhereInput = {
   OR?: InputMaybe<Array<CourseWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  conclusion?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  conclusion_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  conclusion_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  conclusion_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  conclusion_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  conclusion_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  conclusion_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  conclusion_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  conclusion_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  conclusion_starts_with?: InputMaybe<Scalars['String']>;
+  educationalCompany?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  educationalCompany_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  educationalCompany_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  educationalCompany_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  educationalCompany_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  educationalCompany_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  educationalCompany_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  educationalCompany_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  educationalCompany_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  educationalCompany_starts_with?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -1610,21 +2053,139 @@ export type CourseManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  name?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  name_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  name_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with?: InputMaybe<Scalars['String']>;
 };
 
 export enum CourseOrderByInput {
+  ConclusionAsc = 'conclusion_ASC',
+  ConclusionDesc = 'conclusion_DESC',
+  EducationalCompanyAsc = 'educationalCompany_ASC',
+  EducationalCompanyDesc = 'educationalCompany_DESC',
   IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC'
+  IdDesc = 'id_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC'
 }
 
+export type CourseParent = About;
+
+export type CourseParentConnectInput = {
+  About?: InputMaybe<AboutConnectInput>;
+};
+
+export type CourseParentCreateInput = {
+  About?: InputMaybe<AboutCreateInput>;
+};
+
+export type CourseParentCreateManyInlineInput = {
+  /** Connect multiple existing CourseParent documents */
+  connect?: InputMaybe<Array<CourseParentWhereUniqueInput>>;
+  /** Create and connect multiple existing CourseParent documents */
+  create?: InputMaybe<Array<CourseParentCreateInput>>;
+};
+
+export type CourseParentCreateOneInlineInput = {
+  /** Connect one existing CourseParent document */
+  connect?: InputMaybe<CourseParentWhereUniqueInput>;
+  /** Create and connect one CourseParent document */
+  create?: InputMaybe<CourseParentCreateInput>;
+};
+
+export type CourseParentUpdateInput = {
+  About?: InputMaybe<AboutUpdateInput>;
+};
+
+export type CourseParentUpdateManyInlineInput = {
+  /** Connect multiple existing CourseParent documents */
+  connect?: InputMaybe<Array<CourseParentConnectInput>>;
+  /** Create and connect multiple CourseParent documents */
+  create?: InputMaybe<Array<CourseParentCreateInput>>;
+  /** Delete multiple CourseParent documents */
+  delete?: InputMaybe<Array<CourseParentWhereUniqueInput>>;
+  /** Disconnect multiple CourseParent documents */
+  disconnect?: InputMaybe<Array<CourseParentWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing CourseParent documents */
+  set?: InputMaybe<Array<CourseParentWhereUniqueInput>>;
+  /** Update multiple CourseParent documents */
+  update?: InputMaybe<Array<CourseParentUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple CourseParent documents */
+  upsert?: InputMaybe<Array<CourseParentUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type CourseParentUpdateManyWithNestedWhereInput = {
+  About?: InputMaybe<AboutUpdateManyWithNestedWhereInput>;
+};
+
+export type CourseParentUpdateOneInlineInput = {
+  /** Connect existing CourseParent document */
+  connect?: InputMaybe<CourseParentWhereUniqueInput>;
+  /** Create and connect one CourseParent document */
+  create?: InputMaybe<CourseParentCreateInput>;
+  /** Delete currently connected CourseParent document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected CourseParent document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single CourseParent document */
+  update?: InputMaybe<CourseParentUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single CourseParent document */
+  upsert?: InputMaybe<CourseParentUpsertWithNestedWhereUniqueInput>;
+};
+
+export type CourseParentUpdateWithNestedWhereUniqueInput = {
+  About?: InputMaybe<AboutUpdateWithNestedWhereUniqueInput>;
+};
+
+export type CourseParentUpsertWithNestedWhereUniqueInput = {
+  About?: InputMaybe<AboutUpsertWithNestedWhereUniqueInput>;
+};
+
+export type CourseParentWhereInput = {
+  About?: InputMaybe<AboutWhereInput>;
+};
+
+export type CourseParentWhereUniqueInput = {
+  About?: InputMaybe<AboutWhereUniqueInput>;
+};
+
 export type CourseUpdateInput = {
-  /** No fields in update input */
-  _?: InputMaybe<Scalars['String']>;
+  conclusion?: InputMaybe<Scalars['String']>;
+  educationalCompany?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+export type CourseUpdateManyInlineInput = {
+  /** Create and connect multiple Course component instances */
+  create?: InputMaybe<Array<CourseCreateWithPositionInput>>;
+  /** Delete multiple Course documents */
+  delete?: InputMaybe<Array<CourseWhereUniqueInput>>;
+  /** Update multiple Course component instances */
+  update?: InputMaybe<Array<CourseUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple Course component instances */
+  upsert?: InputMaybe<Array<CourseUpsertWithNestedWhereUniqueAndPositionInput>>;
 };
 
 export type CourseUpdateManyInput = {
-  /** No fields in updateMany data input */
-  _?: InputMaybe<Scalars['String']>;
+  conclusion?: InputMaybe<Scalars['String']>;
+  educationalCompany?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
 };
 
 export type CourseUpdateManyWithNestedWhereInput = {
@@ -1632,6 +2193,17 @@ export type CourseUpdateManyWithNestedWhereInput = {
   data: CourseUpdateManyInput;
   /** Document search */
   where: CourseWhereInput;
+};
+
+export type CourseUpdateOneInlineInput = {
+  /** Create and connect one Course document */
+  create?: InputMaybe<CourseCreateInput>;
+  /** Delete currently connected Course document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Update single Course document */
+  update?: InputMaybe<CourseUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Course document */
+  upsert?: InputMaybe<CourseUpsertWithNestedWhereUniqueInput>;
 };
 
 export type CourseUpdateWithNestedWhereUniqueAndPositionInput = {
@@ -1683,6 +2255,44 @@ export type CourseWhereInput = {
   OR?: InputMaybe<Array<CourseWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  conclusion?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  conclusion_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  conclusion_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  conclusion_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  conclusion_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  conclusion_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  conclusion_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  conclusion_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  conclusion_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  conclusion_starts_with?: InputMaybe<Scalars['String']>;
+  educationalCompany?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  educationalCompany_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  educationalCompany_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  educationalCompany_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  educationalCompany_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  educationalCompany_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  educationalCompany_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  educationalCompany_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  educationalCompany_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  educationalCompany_starts_with?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -1702,6 +2312,25 @@ export type CourseWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  name?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  name_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  name_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with?: InputMaybe<Scalars['String']>;
 };
 
 /** References Course record uniquely */
@@ -1775,10 +2404,20 @@ export type DocumentVersion = {
 
 export type Education = Entity & {
   __typename?: 'Education';
+  educationalCompany: Scalars['String'];
   /** The unique identifier */
   id: Scalars['ID'];
+  level: Scalars['String'];
+  name: Scalars['String'];
   /** System stage field */
   stage: Stage;
+};
+
+export type EducationConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: EducationWhereUniqueInput;
 };
 
 /** A connection to a list of items. */
@@ -1792,8 +2431,19 @@ export type EducationConnection = {
 };
 
 export type EducationCreateInput = {
-  /** No fields in create input */
-  _?: InputMaybe<Scalars['String']>;
+  educationalCompany: Scalars['String'];
+  level: Scalars['String'];
+  name: Scalars['String'];
+};
+
+export type EducationCreateManyInlineInput = {
+  /** Create and connect multiple existing Education documents */
+  create?: InputMaybe<Array<EducationCreateInput>>;
+};
+
+export type EducationCreateOneInlineInput = {
+  /** Create and connect one Education document */
+  create?: InputMaybe<EducationCreateInput>;
 };
 
 export type EducationCreateWithPositionInput = {
@@ -1822,6 +2472,25 @@ export type EducationManyWhereInput = {
   OR?: InputMaybe<Array<EducationWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  educationalCompany?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  educationalCompany_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  educationalCompany_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  educationalCompany_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  educationalCompany_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  educationalCompany_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  educationalCompany_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  educationalCompany_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  educationalCompany_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  educationalCompany_starts_with?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -1841,21 +2510,157 @@ export type EducationManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  level?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  level_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  level_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  level_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  level_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  level_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  level_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  level_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  level_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  level_starts_with?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  name_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  name_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with?: InputMaybe<Scalars['String']>;
 };
 
 export enum EducationOrderByInput {
+  EducationalCompanyAsc = 'educationalCompany_ASC',
+  EducationalCompanyDesc = 'educationalCompany_DESC',
   IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC'
+  IdDesc = 'id_DESC',
+  LevelAsc = 'level_ASC',
+  LevelDesc = 'level_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC'
 }
 
+export type EducationParent = About;
+
+export type EducationParentConnectInput = {
+  About?: InputMaybe<AboutConnectInput>;
+};
+
+export type EducationParentCreateInput = {
+  About?: InputMaybe<AboutCreateInput>;
+};
+
+export type EducationParentCreateManyInlineInput = {
+  /** Connect multiple existing EducationParent documents */
+  connect?: InputMaybe<Array<EducationParentWhereUniqueInput>>;
+  /** Create and connect multiple existing EducationParent documents */
+  create?: InputMaybe<Array<EducationParentCreateInput>>;
+};
+
+export type EducationParentCreateOneInlineInput = {
+  /** Connect one existing EducationParent document */
+  connect?: InputMaybe<EducationParentWhereUniqueInput>;
+  /** Create and connect one EducationParent document */
+  create?: InputMaybe<EducationParentCreateInput>;
+};
+
+export type EducationParentUpdateInput = {
+  About?: InputMaybe<AboutUpdateInput>;
+};
+
+export type EducationParentUpdateManyInlineInput = {
+  /** Connect multiple existing EducationParent documents */
+  connect?: InputMaybe<Array<EducationParentConnectInput>>;
+  /** Create and connect multiple EducationParent documents */
+  create?: InputMaybe<Array<EducationParentCreateInput>>;
+  /** Delete multiple EducationParent documents */
+  delete?: InputMaybe<Array<EducationParentWhereUniqueInput>>;
+  /** Disconnect multiple EducationParent documents */
+  disconnect?: InputMaybe<Array<EducationParentWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing EducationParent documents */
+  set?: InputMaybe<Array<EducationParentWhereUniqueInput>>;
+  /** Update multiple EducationParent documents */
+  update?: InputMaybe<Array<EducationParentUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple EducationParent documents */
+  upsert?: InputMaybe<Array<EducationParentUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type EducationParentUpdateManyWithNestedWhereInput = {
+  About?: InputMaybe<AboutUpdateManyWithNestedWhereInput>;
+};
+
+export type EducationParentUpdateOneInlineInput = {
+  /** Connect existing EducationParent document */
+  connect?: InputMaybe<EducationParentWhereUniqueInput>;
+  /** Create and connect one EducationParent document */
+  create?: InputMaybe<EducationParentCreateInput>;
+  /** Delete currently connected EducationParent document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected EducationParent document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single EducationParent document */
+  update?: InputMaybe<EducationParentUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single EducationParent document */
+  upsert?: InputMaybe<EducationParentUpsertWithNestedWhereUniqueInput>;
+};
+
+export type EducationParentUpdateWithNestedWhereUniqueInput = {
+  About?: InputMaybe<AboutUpdateWithNestedWhereUniqueInput>;
+};
+
+export type EducationParentUpsertWithNestedWhereUniqueInput = {
+  About?: InputMaybe<AboutUpsertWithNestedWhereUniqueInput>;
+};
+
+export type EducationParentWhereInput = {
+  About?: InputMaybe<AboutWhereInput>;
+};
+
+export type EducationParentWhereUniqueInput = {
+  About?: InputMaybe<AboutWhereUniqueInput>;
+};
+
 export type EducationUpdateInput = {
-  /** No fields in update input */
-  _?: InputMaybe<Scalars['String']>;
+  educationalCompany?: InputMaybe<Scalars['String']>;
+  level?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+export type EducationUpdateManyInlineInput = {
+  /** Create and connect multiple Education component instances */
+  create?: InputMaybe<Array<EducationCreateWithPositionInput>>;
+  /** Delete multiple Education documents */
+  delete?: InputMaybe<Array<EducationWhereUniqueInput>>;
+  /** Update multiple Education component instances */
+  update?: InputMaybe<Array<EducationUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple Education component instances */
+  upsert?: InputMaybe<Array<EducationUpsertWithNestedWhereUniqueAndPositionInput>>;
 };
 
 export type EducationUpdateManyInput = {
-  /** No fields in updateMany data input */
-  _?: InputMaybe<Scalars['String']>;
+  educationalCompany?: InputMaybe<Scalars['String']>;
+  level?: InputMaybe<Scalars['String']>;
 };
 
 export type EducationUpdateManyWithNestedWhereInput = {
@@ -1863,6 +2668,17 @@ export type EducationUpdateManyWithNestedWhereInput = {
   data: EducationUpdateManyInput;
   /** Document search */
   where: EducationWhereInput;
+};
+
+export type EducationUpdateOneInlineInput = {
+  /** Create and connect one Education document */
+  create?: InputMaybe<EducationCreateInput>;
+  /** Delete currently connected Education document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Update single Education document */
+  update?: InputMaybe<EducationUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Education document */
+  upsert?: InputMaybe<EducationUpsertWithNestedWhereUniqueInput>;
 };
 
 export type EducationUpdateWithNestedWhereUniqueAndPositionInput = {
@@ -1914,6 +2730,25 @@ export type EducationWhereInput = {
   OR?: InputMaybe<Array<EducationWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  educationalCompany?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  educationalCompany_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  educationalCompany_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  educationalCompany_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  educationalCompany_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  educationalCompany_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  educationalCompany_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  educationalCompany_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  educationalCompany_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  educationalCompany_starts_with?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -1933,11 +2768,50 @@ export type EducationWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  level?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  level_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  level_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  level_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  level_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  level_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  level_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  level_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  level_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  level_starts_with?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  name_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  name_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  name_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  name_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  name_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  name_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  name_starts_with?: InputMaybe<Scalars['String']>;
 };
 
 /** References Education record uniquely */
 export type EducationWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>;
+  name?: InputMaybe<Scalars['String']>;
 };
 
 /** An object with an ID */
@@ -1979,10 +2853,23 @@ export type EntityWhereInput = {
 
 export type Experience = Entity & {
   __typename?: 'Experience';
+  company?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  /** Exemplo: Junho, 2019 - Agosto, 2019 */
+  duration: Scalars['String'];
+  hasCompany: Scalars['Boolean'];
   /** The unique identifier */
   id: Scalars['ID'];
+  office: Scalars['String'];
   /** System stage field */
   stage: Stage;
+};
+
+export type ExperienceConnectInput = {
+  /** Allow to specify document position in list of connected documents, will default to appending at end of list */
+  position?: InputMaybe<ConnectPositionInput>;
+  /** Document to connect */
+  where: ExperienceWhereUniqueInput;
 };
 
 /** A connection to a list of items. */
@@ -1996,8 +2883,21 @@ export type ExperienceConnection = {
 };
 
 export type ExperienceCreateInput = {
-  /** No fields in create input */
-  _?: InputMaybe<Scalars['String']>;
+  company?: InputMaybe<Scalars['String']>;
+  description?: InputMaybe<Scalars['String']>;
+  duration: Scalars['String'];
+  hasCompany: Scalars['Boolean'];
+  office: Scalars['String'];
+};
+
+export type ExperienceCreateManyInlineInput = {
+  /** Create and connect multiple existing Experience documents */
+  create?: InputMaybe<Array<ExperienceCreateInput>>;
+};
+
+export type ExperienceCreateOneInlineInput = {
+  /** Create and connect one Experience document */
+  create?: InputMaybe<ExperienceCreateInput>;
 };
 
 export type ExperienceCreateWithPositionInput = {
@@ -2026,6 +2926,66 @@ export type ExperienceManyWhereInput = {
   OR?: InputMaybe<Array<ExperienceWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  company?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  company_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  company_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  company_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  company_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  company_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  company_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  company_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  company_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  company_starts_with?: InputMaybe<Scalars['String']>;
+  description?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  description_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  description_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  description_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  description_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  description_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  description_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  description_starts_with?: InputMaybe<Scalars['String']>;
+  duration?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  duration_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  duration_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  duration_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  duration_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  duration_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  duration_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  duration_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  duration_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  duration_starts_with?: InputMaybe<Scalars['String']>;
+  hasCompany?: InputMaybe<Scalars['Boolean']>;
+  /** Any other value that exists and is not equal to the given value. */
+  hasCompany_not?: InputMaybe<Scalars['Boolean']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -2045,21 +3005,147 @@ export type ExperienceManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  office?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  office_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  office_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  office_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  office_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  office_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  office_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  office_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  office_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  office_starts_with?: InputMaybe<Scalars['String']>;
 };
 
 export enum ExperienceOrderByInput {
+  CompanyAsc = 'company_ASC',
+  CompanyDesc = 'company_DESC',
+  DescriptionAsc = 'description_ASC',
+  DescriptionDesc = 'description_DESC',
+  DurationAsc = 'duration_ASC',
+  DurationDesc = 'duration_DESC',
+  HasCompanyAsc = 'hasCompany_ASC',
+  HasCompanyDesc = 'hasCompany_DESC',
   IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC'
+  IdDesc = 'id_DESC',
+  OfficeAsc = 'office_ASC',
+  OfficeDesc = 'office_DESC'
 }
 
+export type ExperienceParent = About;
+
+export type ExperienceParentConnectInput = {
+  About?: InputMaybe<AboutConnectInput>;
+};
+
+export type ExperienceParentCreateInput = {
+  About?: InputMaybe<AboutCreateInput>;
+};
+
+export type ExperienceParentCreateManyInlineInput = {
+  /** Connect multiple existing ExperienceParent documents */
+  connect?: InputMaybe<Array<ExperienceParentWhereUniqueInput>>;
+  /** Create and connect multiple existing ExperienceParent documents */
+  create?: InputMaybe<Array<ExperienceParentCreateInput>>;
+};
+
+export type ExperienceParentCreateOneInlineInput = {
+  /** Connect one existing ExperienceParent document */
+  connect?: InputMaybe<ExperienceParentWhereUniqueInput>;
+  /** Create and connect one ExperienceParent document */
+  create?: InputMaybe<ExperienceParentCreateInput>;
+};
+
+export type ExperienceParentUpdateInput = {
+  About?: InputMaybe<AboutUpdateInput>;
+};
+
+export type ExperienceParentUpdateManyInlineInput = {
+  /** Connect multiple existing ExperienceParent documents */
+  connect?: InputMaybe<Array<ExperienceParentConnectInput>>;
+  /** Create and connect multiple ExperienceParent documents */
+  create?: InputMaybe<Array<ExperienceParentCreateInput>>;
+  /** Delete multiple ExperienceParent documents */
+  delete?: InputMaybe<Array<ExperienceParentWhereUniqueInput>>;
+  /** Disconnect multiple ExperienceParent documents */
+  disconnect?: InputMaybe<Array<ExperienceParentWhereUniqueInput>>;
+  /** Override currently-connected documents with multiple existing ExperienceParent documents */
+  set?: InputMaybe<Array<ExperienceParentWhereUniqueInput>>;
+  /** Update multiple ExperienceParent documents */
+  update?: InputMaybe<Array<ExperienceParentUpdateWithNestedWhereUniqueInput>>;
+  /** Upsert multiple ExperienceParent documents */
+  upsert?: InputMaybe<Array<ExperienceParentUpsertWithNestedWhereUniqueInput>>;
+};
+
+export type ExperienceParentUpdateManyWithNestedWhereInput = {
+  About?: InputMaybe<AboutUpdateManyWithNestedWhereInput>;
+};
+
+export type ExperienceParentUpdateOneInlineInput = {
+  /** Connect existing ExperienceParent document */
+  connect?: InputMaybe<ExperienceParentWhereUniqueInput>;
+  /** Create and connect one ExperienceParent document */
+  create?: InputMaybe<ExperienceParentCreateInput>;
+  /** Delete currently connected ExperienceParent document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Disconnect currently connected ExperienceParent document */
+  disconnect?: InputMaybe<Scalars['Boolean']>;
+  /** Update single ExperienceParent document */
+  update?: InputMaybe<ExperienceParentUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single ExperienceParent document */
+  upsert?: InputMaybe<ExperienceParentUpsertWithNestedWhereUniqueInput>;
+};
+
+export type ExperienceParentUpdateWithNestedWhereUniqueInput = {
+  About?: InputMaybe<AboutUpdateWithNestedWhereUniqueInput>;
+};
+
+export type ExperienceParentUpsertWithNestedWhereUniqueInput = {
+  About?: InputMaybe<AboutUpsertWithNestedWhereUniqueInput>;
+};
+
+export type ExperienceParentWhereInput = {
+  About?: InputMaybe<AboutWhereInput>;
+};
+
+export type ExperienceParentWhereUniqueInput = {
+  About?: InputMaybe<AboutWhereUniqueInput>;
+};
+
 export type ExperienceUpdateInput = {
-  /** No fields in update input */
-  _?: InputMaybe<Scalars['String']>;
+  company?: InputMaybe<Scalars['String']>;
+  description?: InputMaybe<Scalars['String']>;
+  duration?: InputMaybe<Scalars['String']>;
+  hasCompany?: InputMaybe<Scalars['Boolean']>;
+  office?: InputMaybe<Scalars['String']>;
+};
+
+export type ExperienceUpdateManyInlineInput = {
+  /** Create and connect multiple Experience component instances */
+  create?: InputMaybe<Array<ExperienceCreateWithPositionInput>>;
+  /** Delete multiple Experience documents */
+  delete?: InputMaybe<Array<ExperienceWhereUniqueInput>>;
+  /** Update multiple Experience component instances */
+  update?: InputMaybe<Array<ExperienceUpdateWithNestedWhereUniqueAndPositionInput>>;
+  /** Upsert multiple Experience component instances */
+  upsert?: InputMaybe<Array<ExperienceUpsertWithNestedWhereUniqueAndPositionInput>>;
 };
 
 export type ExperienceUpdateManyInput = {
-  /** No fields in updateMany data input */
-  _?: InputMaybe<Scalars['String']>;
+  company?: InputMaybe<Scalars['String']>;
+  description?: InputMaybe<Scalars['String']>;
+  duration?: InputMaybe<Scalars['String']>;
+  hasCompany?: InputMaybe<Scalars['Boolean']>;
+  office?: InputMaybe<Scalars['String']>;
 };
 
 export type ExperienceUpdateManyWithNestedWhereInput = {
@@ -2067,6 +3153,17 @@ export type ExperienceUpdateManyWithNestedWhereInput = {
   data: ExperienceUpdateManyInput;
   /** Document search */
   where: ExperienceWhereInput;
+};
+
+export type ExperienceUpdateOneInlineInput = {
+  /** Create and connect one Experience document */
+  create?: InputMaybe<ExperienceCreateInput>;
+  /** Delete currently connected Experience document */
+  delete?: InputMaybe<Scalars['Boolean']>;
+  /** Update single Experience document */
+  update?: InputMaybe<ExperienceUpdateWithNestedWhereUniqueInput>;
+  /** Upsert single Experience document */
+  upsert?: InputMaybe<ExperienceUpsertWithNestedWhereUniqueInput>;
 };
 
 export type ExperienceUpdateWithNestedWhereUniqueAndPositionInput = {
@@ -2118,6 +3215,66 @@ export type ExperienceWhereInput = {
   OR?: InputMaybe<Array<ExperienceWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']>;
+  company?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  company_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  company_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  company_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  company_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  company_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  company_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  company_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  company_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  company_starts_with?: InputMaybe<Scalars['String']>;
+  description?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  description_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  description_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  description_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  description_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  description_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  description_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  description_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  description_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  description_starts_with?: InputMaybe<Scalars['String']>;
+  duration?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  duration_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  duration_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  duration_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  duration_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  duration_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  duration_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  duration_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  duration_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  duration_starts_with?: InputMaybe<Scalars['String']>;
+  hasCompany?: InputMaybe<Scalars['Boolean']>;
+  /** Any other value that exists and is not equal to the given value. */
+  hasCompany_not?: InputMaybe<Scalars['Boolean']>;
   id?: InputMaybe<Scalars['ID']>;
   /** All values containing the given string. */
   id_contains?: InputMaybe<Scalars['ID']>;
@@ -2137,6 +3294,25 @@ export type ExperienceWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']>;
+  office?: InputMaybe<Scalars['String']>;
+  /** All values containing the given string. */
+  office_contains?: InputMaybe<Scalars['String']>;
+  /** All values ending with the given string. */
+  office_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are contained in given list. */
+  office_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  office_not?: InputMaybe<Scalars['String']>;
+  /** All values not containing the given string. */
+  office_not_contains?: InputMaybe<Scalars['String']>;
+  /** All values not ending with the given string */
+  office_not_ends_with?: InputMaybe<Scalars['String']>;
+  /** All values that are not contained in given list. */
+  office_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** All values not starting with the given string. */
+  office_not_starts_with?: InputMaybe<Scalars['String']>;
+  /** All values starting with the given string. */
+  office_starts_with?: InputMaybe<Scalars['String']>;
 };
 
 /** References Experience record uniquely */
@@ -5058,7 +6234,23 @@ export enum SystemDateTimeFieldVariation {
 }
 
 export enum Tecnologies {
-  Reactjs = 'reactjs'
+  Axios = 'axios',
+  Express = 'express',
+  Firebase = 'firebase',
+  Graphcms = 'graphcms',
+  Graphql = 'graphql',
+  Javascript = 'javascript',
+  Mongodb = 'mongodb',
+  Nextjs = 'nextjs',
+  Nodejs = 'nodejs',
+  Prismic = 'prismic',
+  Reactjs = 'reactjs',
+  Reactnative = 'reactnative',
+  Redis = 'redis',
+  Stripe = 'stripe',
+  Styledcomponent = 'styledcomponent',
+  Typeorm = 'typeorm',
+  Typescript = 'typescript'
 }
 
 export type UnpublishLocaleInput = {
@@ -5559,6 +6751,11 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization'
 }
 
+export type AboutQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AboutQuery = { __typename?: 'Query', abouts: Array<{ __typename?: 'About', id: string, profile: string, cvUrl: string, coursesSection: Array<{ __typename?: 'Course', id: string, name: string, educationalCompany: string, conclusion: string }>, experiencesSection: Array<{ __typename?: 'Experience', id: string, office: string, hasCompany: boolean, company?: string | null, description?: string | null, duration: string }>, educationSection: Array<{ __typename?: 'Education', id: string, name: string, level: string, educationalCompany: string }> }> };
+
 export type DemoQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
@@ -5589,6 +6786,41 @@ export type SlugsOfProjectsQueryVariables = Exact<{ [key: string]: never; }>;
 export type SlugsOfProjectsQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'Project', slug: string }> };
 
 
+export const AboutDocument = gql`
+    query About {
+  abouts {
+    id
+    profile
+    cvUrl
+    coursesSection {
+      ... on Course {
+        id
+        name
+        educationalCompany
+        conclusion
+      }
+    }
+    experiencesSection {
+      ... on Experience {
+        id
+        office
+        hasCompany
+        company
+        description
+        duration
+      }
+    }
+    educationSection {
+      ... on Education {
+        id
+        name
+        level
+        educationalCompany
+      }
+    }
+  }
+}
+    `;
 export const DemoDocument = gql`
     query Demo($slug: String!) {
   project(where: {slug: $slug}) {
@@ -5665,6 +6897,9 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    About(variables?: AboutQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<AboutQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<AboutQuery>(AboutDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'About', 'query');
+    },
     Demo(variables: DemoQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DemoQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<DemoQuery>(DemoDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'Demo', 'query');
     },

@@ -1,30 +1,27 @@
 import { memo } from "react";
+import { AboutQuery } from "@generated/sdk";
 
 import styles from "./styles.module.scss";
 
-function CoursesAndCertificationsWithoutMemo() {
+interface CoursesAndCertificationsProps {
+	courses: AboutQuery['abouts'][0]['coursesSection']
+}
+
+function CoursesAndCertificationsWithoutMemo({ courses }: CoursesAndCertificationsProps) {
 	return (
 		<section className={styles.container}>
 			<h3>Cursos e Certificações</h3>
 			<ul>
-				<li>
-					<strong>Ignite - Trilha React</strong>
-					<span>Rocketseat</span>
-					<span>Conclusão: 2022</span>
-				</li>
-				<li>
-					<strong>Bootcamp GoStack</strong>
-					<span>Rocketseat</span>
-					<span>Conclusão: 2021</span>
-				</li>
-				<li>
-					<strong>JavaScript - Curso COMPLETO</strong>
-					<span>HCode (Udemy)</span>
-					<span>Conclusão: 2020</span>
-				</li>
+				{courses.map(course => (
+					<li key={course.id}>
+						<strong>{course.name}</strong>
+						<span>{course.educationalCompany}</span>
+						<span>Conclusão: {course.conclusion}</span>
+					</li>
+				))}
 			</ul>
 		</section>
 	);
 }
 
-export const CoursesAndCertifications = memo(CoursesAndCertificationsWithoutMemo);
+export const CoursesAndCertificationsSection = memo(CoursesAndCertificationsWithoutMemo);
