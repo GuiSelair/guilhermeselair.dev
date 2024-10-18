@@ -2,7 +2,7 @@ import {
 	AiFillGithub,
 	AiFillLinkedin,
 } from "react-icons/ai";
-import { HiArrowNarrowLeft, HiOutlineLockClosed } from "react-icons/hi";
+import { HiArrowNarrowLeft, HiOutlineExternalLink } from "react-icons/hi";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
@@ -66,11 +66,11 @@ export function Header() {
 						</Link>
 					</li>
 					<li>
-						<Link href="#">
-							<a className={style.isDisabled} tabIndex={-1}>
+						<Link href="https://dev.to/guiselair">
+							<a>
 								<span>
 									ARTIGOS
-									<HiOutlineLockClosed />
+									<HiOutlineExternalLink />
 								</span>
 							</a>
 						</Link>
