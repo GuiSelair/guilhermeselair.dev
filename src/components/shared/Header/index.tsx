@@ -66,14 +66,16 @@ export function Header() {
 						</Link>
 					</li>
 					<li>
-						<Link href="https://dev.to/guiselair">
-							<a>
-								<span>
-									ARTIGOS
-									<HiOutlineExternalLink />
-								</span>
-							</a>
-						</Link>
+						<a
+							href="https://dev.to/guiselair"
+							target="_blank"
+							rel="noreferrer"
+						>
+							<span>
+								ARTIGOS
+								<HiOutlineExternalLink />
+							</span>
+						</a>
 					</li>
 				</ul>
 			</nav>
