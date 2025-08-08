@@ -1,54 +1,57 @@
 {
-  "name": "portfolio",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "codegen": "graphql-codegen --require dotenv/config --config codegen.yml dotenv_config_path=.env.local"
-  },
-  "dependencies": {
-    "@types/react": "^17.0.2",
-    "firebase": "^9.9.2",
-    "graphql": "^16.3.0",
-    "graphql-request": "^4.2.0",
-    "next": "12",
-    "react": "^17.0.2",
-    "react-awesome-lightbox": "^1.8.1",
-    "react-device-detect": "^2.1.2",
-    "react-dom": "^17.0.2",
-    "react-icons": "^4.2.0",
-    "react-markdown": "^8.0.2",
-    "react-responsive-carousel": "^3.2.22",
-    "react-tabs": "^3.2.3",
-    "sass": "^1.34.0"
-  },
-  "devDependencies": {
-    "@graphql-codegen/cli": "2.6.2",
-    "@graphql-codegen/introspection": "2.1.1",
-    "@graphql-codegen/typescript": "2.4.8",
-    "@graphql-codegen/typescript-graphql-request": "^4.4.5",
-    "@graphql-codegen/typescript-operations": "2.3.5",
-    "@graphql-codegen/typescript-resolvers": "2.6.1",
-    "@types/node": "^15.6.1",
-    "@types/react-tabs": "^2.3.4",
-    "@typescript-eslint/eslint-plugin": "^5.17.0",
-    "@typescript-eslint/parser": "^5.17.0",
-    "dotenv": "^16.0.1",
-    "eslint": "^8.12.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-import-resolver-typescript": "^2.4.0",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.4.0",
-    "prettier": "^2.6.2",
-    "typescript": "^4.2.4"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  }
+	"name": "portfolio",
+	"version": "1.0.0",
+	"private": true,
+	"engines": {
+		"node": ">=22.0.0"
+	},
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"codegen": "graphql-codegen --require dotenv/config --config codegen.yml dotenv_config_path=.env.local"
+	},
+	"dependencies": {
+		"@types/react": "^17.0.2",
+		"firebase": "^9.9.2",
+		"graphql": "^16.3.0",
+		"graphql-request": "^4.2.0",
+		"next": "12",
+		"react": "^17.0.2",
+		"react-awesome-lightbox": "^1.8.1",
+		"react-device-detect": "^2.1.2",
+		"react-dom": "^17.0.2",
+		"react-icons": "^4.2.0",
+		"react-markdown": "^8.0.2",
+		"react-responsive-carousel": "^3.2.22",
+		"react-tabs": "^3.2.3",
+		"sass": "^1.34.0"
+	},
+	"devDependencies": {
+		"@graphql-codegen/cli": "2.6.2",
+		"@graphql-codegen/introspection": "2.1.1",
+		"@graphql-codegen/typescript": "2.4.8",
+		"@graphql-codegen/typescript-graphql-request": "^4.4.5",
+		"@graphql-codegen/typescript-operations": "2.3.5",
+		"@graphql-codegen/typescript-resolvers": "2.6.1",
+		"@types/node": "^15.6.1",
+		"@types/react-tabs": "^2.3.4",
+		"@typescript-eslint/eslint-plugin": "^5.17.0",
+		"@typescript-eslint/parser": "^5.17.0",
+		"dotenv": "^16.0.1",
+		"eslint": "^8.12.0",
+		"eslint-config-airbnb": "^19.0.4",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-import-resolver-typescript": "^2.4.0",
+		"eslint-plugin-import": "^2.25.4",
+		"eslint-plugin-jsx-a11y": "^6.5.1",
+		"eslint-plugin-prettier": "^4.0.0",
+		"eslint-plugin-react": "^7.29.4",
+		"eslint-plugin-react-hooks": "^4.4.0",
+		"prettier": "^2.6.2",
+		"typescript": "^4.2.4"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	}
 }
