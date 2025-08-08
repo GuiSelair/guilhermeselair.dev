@@ -14,18 +14,26 @@ import style from "@styles/pages/Project.module.scss";
 
 export default function Project({ project }: ProjectQuery) {
 	const projectGallery = useMemo(
-		() => [
-			{
-				src: project.cover.url,
-				id: project.cover.id,
-			},
-			...project.gallery.map((image) => ({
-				src: image.url,
-				id: image.id,
-			})),
-		],
+		() => {
+			if (!project?.cover || !project?.gallery) return [];
+
+			return [
+				{
+					src: project.cover.url,
+					id: project.cover.id,
+				},
+				...project.gallery.map((image) => ({
+					src: image.url,
+					id: image.id,
+				})),
+			]
+		},
 		[project]
 	);
+
+	if (!project) {
+		return null;
+	}
 
 	return (
 		<>
