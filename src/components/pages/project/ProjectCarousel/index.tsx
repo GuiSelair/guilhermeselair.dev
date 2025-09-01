@@ -1,6 +1,6 @@
 import "react-awesome-lightbox/build/style.css";
 import { Carousel } from "react-responsive-carousel";
-import { isMobile } from "react-device-detect";
+import { isDesktop } from "react-device-detect";
 import { HiArrowNarrowLeft, HiArrowNarrowRight } from "react-icons/hi";
 import Lightbox from "react-awesome-lightbox";
 import Image from "next/image";
@@ -72,13 +72,16 @@ export function ProjectCarousel({ gallery }: IProjectCarousel) {
 			</>
 		);
 	}
+
+	console.log(isDesktop)
+
 	return (
 		<>
 			<Carousel
-				centerMode={!isMobile}
-				centerSlidePercentage={!isMobile ? 60 : 65}
+				centerMode={isDesktop}
+				centerSlidePercentage={50}
 				autoPlay={false}
-				infiniteLoop={!isMobile}
+				infiniteLoop={isDesktop}
 				showThumbs={false}
 				showArrows
 				showStatus={false}

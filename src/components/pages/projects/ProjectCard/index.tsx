@@ -26,12 +26,13 @@ export function ProjectCard({
 					<Image
 						src={projectImage}
 						alt={projectName}
-						width={200}
-						height={140}
+						width={375}
+						height={190}
 						layout="responsive"
 						objectFit="cover"
 						placeholder="blur"
 						blurDataURL={projectImage}
+						quality={100}
 					/>
 				</div>
 				<div className={styles.detailContainer}>

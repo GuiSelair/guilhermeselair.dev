@@ -15,10 +15,8 @@ function EducationsWithoutMemo({ educations }: EducationsProps) {
 			<ul>
 				{educations.map(education => (
 					<li key={education.id}>
-						<strong>
-							{education.name}
-							<Badge text={education.level} />
-						</strong>
+						<strong>{education.name}</strong>
+						<Badge text={education.level} />
 						<span>{education.educationalCompany}</span>
 					</li>
 				))}

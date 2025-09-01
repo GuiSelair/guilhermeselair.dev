@@ -42,8 +42,7 @@
 		"formacao_educacional experiencias"
 		"tecnologias_trabalhadas experiencias";
 	gap: 2rem;
-	grid-template-rows: 320px 206px 1fr;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: minmax(320px, 480px) 1fr;
 	width: 100%;
 	margin-top: 4rem;
 	align-items: flex-start;
@@ -72,6 +71,12 @@
 			text-align: justify;
 		}
 	}
+}
+
+.flexColumn {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
 }
 
 .aboutContainerMobile {

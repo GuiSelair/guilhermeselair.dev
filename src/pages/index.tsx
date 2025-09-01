@@ -27,8 +27,7 @@ export default function Home() {
 								<FiExternalLink />
 							</div>
 							<span>
-								Sou desenvolvedor há mais de 5 anos me especializando
-								no ecossistema Javascript.
+								Eterno aprendiz de desenvolvedor, com foco no ecossistema Javascript.
 							</span>
 						</a>
 					</Link>

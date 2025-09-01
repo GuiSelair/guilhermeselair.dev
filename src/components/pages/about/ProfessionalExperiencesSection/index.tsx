@@ -56,7 +56,30 @@ function ProfessionalExperiencesSectionWithoutMemo({ experiences }: Professional
 
 	return (
 		<section ref={sectionRef} className={styles.experiencias}>
-			<h3>Carreira</h3>
+			<div className={styles.header}>
+				<h3>Carreira</h3>
+				<div className={styles.controlSlidesButtonsEndSection}>
+					<span className={styles.pageDetails}>Página {currentSelectedSlide + 1} de {experiencesSlides.length}</span>
+					<button
+						className={styles.previousButton}
+						type="button"
+						title="Anterior"
+						onClick={handlePreviousSlide}
+						disabled={hasPreviousSlide}
+					>
+						<BsArrowLeftShort />
+					</button>
+					<button
+						className={styles.nextButton}
+						type="button"
+						title="Proximo"
+						onClick={handleNextSlide}
+						disabled={hasNextSlide}
+					>
+						<BsArrowRightShort />
+					</button>
+				</div>
+			</div>
 			<Carousel
 				autoPlay={false}
 				showThumbs={false}

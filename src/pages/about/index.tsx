@@ -32,18 +32,20 @@ export default function AboutPage({ about }: AboutPageProps) {
 				description="Veja aqui um pouco da minha trajetória. Sinta-se à vontade de baixar meu currículo :D"
 			/>
 			<main className={styles.container}>
-				<h2>Always learning!</h2>
+				<h2>Eterno aprendiz!</h2>
 				<ApresentationSection profile={about.profile} />
 
 				<div className={styles.aboutContainerDesktop}>
-					<CoursesAndCertificationsSection courses={about.coursesSection} />
-					<EducationsSection educations={about.educationSection} />
-					<TechnologiesWorkedSection />
+					<div className={styles.flexColumn}>
+						<CoursesAndCertificationsSection courses={about.coursesSection} />
+						<EducationsSection educations={about.educationSection} />
+						<TechnologiesWorkedSection />
+					</div>
 					<ProfessionalExperiencesSection experiences={about.experiencesSection} />
 				</div>
 
 				<div className={styles.aboutContainerMobile}>
-					<Tabs className={styles.aboutContent}>
+					<Tabs className={styles.aboutContent} defaultIndex={1}>
 						<TabList>
 							<Tab>Mais detalhes</Tab>
 							<Tab>Carreira</Tab>

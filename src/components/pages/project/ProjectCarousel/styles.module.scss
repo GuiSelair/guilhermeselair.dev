@@ -90,10 +90,10 @@
 .nextImageArrowContainer {
 	position: absolute;
 	top: 50%;
-	right: 24%;
+	right: 30%;
 	z-index: 1;
 
-	background: #c4c4c462;
+	background: rgba(141, 141, 141, 1);
 	margin: auto;
 	font-size: 0;
 	border-radius: 50%;
@@ -106,16 +106,10 @@
 		top: 45%;
 	}
 
-	&:hover {
-		>svg {
-			color: var(--text-light);
-		}
-	}
-
 	>svg {
 		width: 1.2rem;
 		height: 1.2rem;
-		color: var(--text-orange);
+		color: var(--text-light);
 		transition: all 0.2s;
 
 		// MOBILE
@@ -129,11 +123,11 @@
 .previousImageArrowContainer {
 	position: absolute;
 	top: 50%;
-	left: 23%;
+	left: 30%;
 	z-index: 1;
 	padding: 8px;
 
-	background: #c4c4c462;
+	background: rgba(141, 141, 141, 1);
 	margin: auto;
 	font-size: 0;
 	border-radius: 50%;
@@ -145,16 +139,10 @@
 		top: 45%
 	}
 
-	&:hover {
-		>svg {
-			color: var(--text-light);
-		}
-	}
-
 	>svg {
+		color: var(--text-light);
 		width: 1.2rem;
 		height: 1.2rem;
-		color: var(--text-orange);
 		transition: all 0.2s;
 
 		// MOBILE
