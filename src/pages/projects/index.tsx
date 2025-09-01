@@ -90,6 +90,19 @@ export default function Projects({ projects }: ProjectsQuery) {
 							/>
 						))}
 				</div>
+				<div className={styles.projectContainer}>
+					{hasProject &&
+						projectsChunk[2]?.map((project) => (
+							<ProjectCard
+								key={project.slug}
+								projectId={project.slug}
+								projectImage={project.cover.url}
+								projectName={project.name}
+								projectType={project.type}
+								projectTechologies={project.technologies}
+							/>
+						))}
+				</div>
 			</main>
 		</>
 	);
