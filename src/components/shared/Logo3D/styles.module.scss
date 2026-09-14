@@ -1,0 +1,46 @@
+.container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: min(56vw, 46rem);
+	height: 100vh;
+	pointer-events: none;
+	z-index: 0;
+	opacity: 0;
+	transform: translate3d(0, 28px, 0) scale(0.96);
+	transition: opacity 1.8s ease, transform 1.8s ease;
+	mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 100%);
+	-webkit-mask-image: linear-gradient(
+		90deg,
+		transparent 0%,
+		#000 18%,
+		#000 100%
+	);
+
+	&.isVisible {
+		opacity: 1;
+		transform: translate3d(0, 0, 0) scale(1);
+	}
+
+	@media (max-width: 768px) {
+		width: 100%;
+		height: 46vh;
+		mask-image: linear-gradient(180deg, #000 35%, transparent 100%);
+		-webkit-mask-image: linear-gradient(180deg, #000 35%, transparent 100%);
+
+		&.isVisible {
+			opacity: 0.72;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		transform: none;
+		transition: opacity 0.45s ease;
+	}
+}
+
+.canvas {
+	width: 100%;
+	height: 100%;
+	display: block;
+}

@@ -1,8 +1,10 @@
 .container {
-  width: 100%;
+	position: relative;
+	z-index: 2;
+	width: 100%;
 
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 	min-height: 59px;
 	padding-top: 1rem;
 
@@ -17,8 +19,8 @@
 }
 
 .leftSide {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 	margin-left: 1rem;
 
 	a {
@@ -35,11 +37,11 @@
 		}
 	}
 
-  button {
+	button {
 		display: flex;
 		align-items: center;
 
-    border: none;
+		border: none;
 		border-radius: var(--border-radius);
 		padding: 0 12px;
 		background: transparent;
@@ -52,11 +54,11 @@
 			color: var(--text-light);
 		}
 
-    svg {
-      width: 2rem;
-      height: 2rem;
-    }
-  }
+		svg {
+			width: 2rem;
+			height: 2rem;
+		}
+	}
 }
 
 .centerNav {
@@ -75,7 +77,6 @@
 		order: 1;
 	}
 
-
 	ul {
 		list-style: none;
 		display: flex;
@@ -93,7 +94,6 @@
 					span {
 						color: #484e55;
 					}
-
 				}
 
 				&.isSelected {
@@ -151,8 +151,8 @@
 }
 
 .rightSide {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 	margin-right: 1rem;
 
 	// MOBILE
@@ -164,9 +164,9 @@
 		margin-left: auto;
 	}
 
-  a {
-    font-size: 0;
-    transition: all 0.4s;
+	a {
+		font-size: 0;
+		transition: all 0.4s;
 		padding: 4px 8px;
 		background: transparent;
 		border-radius: var(--border-radius);
@@ -184,5 +184,5 @@
 			height: 1.4rem;
 			color: var(--text-secondary);
 		}
-  }
+	}
 }

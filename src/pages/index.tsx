@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FiExternalLink } from "react-icons/fi";
 
-import { SEO, BackgroundBlur } from "@components/shared";
+import { SEO, Logo3D } from "@components/shared";
 import styles from "../styles/pages/Home.module.scss";
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
 				description="Olá! Eu sou Guilherme Selair, desenvolvedor de software. Venha me conhecer melhor e dê uma olhada nos projetos que já fiz 🖖"
 				shouldExcludeTitleSuffix
 			/>
-			<BackgroundBlur />
+			<Logo3D />
 			<main className={styles.container}>
 				<div>
 					<h1>Guilherme Selair</h1>
@@ -27,7 +27,8 @@ export default function Home() {
 								<FiExternalLink />
 							</div>
 							<span>
-								Eterno aprendiz de desenvolvedor, com foco no ecossistema Javascript.
+								Eterno aprendiz de desenvolvedor, com foco no ecossistema
+								Javascript.
 							</span>
 						</a>
 					</Link>
@@ -38,7 +39,9 @@ export default function Home() {
 								<FiExternalLink />
 							</div>
 							<span>
-								Busco sempre expandir meus conhecimentos explorando novas tecnologias para assim entregar aplicações de ponta-a-ponta com qualidade.
+								Busco sempre expandir meus conhecimentos explorando novas
+								tecnologias para assim entregar aplicações de ponta-a-ponta com
+								qualidade.
 							</span>
 						</a>
 					</Link>
