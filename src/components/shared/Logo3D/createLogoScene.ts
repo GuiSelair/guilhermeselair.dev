@@ -51,7 +51,7 @@ function createStudioEnvMap(THREE: ThreeModule, renderer: WebGLRenderer) {
 	});
 
 	const pmrem = new THREE.PMREMGenerator(renderer);
-	const envMap = pmrem.fromScene(envScene, 0.05).texture;
+	const envMap = pmrem.fromScene(envScene, 0.03).texture;
 	pmrem.dispose();
 
 	envScene.traverse((object) => {
@@ -207,9 +207,9 @@ export async function createLogoScene(
 	const envMap = createStudioEnvMap(THREE, renderer);
 	scene.environment = envMap;
 
-	const camera = new THREE.PerspectiveCamera(28, 1, 0.1, 40);
-	camera.position.set(0.15, 0.72, 4.55);
-	camera.lookAt(0, 0.08, 0);
+	const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 40);
+	camera.position.set(0.2, 0.95, 6.2);
+	camera.lookAt(0, 0.18, 0);
 
 	scene.add(new THREE.AmbientLight(0xf3eee6, 0.32));
 
@@ -279,12 +279,25 @@ export async function createLogoScene(
 	shadowMesh.position.y = 0.001;
 	scene.add(shadowMesh);
 
+	function frameCamera(width: number, height: number) {
+		const isCompact = width < 540 || height < 420;
+		if (isCompact) {
+			camera.position.set(0.12, 0.82, 7.6);
+			camera.lookAt(0, 0.22, 0);
+			return;
+		}
+
+		camera.position.set(0.22, 0.98, 6.35);
+		camera.lookAt(0, 0.16, 0);
+	}
+
 	function resize(width: number, height: number) {
 		const safeWidth = Math.max(width, 1);
 		const safeHeight = Math.max(height, 1);
 		camera.aspect = safeWidth / safeHeight;
 		camera.updateProjectionMatrix();
 		renderer.setSize(safeWidth, safeHeight, false);
+		frameCamera(safeWidth, safeHeight);
 	}
 
 	resize(container.clientWidth, container.clientHeight);

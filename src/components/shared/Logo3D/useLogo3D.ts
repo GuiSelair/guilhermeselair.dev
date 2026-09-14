@@ -81,7 +81,7 @@ export function useLogo3D() {
 			mouse.x = lerp(mouse.x, mouseTarget.x, 0.045);
 			mouse.y = lerp(mouse.y, mouseTarget.y, 0.045);
 
-			const idleY = reduceMotion ? 0.42 : time * 0.22 + 0.42;
+			const idleY = reduceMotion ? 0.42 : time * 0.12 + 0.42;
 			const idleX = reduceMotion ? -0.16 : Math.sin(time * 0.45) * 0.08;
 			const floatY = reduceMotion ? 0 : Math.sin(time * 0.7) * 0.045;
 
@@ -91,7 +91,7 @@ export function useLogo3D() {
 				? 0.04
 				: Math.sin(time * 0.35) * 0.03;
 			controller.logoGroup.position.y = controller.baseY + floatY;
-			controller.logoGroup.scale.setScalar(0.92 + intro * 0.08);
+			controller.logoGroup.scale.setScalar(0.74 + intro * 0.08);
 
 			syncReflection(controller, time, intro);
 
@@ -100,21 +100,25 @@ export function useLogo3D() {
 		}
 
 		async function setup() {
-			const THREE = await import("three");
-			if (state.disposed) return;
+			try {
+				const THREE = await import("three");
+				if (state.disposed) return;
 
-			const controller = await createLogoScene(canvas, container, THREE);
+				const controller = await createLogoScene(canvas, container, THREE);
 
-			if (state.disposed) {
-				controller.dispose();
-				return;
+				if (state.disposed) {
+					controller.dispose();
+					return;
+				}
+
+				state.controller = controller;
+				setIsVisible(true);
+
+				const clock = new THREE.Clock();
+				renderFrame(controller, clock);
+			} catch (error) {
+				console.error("Failed to start the 3D logo scene", error);
 			}
-
-			state.controller = controller;
-			setIsVisible(true);
-
-			const clock = new THREE.Clock();
-			renderFrame(controller, clock);
 		}
 
 		setup();
