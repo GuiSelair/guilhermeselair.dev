@@ -47,15 +47,15 @@ export function useLogo3D() {
 			intro: number
 		) {
 			const { logoGroup, shadowMesh } = controller;
-			const floatOffset = reduceMotion ? 0 : Math.sin(time * 0.7) * 0.03;
+			const floatOffset = reduceMotion ? 0 : Math.sin(time * 0.18) * 0.012;
 			const shadowMaterial = shadowMesh.material as {
 				opacity: number;
 			};
 
 			shadowMesh.position.x = logoGroup.position.x;
 			shadowMesh.position.z = logoGroup.position.z + 0.08;
-			shadowMesh.scale.setScalar(0.86 + floatOffset * 0.7);
-			shadowMaterial.opacity = intro * (0.46 - floatOffset * 1.1);
+			shadowMesh.scale.setScalar(0.9 + floatOffset * 0.4);
+			shadowMaterial.opacity = intro * (0.32 - floatOffset * 0.8);
 		}
 
 		function renderFrame(
@@ -65,22 +65,22 @@ export function useLogo3D() {
 			if (state.disposed) return;
 
 			const time = clock.getElapsedTime();
-			const intro = reduceMotion ? 1 : 1 - (1 - Math.min(time / 1.65, 1)) ** 3;
+			const intro = reduceMotion ? 1 : 1 - (1 - Math.min(time / 2.4, 1)) ** 3;
 
-			mouse.x = lerp(mouse.x, mouseTarget.x, 0.045);
-			mouse.y = lerp(mouse.y, mouseTarget.y, 0.045);
+			mouse.x = lerp(mouse.x, mouseTarget.x, 0.018);
+			mouse.y = lerp(mouse.y, mouseTarget.y, 0.018);
 
-			const idleY = reduceMotion ? 0.32 : 0.28 + Math.sin(time * 0.35) * 0.2;
-			const idleX = reduceMotion ? -0.1 : Math.sin(time * 0.45) * 0.06;
-			const floatY = reduceMotion ? 0 : Math.sin(time * 0.7) * 0.03;
+			const idleY = reduceMotion ? 0.22 : 0.2 + Math.sin(time * 0.12) * 0.06;
+			const idleX = reduceMotion ? -0.06 : Math.sin(time * 0.15) * 0.028;
+			const floatY = reduceMotion ? 0 : Math.sin(time * 0.18) * 0.012;
 
-			controller.logoGroup.rotation.y = idleY + mouse.x * 0.28;
-			controller.logoGroup.rotation.x = idleX - 0.1 + mouse.y * 0.14;
+			controller.logoGroup.rotation.y = idleY + mouse.x * 0.1;
+			controller.logoGroup.rotation.x = idleX - 0.06 + mouse.y * 0.05;
 			controller.logoGroup.rotation.z = reduceMotion
-				? 0.03
-				: Math.sin(time * 0.35) * 0.02;
+				? 0.015
+				: Math.sin(time * 0.12) * 0.008;
 			controller.logoGroup.position.y = controller.baseY + floatY;
-			controller.logoGroup.scale.setScalar(0.9 + intro * 0.1);
+			controller.logoGroup.scale.setScalar(0.96 + intro * 0.04);
 
 			controller.updateGradient(reduceMotion ? 0 : time);
 			syncShadow(controller, time, intro);

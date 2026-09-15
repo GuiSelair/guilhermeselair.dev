@@ -11,10 +11,12 @@ import type {
 
 type ThreeModule = typeof import("three");
 
-const BOX_SIZE = 1.62;
-const BOX_DEPTH = 0.4;
-const BOX_RADIUS = 0.34;
-const LETTER_DEPTH = 0.38;
+const BOX_SIZE = 2.02;
+const BOX_DEPTH = 0.48;
+const BOX_RADIUS = 0.42;
+const LETTER_DEPTH = 0.3;
+const LETTER_SIZE = 0.68;
+const GRADIENT_CYCLE_SECONDS = 22;
 
 const BOX_COLOR = 0x2c2c29;
 
@@ -112,7 +114,14 @@ function createHeadingGradientTexture(THREE: ThreeModule) {
 	function update(time: number) {
 		if (!context) return;
 
-		const pan = 0.5 - 0.5 * Math.cos(((time % 6) / 6) * Math.PI * 2);
+		const pan =
+			0.5 -
+			0.5 *
+				Math.cos(
+					((time % GRADIENT_CYCLE_SECONDS) / GRADIENT_CYCLE_SECONDS) *
+						Math.PI *
+						2
+				);
 		const angle = (109.6 * Math.PI) / 180;
 		const length = size * 2.6;
 		const shift = (pan - 0.5) * size * 1.8;
@@ -176,7 +185,7 @@ async function createLetterMeshes(
 
 	const geometry = new TextGeometry("S", {
 		font,
-		size: 0.82,
+		size: LETTER_SIZE,
 		height: LETTER_DEPTH,
 		curveSegments: 16,
 		bevelEnabled: true,
@@ -242,9 +251,9 @@ export async function createLogoScene(
 
 	const headingGradient = createHeadingGradientTexture(THREE);
 
-	const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 40);
-	camera.position.set(0.82, 0.22, 3.15);
-	camera.lookAt(0, 0.02, 0.12);
+	const camera = new THREE.PerspectiveCamera(28, 1, 0.1, 40);
+	camera.position.set(0.62, 0.16, 3.55);
+	camera.lookAt(0, 0.02, 0.08);
 
 	scene.add(new THREE.AmbientLight(0xf2f2f2, 0.48));
 
@@ -284,7 +293,7 @@ export async function createLogoScene(
 
 	const baseY = 0;
 	logoGroup.position.y = baseY;
-	logoGroup.rotation.set(-0.12, 0.32, 0.03);
+	logoGroup.rotation.set(-0.08, 0.22, 0.015);
 	scene.add(logoGroup);
 
 	const shadowTexture = createShadowTexture(THREE);
@@ -293,7 +302,7 @@ export async function createLogoScene(
 		new THREE.MeshBasicMaterial({
 			map: shadowTexture,
 			transparent: true,
-			opacity: 0.48,
+			opacity: 0.32,
 			depthWrite: false,
 		})
 	);
@@ -304,13 +313,13 @@ export async function createLogoScene(
 	function frameCamera(width: number, height: number) {
 		const isCompact = width < 540 || height < 420;
 		if (isCompact) {
-			camera.position.set(0.72, 0.2, 3.35);
-			camera.lookAt(0, 0.02, 0.12);
+			camera.position.set(0.52, 0.14, 3.85);
+			camera.lookAt(0, 0.02, 0.08);
 			return;
 		}
 
-		camera.position.set(0.86, 0.22, 3.05);
-		camera.lookAt(0, 0.02, 0.12);
+		camera.position.set(0.64, 0.16, 3.48);
+		camera.lookAt(0, 0.02, 0.08);
 	}
 
 	function resize(width: number, height: number) {
