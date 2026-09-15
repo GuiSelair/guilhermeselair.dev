@@ -14,7 +14,7 @@ type ThreeModule = typeof import("three");
 const BOX_SIZE = 1.62;
 const BOX_DEPTH = 0.4;
 const BOX_RADIUS = 0.34;
-const LETTER_DEPTH = 0.32;
+const LETTER_DEPTH = 0.38;
 
 const BOX_COLOR = 0x2c2c29;
 
@@ -35,9 +35,9 @@ function createStudioEnvMap(THREE: ThreeModule, renderer: WebGLRenderer) {
 	const envScene = new THREE.Scene();
 	const bulbs = [
 		{ color: 0xffffff, position: [3.4, 4.6, 2.4], size: 1.5 },
-		{ color: 0xf3f1ea, position: [-3.6, 2.2, 3.1], size: 1.1 },
-		{ color: 0xdfe8f6, position: [0.2, 1.6, -4.2], size: 1.2 },
-		{ color: 0xd5e2ff, position: [-2.4, -1.2, -2.2], size: 0.85 },
+		{ color: 0xf4f6f8, position: [-3.6, 2.2, 3.1], size: 1.1 },
+		{ color: 0xe8eef6, position: [0.2, 1.6, -4.2], size: 1.2 },
+		{ color: 0xd9e2f0, position: [-2.4, -1.2, -2.2], size: 0.85 },
 	];
 
 	bulbs.forEach((bulb) => {
@@ -89,79 +89,80 @@ function createShadowTexture(THREE: ThreeModule) {
 function createBoxMaterial(THREE: ThreeModule, envMap: Texture) {
 	return new THREE.MeshPhysicalMaterial({
 		color: BOX_COLOR,
-		metalness: 0.48,
-		roughness: 0.32,
-		clearcoat: 0.7,
-		clearcoatRoughness: 0.22,
+		metalness: 0.22,
+		roughness: 0.48,
+		clearcoat: 0.22,
+		clearcoatRoughness: 0.45,
 		envMap,
-		envMapIntensity: 1.05,
-		reflectivity: 0.62,
+		envMapIntensity: 0.7,
+		reflectivity: 0.4,
 	});
 }
 
-function attachHeadingGradient(
-	material: MeshPhysicalMaterial
-): MeshPhysicalMaterial {
-	material.onBeforeCompile = (shader) => {
-		shader.uniforms.uGradientShift = { value: 0.35 };
-		material.userData.gradientUniform = shader.uniforms.uGradientShift;
+function createHeadingGradientTexture(THREE: ThreeModule) {
+	const size = 512;
+	const canvas = document.createElement("canvas");
+	canvas.width = size;
+	canvas.height = size;
+	const context = canvas.getContext("2d");
+	const texture = new THREE.CanvasTexture(canvas);
+	texture.colorSpace = THREE.SRGBColorSpace;
+	texture.anisotropy = 8;
 
-		shader.vertexShader = shader.vertexShader
-			.replace(
-				"#include <common>",
-				`#include <common>
-				varying vec3 vGradientPos;`
-			)
-			.replace(
-				"#include <begin_vertex>",
-				`#include <begin_vertex>
-				vGradientPos = position;`
-			);
+	function update(time: number) {
+		if (!context) return;
 
-		shader.fragmentShader = shader.fragmentShader
-			.replace(
-				"#include <common>",
-				`#include <common>
-				uniform float uGradientShift;
-				varying vec3 vGradientPos;`
-			)
-			.replace(
-				"#include <color_fragment>",
-				`#include <color_fragment>
-				vec3 c1 = vec3(0.9098, 0.9882, 0.9882);
-				vec3 c2 = vec3(0.9882, 0.8431, 0.5255);
-				vec3 c3 = vec3(1.0, 0.4706, 0.2941);
-				float angle = 1.9129;
-				float axis = vGradientPos.x * cos(angle) + vGradientPos.y * sin(angle);
-				float g = clamp(axis * 0.72 + uGradientShift, 0.0, 1.0);
-				vec3 grad = mix(c1, c2, smoothstep(0.112, 0.562, g));
-				grad = mix(grad, c3, smoothstep(0.562, 1.0, g));
-				diffuseColor.rgb *= grad;`
-			);
-	};
+		const pan = 0.5 - 0.5 * Math.cos(((time % 6) / 6) * Math.PI * 2);
+		const angle = (109.6 * Math.PI) / 180;
+		const length = size * 2.6;
+		const shift = (pan - 0.5) * size * 1.8;
+		const dx = Math.cos(angle);
+		const dy = Math.sin(angle);
+		const cx = size / 2 + dx * shift;
+		const cy = size / 2 + dy * shift;
+		const gradient = context.createLinearGradient(
+			cx - dx * (length / 2),
+			cy - dy * (length / 2),
+			cx + dx * (length / 2),
+			cy + dy * (length / 2)
+		);
+		gradient.addColorStop(0.112, "rgb(232, 252, 252)");
+		gradient.addColorStop(0.562, "rgb(252, 215, 134)");
+		gradient.addColorStop(1, "#ff784b");
+		context.fillStyle = gradient;
+		context.fillRect(0, 0, size, size);
+		texture.needsUpdate = true;
+	}
 
-	material.customProgramCacheKey = function customProgramCacheKey() {
-		return "heading-gradient-s";
-	};
-
-	return material;
+	update(0);
+	return { texture, update };
 }
 
-function createLetterMaterial(THREE: ThreeModule, envMap: Texture) {
-	const material = new THREE.MeshPhysicalMaterial({
+function createLetterMaterial(
+	THREE: ThreeModule,
+	envMap: Texture,
+	gradientMap: Texture
+) {
+	return new THREE.MeshPhysicalMaterial({
 		color: 0xffffff,
-		metalness: 0.12,
-		roughness: 0.34,
-		clearcoat: 0.28,
-		clearcoatRoughness: 0.3,
+		map: gradientMap,
+		emissive: 0xffffff,
+		emissiveMap: gradientMap,
+		emissiveIntensity: 0.58,
+		metalness: 0.08,
+		roughness: 0.38,
+		clearcoat: 0.18,
+		clearcoatRoughness: 0.4,
 		envMap,
-		envMapIntensity: 0.4,
+		envMapIntensity: 0.28,
 	});
-
-	return attachHeadingGradient(material);
 }
 
-async function createLetterMeshes(THREE: ThreeModule, envMap: Texture) {
+async function createLetterMeshes(
+	THREE: ThreeModule,
+	envMap: Texture,
+	gradientMap: Texture
+) {
 	const { FontLoader } = await import(
 		"three/examples/jsm/loaders/FontLoader.js"
 	);
@@ -179,21 +180,37 @@ async function createLetterMeshes(THREE: ThreeModule, envMap: Texture) {
 		height: LETTER_DEPTH,
 		curveSegments: 16,
 		bevelEnabled: true,
-		bevelThickness: 0.038,
-		bevelSize: 0.024,
+		bevelThickness: 0.042,
+		bevelSize: 0.026,
 		bevelOffset: 0,
-		bevelSegments: 4,
+		bevelSegments: 5,
 	});
 	geometry.center();
 	geometry.computeBoundingBox();
 
-	const material = createLetterMaterial(THREE, envMap);
+	const bounds = geometry.boundingBox;
+	const uvAttr = geometry.getAttribute("uv");
+	const posAttr = geometry.getAttribute("position");
+	if (bounds && uvAttr) {
+		const sizeX = bounds.max.x - bounds.min.x || 1;
+		const sizeY = bounds.max.y - bounds.min.y || 1;
+		for (let i = 0; i < posAttr.count; i++) {
+			uvAttr.setXY(
+				i,
+				(posAttr.getX(i) - bounds.min.x) / sizeX,
+				(posAttr.getY(i) - bounds.min.y) / sizeY
+			);
+		}
+		uvAttr.needsUpdate = true;
+	}
+
+	const material = createLetterMaterial(THREE, envMap, gradientMap);
 	const front = new THREE.Mesh(geometry, material);
-	front.position.z = BOX_DEPTH / 2 + LETTER_DEPTH / 2 - 0.02;
+	front.position.z = BOX_DEPTH / 2 + LETTER_DEPTH / 2 - 0.015;
 
 	const back = new THREE.Mesh(geometry, material);
 	back.rotation.y = Math.PI;
-	back.position.z = -(BOX_DEPTH / 2 + LETTER_DEPTH / 2 - 0.02);
+	back.position.z = -(BOX_DEPTH / 2 + LETTER_DEPTH / 2 - 0.015);
 
 	return { front, back, material };
 }
@@ -223,25 +240,27 @@ export async function createLogoScene(
 	const envMap = createStudioEnvMap(THREE, renderer);
 	scene.environment = envMap;
 
-	const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 40);
-	camera.position.set(0.55, 0.28, 4.15);
-	camera.lookAt(0, 0.02, 0);
+	const headingGradient = createHeadingGradientTexture(THREE);
 
-	scene.add(new THREE.AmbientLight(0xf4f1ea, 0.42));
+	const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 40);
+	camera.position.set(0.82, 0.22, 3.15);
+	camera.lookAt(0, 0.02, 0.12);
 
-	const keyLight = new THREE.DirectionalLight(0xfff8f0, 1.18);
-	keyLight.position.set(2.8, 4.2, 5.2);
+	scene.add(new THREE.AmbientLight(0xf2f2f2, 0.48));
+
+	const keyLight = new THREE.DirectionalLight(0xffffff, 1.05);
+	keyLight.position.set(2.4, 3.6, 5.4);
 	scene.add(keyLight);
 
-	const fillLight = new THREE.DirectionalLight(0xd5deea, 0.38);
+	const fillLight = new THREE.DirectionalLight(0xe8edf4, 0.42);
 	fillLight.position.set(-4.2, 1.4, 2.6);
 	scene.add(fillLight);
 
-	const depthLight = new THREE.DirectionalLight(0xf2f2f0, 0.42);
+	const depthLight = new THREE.DirectionalLight(0xffffff, 0.28);
 	depthLight.position.set(-2.2, 1.8, -3.4);
 	scene.add(depthLight);
 
-	const sparkLight = new THREE.PointLight(0xffffff, 0.45, 10);
+	const sparkLight = new THREE.PointLight(0xffffff, 0.32, 10);
 	sparkLight.position.set(1.2, 1.8, 2.8);
 	scene.add(sparkLight);
 
@@ -256,7 +275,11 @@ export async function createLogoScene(
 	const box = new THREE.Mesh(boxGeometry, createBoxMaterial(THREE, envMap));
 	logoGroup.add(box);
 
-	const letters = await createLetterMeshes(THREE, envMap);
+	const letters = await createLetterMeshes(
+		THREE,
+		envMap,
+		headingGradient.texture
+	);
 	logoGroup.add(letters.front, letters.back);
 
 	const baseY = 0;
@@ -281,13 +304,13 @@ export async function createLogoScene(
 	function frameCamera(width: number, height: number) {
 		const isCompact = width < 540 || height < 420;
 		if (isCompact) {
-			camera.position.set(0.42, 0.22, 4.55);
-			camera.lookAt(0, 0.02, 0);
+			camera.position.set(0.72, 0.2, 3.35);
+			camera.lookAt(0, 0.02, 0.12);
 			return;
 		}
 
-		camera.position.set(0.58, 0.3, 4.05);
-		camera.lookAt(0, 0.02, 0);
+		camera.position.set(0.86, 0.22, 3.05);
+		camera.lookAt(0, 0.02, 0.12);
 	}
 
 	function resize(width: number, height: number) {
@@ -300,14 +323,7 @@ export async function createLogoScene(
 	}
 
 	function updateGradient(time: number) {
-		const gradientUniform = letters.material.userData.gradientUniform as
-			| { value: number }
-			| undefined;
-		if (!gradientUniform) return;
-
-		const cycle = (time % 6) / 6;
-		gradientUniform.value =
-			0.18 + 0.64 * (0.5 - 0.5 * Math.cos(cycle * Math.PI * 2));
+		headingGradient.update(time);
 	}
 
 	resize(container.clientWidth, container.clientHeight);
@@ -328,6 +344,7 @@ export async function createLogoScene(
 		});
 		envMap.dispose();
 		shadowTexture.dispose();
+		headingGradient.texture.dispose();
 		renderer.dispose();
 	}
 
