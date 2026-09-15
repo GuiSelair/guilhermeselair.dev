@@ -12,12 +12,14 @@ export default function Home() {
 				description="Olá! Eu sou Guilherme Selair, desenvolvedor de software. Venha me conhecer melhor e dê uma olhada nos projetos que já fiz 🖖"
 				shouldExcludeTitleSuffix
 			/>
-			<Logo3D />
 			<main className={styles.container}>
-				<div>
-					<h1>Guilherme Selair</h1>
+				<div className={styles.hero}>
+					<div className={styles.heroCopy}>
+						<h1>Guilherme Selair</h1>
+						<h2>Desenvolvedor de software</h2>
+					</div>
+					<Logo3D />
 				</div>
-				<h2>Desenvolvedor de software</h2>
 
 				<section className={styles.labelsGroup}>
 					<Link href="/about">
