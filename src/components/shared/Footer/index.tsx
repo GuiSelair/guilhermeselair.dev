@@ -7,7 +7,7 @@ import { basicInfos } from "@configs/basicInfos";
 
 function FooterWithoutMemo() {
 	return (
-		<footer className={style.container}>
+		<footer className={style.container} data-ai-hidden>
 			<div>
 				<span>© Guilherme Selair. {new Date().getFullYear()}</span>
 			</div>

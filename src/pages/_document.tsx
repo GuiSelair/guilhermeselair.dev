@@ -32,6 +32,13 @@ export default class MyDocument extends Document {
 					/>
 				</Head>
 				<body>
+					<script
+						// Runs before the page is parsed so /about?ai-mode=on
+						// does not paint the designed layout first.
+						dangerouslySetInnerHTML={{
+							__html: `(function(){try{var path=location.pathname.replace(/\\/$/,"")||"/";var aiMode=new URLSearchParams(location.search).get("ai-mode");if(path==="/about"&&aiMode==="on"){document.documentElement.setAttribute("data-ai-mode","on");}else{document.documentElement.removeAttribute("data-ai-mode");}}catch(e){}})();`,
+						}}
+					/>
 					<Main />
 					<NextScript />
 				</body>

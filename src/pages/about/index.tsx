@@ -12,12 +12,15 @@ import {
 	TechnologiesWorkedSection,
 	ProfessionalExperiencesSection,
 } from "@components/pages/about";
+import { buildAboutMarkdown } from "@utils/buildAboutMarkdown";
 
 interface AboutPageProps {
 	about: AboutQuery['abouts'][0]
 }
 
 export default function AboutPage({ about }: AboutPageProps) {
+	const markdown = buildAboutMarkdown(about);
+
 	const handleRedirectToGoogleDriveFolder = () => {
 		return window.open(
 			about.cvUrl,
@@ -31,7 +34,7 @@ export default function AboutPage({ about }: AboutPageProps) {
 				title="Sobre mim"
 				description="Veja aqui um pouco da minha trajetória. Sinta-se à vontade de baixar meu currículo :D"
 			/>
-			<main className={styles.container}>
+			<main className={styles.container} data-ai-hidden>
 				<h2>Eterno aprendiz!</h2>
 				<ApresentationSection profile={about.profile} />
 
@@ -74,6 +77,12 @@ export default function AboutPage({ about }: AboutPageProps) {
 					backgroundColor="#ff784b"
 				/>
 			</main>
+			<article data-ai-only>
+				<p style={{ marginBottom: "1rem" }}>
+					<a href="/about">Desligar modo AI</a>
+				</p>
+				<pre>{markdown}</pre>
+			</article>
 		</>
 	);
 }
