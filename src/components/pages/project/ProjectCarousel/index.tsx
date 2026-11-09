@@ -73,8 +73,6 @@ export function ProjectCarousel({ gallery }: IProjectCarousel) {
 		);
 	}
 
-	console.log(isDesktop)
-
 	return (
 		<>
 			<Carousel
