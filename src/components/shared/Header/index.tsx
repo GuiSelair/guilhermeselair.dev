@@ -22,7 +22,7 @@ export function Header() {
 	}
 
 	return (
-		<header className={style.container}>
+		<header className={style.container} data-ai-hidden>
 			<div className={style.leftSide}>
 				{isSubPage ? (
 					<button type="button" title="Voltar" onClick={goBack}>
@@ -80,6 +80,13 @@ export function Header() {
 				</ul>
 			</nav>
 			<div className={style.rightSide}>
+				<a
+					className={style.aiModeToggle}
+					href="/about?ai-mode=on"
+					title="Ativar modo AI"
+				>
+					AI MODE
+				</a>
 				<a
 					title="Veja meu Linkedin"
 					href={basicInfos.linkedin}

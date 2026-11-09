@@ -38,11 +38,11 @@
 
 html {
   font-size: 100%; // 16px
-  
+
   @media (min-width: 721px) and (max-width: 1366px) {
     font-size: 93.75%; // 15px
   }
-  
+
   @media (max-width: 720px) {
     font-size: 87.5%; // 14px
   }
@@ -71,4 +71,36 @@ svg {
 
 button {
   cursor: pointer;
+}
+
+[data-ai-only] {
+	display: none;
+}
+
+html[data-ai-mode="on"] {
+	background: var(--background-dark);
+
+	body {
+		background: var(--background-dark);
+		color: var(--text-light);
+		font: initial;
+		margin: 8px;
+	}
+
+	a {
+		color: var(--text-light);
+		text-decoration: underline;
+	}
+
+	pre {
+		white-space: pre-wrap;
+	}
+
+	[data-ai-hidden] {
+		display: none !important;
+	}
+
+	[data-ai-only] {
+		display: block;
+	}
 }
