@@ -1,0 +1,132 @@
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes driftMain {
+	from {
+		transform: translate(0, 0) rotate(0deg);
+	}
+	to {
+		transform: translate(-40px, 24px) rotate(6deg);
+	}
+}
+
+@keyframes driftSecondary {
+	from {
+		transform: translate(0, 0) rotate(0deg);
+	}
+	to {
+		transform: translate(30px, -20px) rotate(-5deg);
+	}
+}
+
+@keyframes breathe {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(1.03);
+	}
+}
+
+.container {
+	--topo-opacity: 0.09;
+	--topo-index-opacity: 0.16;
+
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	overflow: hidden;
+	pointer-events: none;
+	animation: fadeIn 1.6s ease-out both;
+
+	-webkit-mask-image: radial-gradient(
+		ellipse 75% 70% at 60% 50%,
+		#000 35%,
+		transparent 100%
+	);
+	mask-image: radial-gradient(
+		ellipse 75% 70% at 60% 50%,
+		#000 35%,
+		transparent 100%
+	);
+}
+
+.svg {
+	width: 100%;
+	height: 100%;
+}
+
+.field {
+	fill: none;
+	stroke: var(--text-orange);
+	stroke-width: 1;
+	stroke-opacity: var(--topo-opacity);
+	transform-box: fill-box;
+	transform-origin: center;
+
+	path {
+		vector-effect: non-scaling-stroke;
+		transform-box: fill-box;
+		transform-origin: center;
+		animation: breathe 14s ease-in-out infinite alternate;
+		animation-delay: calc(var(--level) * -0.9s);
+
+		&:nth-child(5n) {
+			stroke-opacity: var(--topo-index-opacity);
+		}
+	}
+}
+
+.mainField {
+	animation: driftMain 48s ease-in-out infinite alternate;
+}
+
+.secondaryField {
+	animation: driftSecondary 56s ease-in-out infinite alternate;
+}
+
+// MOBILE
+@media (max-width: 768px) {
+	.container {
+		--topo-opacity: 0.13;
+		--topo-index-opacity: 0.2;
+
+		-webkit-mask-image: radial-gradient(
+			ellipse 90% 60% at 60% 50%,
+			#000 30%,
+			transparent 100%
+		);
+		mask-image: radial-gradient(
+			ellipse 90% 60% at 60% 50%,
+			#000 30%,
+			transparent 100%
+		);
+	}
+
+	.svg {
+		overflow: visible;
+		transform: translateX(-70%);
+	}
+
+	.field path {
+		animation: none;
+
+		&:nth-child(even) {
+			display: none;
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.container,
+	.field,
+	.field path {
+		animation: none;
+	}
+}

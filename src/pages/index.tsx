@@ -6,7 +6,7 @@ import { useHome } from "@hooks/useHome";
 import styles from "@styles/pages/Home.module.scss";
 
 export default function Home() {
-	const { name, roles, navItems } = useHome();
+	const { name, roles, summary, email, navItems } = useHome();
 
 	return (
 		<>
@@ -16,8 +16,16 @@ export default function Home() {
 				shouldExcludeTitleSuffix
 			/>
 			<main className={styles.container}>
-				<p className={styles.roles}>{roles}</p>
-				<h1 className={styles.name}>{name}</h1>
+				<div className={styles.identity}>
+					<p className={styles.roles}>{roles}</p>
+					<h1 className={styles.name}>{name}</h1>
+					<p className={styles.summary}>
+						{summary} Fale comigo em{" "}
+						<a className={styles.summaryLink} href={`mailto:${email}`}>
+							{email}
+						</a>.
+					</p>
+				</div>
 
 				<nav aria-label="Seções principais" className={styles.nav}>
 					<ol className={styles.index}>
@@ -29,9 +37,6 @@ export default function Home() {
 											{item.index}
 										</span>
 										<span className={styles.indexTitle}>{item.title}</span>
-										<span className={styles.indexDescription}>
-											{item.description}
-										</span>
 										<FiArrowRight
 											className={styles.indexArrow}
 											aria-hidden="true"

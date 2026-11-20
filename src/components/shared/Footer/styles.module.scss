@@ -4,15 +4,15 @@
 	justify-content: space-between;
 	width: min(100%, var(--max-width));
 	margin: auto;
-	padding: 8px 0 12px;
+	padding: 8px 4.4rem 12px;
 
 	// MOBILE
 	@media (max-width: 768px) {
-		padding: 8px 16px 12px;
+		padding: 8px 1.5rem 12px;
 	}
 	// TABLET
 	@media (min-width: 769px) and (max-width: 1024px) {
-		padding: 8px 32px 12px;
+		padding: 8px 2.5rem 12px;
 	}
 
 	span {
@@ -42,5 +42,4 @@
 			height: 1.5rem;
 		}
 	}
-
 }
