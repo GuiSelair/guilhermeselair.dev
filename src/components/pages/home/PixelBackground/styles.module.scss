@@ -1,0 +1,61 @@
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes flicker {
+	0%,
+	92%,
+	100% {
+		fill-opacity: var(--pixel-opacity);
+	}
+	80% {
+		fill-opacity: var(--pixel-glow-opacity);
+	}
+}
+
+.container {
+	--pixel-opacity: 0.08;
+	--pixel-glow-opacity: 0.4;
+
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	overflow: hidden;
+	pointer-events: none;
+	animation: fadeIn 1.6s ease-out both;
+}
+
+.svg {
+	width: 100%;
+	height: 100%;
+	fill: var(--text-orange);
+	fill-opacity: var(--pixel-opacity);
+	shape-rendering: crispEdges;
+}
+
+.flicker {
+	animation: flicker var(--duration) steps(1, end) var(--delay) infinite;
+}
+
+// MOBILE
+@media (max-width: 768px) {
+	.container {
+		--pixel-opacity: 0.1;
+	}
+
+	.svg rect:nth-child(even) {
+		display: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.container,
+	.flicker {
+		animation: none;
+	}
+}

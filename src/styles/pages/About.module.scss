@@ -9,7 +9,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	@include animationStart(1.2s);
+	@include fadeUp;
 
 	// MOBILE
 	@media (max-width: 768px) {
@@ -26,8 +26,11 @@
 
 	h2 {
 		@include headingBackground;
+		font-family: var(--font-display);
+		font-optical-sizing: auto;
 		font-size: 5rem;
-		font-weight: 700;
+		font-weight: 400;
+		letter-spacing: 0.01em;
 		margin-top: 5rem;
 		line-height: 94px;
 		text-align: left;
