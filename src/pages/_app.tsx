@@ -1,5 +1,5 @@
 import { useAnalytics } from "@hooks/useAnalytics"
-import { TopographicBackground } from "@components/pages/home";
+import { PixelBackground } from "@components/pages/home";
 import { Footer, Header } from '@components/shared';
 import '../styles/globals.scss';
 import { useRouter } from "next/router";
@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
 		<>
-			<TopographicBackground />
+			<PixelBackground />
 			<Header />
     	<Component {...pageProps} />
 			<Footer />
